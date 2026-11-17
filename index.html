@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Conversacional - Extorsión Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Fira Code"', 'monospace'],
+                        pixel: ['"Press Start 2P"', 'cursive'],
+                    },
+                    colors: {
+                        retro: {
+                            bg: '#000000',
+                            panel: '#131313',
+                            border: '#272f3c',
+                            red: '#870000',
+                            redhi: '#c80000',
+                            panel2: '#1b1b1b',
+                            green: '#33ff57',
+                            amber: '#ffb000',
+                            cyan: '#00f0ff',
+                            magenta: '#ff007f',
+                            dim: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="alto-pantalla flex flex-col overflow-hidden p-2 md:p-4 select-none">
+
+    <!-- CABECERA -->
+    <header class="flex justify-between items-center bg-black border-2 border-retro-border p-3 rounded-xl mb-3 shadow-xl shrink-0">
+        <span class="text-xs text-retro-cyan font-mono">[CONTADOR: <span id="contador-subm">0</span>]</span>
+        <button onclick="location.reload()" title="Reiniciar" class="px-3 py-1.5 bg-[#63100c] hover:bg-retro-red text-retro-cyan text-xs font-bold rounded-lg border border-retro-redhi/50 transition-all">
+            <i class="fa-solid fa-rotate-right"></i>
+        </button>
+    </header>
+
+    <!-- ZONA PRINCIPAL -->
+    <div class="flex-1 grid grid-cols-1 grid-rows-[minmax(0,1fr)_auto] lg:grid-rows-none lg:grid-cols-12 gap-2 lg:gap-3 min-h-0 crt-overlay relative">
+        
+        <!-- COLUMNA IZQUIERDA: Visor y Terminal -->
+        <main class="lg:col-span-8 flex flex-col space-y-3 min-h-0">
+            
+            <!-- Visor de Escena -->
+            <div id="visor" class="relative h-28 sm:h-52 bg-black rounded-xl border-2 border-retro-border overflow-hidden shrink-0 shadow-lg">
+                <div class="absolute inset-0 bg-cover bg-center opacity-70" id="room-bg" style="background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-retro-panel via-transparent to-black/40"></div>
+                
+                <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-retro-redhi px-3 py-1 rounded-lg text-xs font-bold text-retro-cyan flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-retro-redhi animate-ping"></span>
+                    <span id="room-title">Salón</span>
+                </div>
+                <div id="bloqueo" class="hidden absolute top-3 right-3 bg-black/80 border border-retro-redhi px-3 py-1 rounded-lg text-xs font-bold text-retro-magenta"><i class="fa-solid fa-lock mr-1"></i>BLOQUEADO</div>
+            </div>
+
+            <!-- Inventario (solo móvil) -->
+            <div class="lg:hidden shrink-0 bg-retro-panel border-2 border-retro-border rounded-xl px-2 py-1 flex items-center space-x-2">
+                <i class="fa-solid fa-briefcase text-retro-amber text-xs shrink-0"></i>
+                <div id="inventory-list-mobile" class="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap">
+                    <span class="text-xs text-retro-dim italic">Inventario vacío</span>
+                </div>
+            </div>
+
+            <!-- Terminal de Texto -->
+            <div id="terminal" class="flex-1 bg-retro-panel border-2 border-retro-border rounded-xl p-4 overflow-y-auto space-y-3 font-mono text-xs sm:text-sm leading-relaxed shadow-inner">
+                <!-- Los logs se inyectan aquí -->
+            </div>
+
+            <!-- Barra de Comandos -->
+            <div class="bg-retro-panel2 border-2 border-retro-border rounded-xl p-2.5 flex items-center space-x-2 shrink-0 focus-within:border-retro-redhi transition-colors shadow-lg">
+                <span class="text-retro-green font-bold text-lg glow-green pl-1">></span>
+                <input type="text" id="command-input" placeholder="Escribe un comando ('ir a cocina', 'abrir móvil', 'ayuda')..." 
+                       class="w-full bg-transparent border-none text-retro-green font-mono text-xs sm:text-sm focus:outline-none placeholder-retro-dim/50"
+                       autocomplete="off">
+                <button id="btn-ejecutar" class="px-4 py-2 bg-retro-red text-neutral-200 font-bold rounded-lg text-xs hover:bg-retro-redhi transition-colors flex items-center space-x-1">
+                    <span>EJECUTAR</span>
+                </button>
+            </div>
+        </main>
+
+        <!-- COLUMNA DERECHA: Inventario y Estado -->
+        <aside class="hidden lg:flex lg:col-span-4 flex-col min-h-0">
+            
+            <!-- Inventario Visual -->
+            <div class="bg-retro-panel border-2 border-retro-border rounded-xl p-2 flex flex-col min-h-0 lg:self-start">
+                <div class="flex justify-between items-center border-b border-retro-border pb-1 mb-1">
+                    <h2 class="text-xs font-pixel text-retro-amber glow-amber flex items-center space-x-2">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>INVENTARIO</span>
+                    </h2>
+                    <span id="inventory-count" class="text-xs text-retro-dim">0 objetos</span>
+                </div>
+                <div id="inventory-list" class="flex flex-wrap gap-1.5 overflow-y-auto max-h-14 lg:max-h-40">
+                    <div class="text-xs text-retro-dim italic p-2">Inventario vacío</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+        <!-- PANTALLA DE LECTURA -->
+    <div id="lectura" class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 sm:p-6">
+        <div class="lectura-pagina w-full max-w-3xl h-full rounded-xl flex flex-col shadow-2xl">
+            <div class="flex justify-between items-center border-b border-stone-300 px-5 py-3 shrink-0">
+                <h2 id="lectura-titulo" class="text-lg sm:text-xl font-bold"></h2>
+                <button id="lectura-cerrar" class="px-3 py-1 text-xs font-bold rounded-lg bg-stone-800 text-stone-100 hover:bg-stone-600"><i class="fa-solid fa-xmark mr-1"></i>CERRAR</button>
+            </div>
+            <div id="lectura-texto" class="flex-1 overflow-y-auto px-6 sm:px-12 py-6 text-base sm:text-lg leading-8 select-text"></div>
+        </div>
+    </div>
+    <script src="js/data.js"></script>
+    <script src="js/relato.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/orders.js"></script>
+    <script src="js/ajedrez.js"></script>
+    <script src="js/dialogos.js"></script>
+       <script src="js/personajes.js"></script>
+       <script src="js/ruleta.js"></script>
+   <script src="js/extras.js"></script>
+       <script src="js/musica.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

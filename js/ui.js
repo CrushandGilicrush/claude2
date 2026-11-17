@@ -1,0 +1,98 @@
+/* Capa de interfaz: terminal, visor, inventario y contador. */
+const UI = (() => {
+  const $ = id => document.getElementById(id);
+
+  /* La respuesta a un comando se lee desde su principio: mientras el texto cabe en la terminal se baja hasta el final;
+     en cuanto la respuesta (desde la línea del comando) es más alta que la terminal, se deja el comando arriba. */
+  let inicio = null;
+  function desplazar(t, e) {
+    if (e.className.indexOf('txt-usuario') >= 0) inicio = e;
+    const ref = inicio && inicio.isConnected !== false ? inicio : e;
+    const caja = t.getBoundingClientRect().top;
+    const alto = e.getBoundingClientRect().bottom - ref.getBoundingClientRect().top;
+    if (alto > t.clientHeight) t.scrollTop += ref.getBoundingClientRect().top - caja;
+    else t.scrollTop = t.scrollHeight;
+  }
+
+  /* tipo: 'narrativo' (naranja), 'dialogo' (azul frío), 'usuario', 'final' */
+  function log(texto, tipo = 'narrativo') {
+    const t = $('terminal'), e = document.createElement('div');
+    e.className = 'mb-2 leading-relaxed txt-' + tipo;
+    if (tipo === 'usuario') e.textContent = '> ' + texto;
+    else e.innerHTML = texto;
+    t.appendChild(e);
+    desplazar(t, e);
+  }
+
+  function logImagen(src) {
+    const t = $('terminal'), e = document.createElement('div');
+    e.className = 'mb-2';
+    e.innerHTML = `<img src="${src}" alt="Imagen" class="max-h-72 rounded border border-retro-border">`;
+    e.firstChild.onload = () => { desplazar(t, e); };
+    t.appendChild(e);
+    desplazar(t, e);
+  }
+
+  /* Pantalla de lectura a pantalla completa (se cierra con el botón o con Esc). */
+  function lectura(titulo, texto) {
+    $('lectura-titulo').textContent = titulo;
+    const cont = $('lectura-texto');
+    cont.innerHTML = '';
+    texto.trim().split(/\n\s*\n/).forEach(p => { const e = document.createElement('p'); e.textContent = p.trim(); cont.appendChild(e); });
+    cont.scrollTop = 0;
+    $('lectura').classList.remove('hidden');
+  }
+  function cerrarLectura() { $('lectura').classList.add('hidden'); $('command-input').focus(); }
+
+  /* Mensajes del desconocido por Telegram: muestran «escribiendo...» y luego el texto, uno tras otro. */
+  const cola = [];
+  let ocupado = false, temporizador = null;
+  function dialogo(texto) { cola.push(texto); if (!ocupado) siguienteDialogo(); }
+  function siguienteDialogo() {
+    if (!cola.length) { ocupado = false; return; }
+    ocupado = true;
+    const texto = cola.shift();
+    if (typeof texto === 'function') { texto(); return siguienteDialogo(); }
+    const t = $('terminal'), e = document.createElement('div');
+    const ms = (typeof Dialogos !== 'undefined' && Dialogos.escribiendoMs) || 3000;
+    e.className = 'mb-2 leading-relaxed txt-dialogo escribiendo';
+    e.innerHTML = 'escribiendo<span>.</span><span>.</span><span>.</span>';
+    t.appendChild(e);
+    desplazar(t, e);
+    temporizador = setTimeout(() => {
+      e.className = 'mb-2 leading-relaxed txt-dialogo';
+      e.innerHTML = texto;
+      desplazar(t, e);
+      siguienteDialogo();
+    }, ms);
+  }
+  function vaciarCola() {
+    cola.length = 0; ocupado = false; clearTimeout(temporizador);
+    document.querySelectorAll('.escribiendo').forEach(n => n.remove());
+  }
+
+  function vista(titulo, imagen, bloqueado = false, grande = false, contener = true) {
+    $('visor').classList.toggle('visor-grande', grande);
+    $('room-title').innerText = titulo;
+    $('room-bg').style.backgroundImage = `url('${imagen}')`;
+    $('room-bg').classList.toggle('bg-contain', contener);
+    $('room-bg').classList.toggle('bg-no-repeat', contener);
+    $('bloqueo').classList.toggle('hidden', !bloqueado);
+  }
+
+  function contador(n) { $('contador-subm').innerText = n; }
+
+  function inventario(items) {
+    $('inventory-count').innerText = items.length + ' objetos';
+    $('inventory-list').innerHTML = items.length
+      ? items.map(i => `<div class="text-xs text-retro-amber px-2 py-0.5 border border-retro-border rounded">${i}</div>`).join('')
+      : '<div class="text-xs text-retro-dim italic">Inventario vacío</div>';
+    $('inventory-list-mobile').innerHTML = items.length
+      ? items.map(i => `<span class="text-xs text-retro-amber px-2 py-0.5 border border-retro-border rounded shrink-0">${i}</span>`).join('')
+      : '<span class="text-xs text-retro-dim italic">Inventario vacío</span>';
+  }
+
+  function bloquearEntrada() { $('command-input').disabled = true; $('btn-ejecutar').disabled = true; }
+
+  return { dialogo, despues: dialogo, vaciarCola, lectura, cerrarLectura, log, logImagen, vista, contador, inventario, bloquearEntrada, $ };
+})();
