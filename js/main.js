@@ -6,8 +6,12 @@ const Juego = (() => {
     desnuda: false, cafeHecho: false, cafeTomado: false, mensajeLeido: false, cuadroVisto: false, contactado: false
   };
   const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
-   const sinArticulo = t => t.replace(/^(en|sobre|contra|a|al|la|el|los|las|un|una|de|del)\s+/, '').replace(/^(a|al|la|el|los|las|un|una|de|del)\s+/, '');
-  const T = (clave, datos = {}) => Datos.textos[clave].replace(/\{(\w+)\}/g, (_, k) => datos[k] !== undefined ? datos[k] : Datos[k]);
+  const sinArticulo = t => t.replace(/^(en|sobre|contra|a|al|la|el|los|las|un|una|de|del)\s+/, '').replace(/^(a|al|la|el|los|las|un|una|de|del)\s+/, '');
+  /* CORREGIDO: si la clave no existe en Datos.textos ya no revienta; devuelve lo que haya o ''. */
+  const T = (clave, datos = {}) => {
+    const base = (Datos.textos && Datos.textos[clave]) || '';
+    return base.replace(/\{(\w+)\}/g, (_, k) => datos[k] !== undefined ? datos[k] : (Datos[k] !== undefined ? Datos[k] : ''));
+  };
 
   /* ---------- Estancias y objetos ---------- */
   function mostrarSala() {
@@ -75,6 +79,14 @@ const Juego = (() => {
   const encendido = () => estado.dispositivo === 'movil' || estado.dispositivo === 'ordenador';
   const titulo = () => (estado.dispositivo === 'movil' ? 'Móvil' : 'Ordenador');
 
+  /* CORREGIDO: antes vivía dentro de abrir() y por eso mostrarApp(), leerMensaje() y escribir() lanzaban
+     «imagenApp is not defined» en cuanto se abría el móvil. Ahora está en el ámbito del módulo. */
+  function imagenApp(app) {
+    const im = Datos.imagenes;
+    if (app === 'life') return estado.mensajeLeido ? (im.lifeLeido || 'img/life-leido.svg') : (im.lifeNuevo || 'img/life-nuevo.svg');
+    return estado.contactado ? (im.telegramDesconocido || 'img/telegram-desconocido.svg') : im.telegram;
+  }
+
   function abrir(arg) {
     if (/nevera/.test(arg)) return examinar('nevera');
     if (/congelador/.test(arg)) return Ordenes.abrirCongelador();
@@ -87,11 +99,6 @@ const Juego = (() => {
     estado.app = null;
     UI.vista(titulo(), Datos.imagenes[estado.dispositivo]);
     UI.log(T('enciende', { dispositivo: pc ? 'el ordenador' : 'el móvil' }));
-         function imagenApp(app) {
-       const im = Datos.imagenes;
-       if (app === 'life') return estado.mensajeLeido ? (im.lifeLeido || 'img/life-leido.svg') : (im.lifeNuevo || 'img/life-nuevo.svg');
-       return estado.contactado ? (im.telegramDesconocido || 'img/telegram-desconocido.svg') : im.telegram;
-     }
   }
 
   function mostrarApp(app, texto) {
@@ -128,7 +135,7 @@ const Juego = (() => {
   function leerMensaje() {
     if (estado.app !== 'life') return UI.log(T('sinMensaje'));
     estado.mensajeLeido = true;
-         UI.vista(`${titulo()} · Life`, imagenApp('life'));
+    UI.vista(`${titulo()} · Life`, imagenApp('life'));
     UI.log(T('mensajeIntro'));
     UI.log(T('mensaje'), 'dialogo');
   }
@@ -139,7 +146,7 @@ const Juego = (() => {
     if (!estado.mensajeLeido) return UI.log(T('escribirSinMensaje'));
     if (!estado.contactado) {
       estado.contactado = true;
-           UI.vista(`${titulo()} · Telegram`, imagenApp('telegram'));
+      UI.vista(`${titulo()} · Telegram`, imagenApp('telegram'));
       UI.log(T('escribirOk'));
       UI.dialogo(T('respuesta'));
       return Ordenes.siguiente();
@@ -152,7 +159,7 @@ const Juego = (() => {
   /* Conversación por palabras clave (reglas en js/dialogos.js). */
   const turnos = {};
   function conversar(texto) {
-    const msg = ' ' + norm(texto).replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ') + ' ';
+    const msg = ' ' + norm(texto).replace(/[^a-z0-9 ]/g, ' ') + ' ';
     const coincide = p => { p = norm(p); return p.endsWith('*') ? msg.includes(' ' + p.slice(0, -1)) : msg.includes(' ' + p + ' '); };
     const i = Dialogos.reglas.findIndex(r => r.palabras.some(coincide));
     const lista = i >= 0 ? Dialogos.reglas[i].respuestas : Dialogos.porDefecto;
@@ -165,7 +172,7 @@ const Juego = (() => {
 
   function llamar(cmd) {
     if (cmd.includes('policia')) {
-      if (!estado.mensajeLeido) return UI.log(TF('policiaSinMotivo', 'No ha pasado nada que merezca llamar a la policía.'));   // hasta leer el mensaje de Life
+      if (!estado.mensajeLeido) return UI.log(TF('policiaSinMotivo', 'No ha pasado nada que merezca llamar a la policía.'));
       return terminar(estado.contador);
     }
     UI.log('Parece que no hay nadie al otro lado.');
@@ -180,7 +187,7 @@ const Juego = (() => {
   function terminar(i) {
     estado.terminado = true;
     UI.vaciarCola();
-    UI.log(`<b>FIN DE LA PARTIDA</b><br>${Datos.finales[i]}<br><br>Pulsa el botón ↻ para volver a empezar.`, 'final');
+    UI.log(`<b>FIN DE LA PARTIDA</b><br>${Datos.finales[i] || 'Fin.'}<br><br>Pulsa el botón ↻ para volver a empezar.`, 'final');
     UI.bloquearEntrada();
   }
 
@@ -203,12 +210,14 @@ const Juego = (() => {
   }
 
   /* Comandos de texto: globales o ligados a una estancia y un objeto. */
-     function comandoTexto(verbo, arg) {
+  function comandoTexto(verbo, arg) {
     const frase = (verbo + ' ' + arg).trim();
     let mejor = null, puntos = 0;
     for (const c of Datos.comandosTexto) {
       const v = c.verbos.map(norm).find(v => frase === v || frase.startsWith(v + ' '));
       if (v === undefined) continue;
+      /* CORREGIDO: `inventario` ya se tiene en cuenta (antes era código muerto). */
+      if (c.inventario && !estado.inventario.includes(c.inventario)) continue;
       const objeto = sinArticulo(frase.slice(v.length).trim());
       let p;
       if (!c.objetos) p = 1;                                    // sin objetos: vale para cualquiera
@@ -230,7 +239,7 @@ const Juego = (() => {
     if (estado.terminado || !entrada.trim()) return;
     UI.log(entrada, 'usuario');
     const cmd = norm(entrada);
-       if (Extras.comando(cmd)) return;
+    if (Extras.comando(cmd)) return;
     if (estado.esperandoCodigo) return comprobarCodigo(cmd);
     const ajuste = cmd.match(/^([+-])\s*(\d+)\s*[º°]?\s*c?$/);
     if (ajuste) return Ordenes.ajustar(ajuste[1], parseInt(ajuste[2], 10));
@@ -238,7 +247,7 @@ const Juego = (() => {
     if (/\b(life|telegram)\b|red social/.test(cmd)) return abrirApp(cmd);
     const [verbo, ...resto] = cmd.split(' ');
     const arg = resto.join(' ');
-        if (['abrir', 'mirar', 'ver', 'examinar'].includes(verbo) && /mensaje/.test(arg)) return leerMensaje();
+    if (['abrir', 'mirar', 'ver', 'examinar'].includes(verbo) && /mensaje/.test(arg)) return leerMensaje();
     if (verbo === 'ir') return ir(arg);
     if (['examinar', 'ver', 'mirar'].includes(verbo)) return examinar(arg);
     if (verbo === 'subir' && /temperatura|caldera|calefaccion/.test(arg)) return Ordenes.subirTemperatura();
@@ -253,7 +262,7 @@ const Juego = (() => {
     if (verbo === 'leer' || verbo === 'lee') return leer(sinArticulo(arg));
     if (verbo === 'abrir' || verbo === 'encender') return abrir(arg);
     if (['escribir', 'escribirme', 'pintar', 'anotar'].includes(verbo) && /brazo/.test(arg)) return Ordenes.escribirBrazo();
-    if (['escribir', 'decir', 'responder', 'contestar', 'preguntar', 'hablar'].includes(verbo))   return Personajes.manejar(arg) || Ordenes.responder(cmd) || escribir(arg);
+    if (['escribir', 'decir', 'responder', 'contestar', 'preguntar', 'hablar'].includes(verbo)) return Personajes.manejar(arg) || Ordenes.responder(cmd) || escribir(arg);
     if (verbo === 'cerrar' && estado.dispositivo) return mostrarSala();
     if (/^desnud|^desvest/.test(verbo) || (/^quit/.test(verbo) && /ropa/.test(arg))) return desnudarse();
     if (/^llam/.test(verbo)) return llamar(cmd);
@@ -263,7 +272,7 @@ const Juego = (() => {
     if (['enviar', 'mandar', 'subir'].includes(verbo) && /^foto/.test(sujeto)) return Ordenes.enviarFoto();
     if (['enviar', 'mandar', 'subir'].includes(verbo) && /^video/.test(sujeto)) return Ordenes.enviarVideo();
     if (comandoTexto(verbo, arg)) return;
-       if (Personajes.manejar(cmd) || Ordenes.responder(cmd)) return;
+    if (Personajes.manejar(cmd) || Ordenes.responder(cmd)) return;
     if (estado.app === 'telegram' && estado.desbloqueado && estado.mensajeLeido) return escribir(cmd);   // texto libre en Telegram = mensaje
     UI.log('No entiendo ese comando.');
   }
