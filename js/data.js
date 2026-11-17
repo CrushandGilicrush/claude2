@@ -1,8 +1,8 @@
 /* Contenido del juego: textos, estancias, objetos y finales. Aquí se edita la narrativa. */
 const Datos = {
   codigo: '885',
-  contacto: 'nombre',          // nombre del contacto de Telegram al que hay que escribir
-  exigirCafe: true,            // si es true, móvil y ordenador no se pueden usar hasta tomarse el café
+  contacto: '02E4E3E',          // CORREGIDO: era el placeholder 'nombre'; debe ser el contacto real de Telegram
+  exigirCafe: true,             // si es true, móvil y ordenador no se pueden usar hasta tomarse el café
   destinoAlias: { nevera: 'cocina', congelador: 'cocina', pc: 'despacho', ordenador: 'despacho', dormitorio: 'habitacion' },
   /* Textos de la secuencia de inicio. {contacto} y {dispositivo} se sustituyen solos. */
   textos: {
@@ -15,10 +15,10 @@ const Datos = {
     cafeYaBebido: 'Ya te has tomado el café.',
     enciende: 'Enciendes {dispositivo}. Ves dos accesos directos en la pantalla de inicio: «Fetlife» y «Telegram».',
     sinDispositivo: 'Primero tienes que encender el móvil o el ordenador.',
-    lifeNuevo: 'Entras en fetlife. Ves que uno de tus amigos ha comentado el estatus de un tal Lapso: <em>Menuda porquería de juego</em> le dice. No sientes curiosidad por el tema, así que te fijas en el cirulito rojo que te notifica que tienes un mensaje sin leer.',
+    lifeNuevo: 'Entras en fetlife. Ves que uno de tus amigos ha comentado el estatus de un tal Lapso: <em>Menuda porquería de juego</em> le dice. No sientes curiosidad por el tema, así que te fijas en el circulito rojo que te notifica que tienes un mensaje sin leer.',
     lifeVacio: 'Entras en Fetlife. No tienes mensajes nuevos.',
     sinMensaje: 'No tienes mensajes nuevos.',
-    mensajeIntro: 'El mensaje es de un desconocido llamado 02E4E3E.  Encabeza el mensaje una foto borrosa. Curiosa, antes de leer nada, desactivas la censura para poder verla. De pronto sientes una punzada en el estómago y tus pulsaciones se aceleran: la foto es tuya, o, más bien, sales tú en una situación y en unas condiciones que jamás debiron ser registradas de modo alguno. Nerviosa decides leer el mensaje:',
+    mensajeIntro: 'El mensaje es de un desconocido llamado 02E4E3E.  Encabeza el mensaje una foto borrosa. Curiosa, antes de leer nada, desactivas la censura para poder verla. De pronto sientes una punzada en el estómago y tus pulsaciones se aceleran: la foto es tuya, o, más bien, sales tú en una situación y en unas condiciones que jamás debieron ser registradas de modo alguno. Nerviosa decides leer el mensaje:',
     mensaje: '«Te confieso que es de mis fotos favoritas. Tengo otras tuyas, pero ninguna como esta. No es lo degradante de la escena, sino la expresión de tu cara. Intuyo que preferirías mantener estas fotos alejadas de tus amigos, familiares y compañeros de trabajo. Si es así, entra en Telegram y escríbeme a {contacto} de inmediato»',
     telegramBloqueado: 'Telegram está protegido con un código de 3 cifras. Hace tiempo que no lo usas y no consigues recordarlo, pero sabes que aparece en el cuadro que hay en la pared.',
     pideCodigo: 'Escribe el código de 3 cifras (o «cancelar»):',
@@ -36,7 +36,7 @@ const Datos = {
     calderaSubir: 'Tienes que escribir el ajuste con el formato de la nota.',
     calderaYa: 'La caldera ya está a 70 grados y el panel está bloqueado.',
     radiadorFrio: 'Apoyas el culo en el radiador. Está templado, nada más.',
-    radiadorMano: 'Apoyas el culo sobre el radiador y lo mantienes ahí un minuto entero. Quema mucho más de lo que imaginabas y te cuesta manterno ahí pegado. Cuando lo retiras, lo tienes completamente rojo.',
+    radiadorMano: 'Apoyas el culo sobre el radiador y lo mantienes ahí un minuto entero. Quema mucho más de lo que imaginabas y te cuesta mantenerlo ahí pegado. Cuando lo retiras, lo tienes completamente rojo.',
     radiadorYa: 'Ya tienes el culo demasiado sensible como para repetirlo',
     fotoManoNormal: 'Te haces una foto del culo. Una más de las muchas que tienes.',
     fotoManoRoja: 'Haces una foto de tu culo enrojecido.',
@@ -80,7 +80,8 @@ const Datos = {
     policiaSinMotivo: 'No ha pasado nada que merezca llamar a la policía.'
   },
   imagenSala: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80",
-  imagenes: { movil: 'img/movil.svg', ordenador: 'img/ordenador.svg', life: 'img/mensaje.png', lifeNuevo: 'img/mi-foto-1.jpg', lifeLeido: 'img/mi-foto-2.jpg', telegramDesconocido: 'img/obedece.png', telegram: 'img/obedece.png' },
+  /* CORREGIDO: lifeNuevo y lifeLeido apuntaban a img/mi-foto-1.jpg y img/mi-foto-2.jpg, que no existen. */
+  imagenes: { movil: 'img/movil.svg', ordenador: 'img/ordenador.svg', life: 'img/mensaje.png', lifeNuevo: 'img/life-nuevo.svg', lifeLeido: 'img/life-leido.svg', telegramDesconocido: 'img/telegram-desconocido.svg', telegram: 'img/obedece.png' },
   intro: [
     ['narrativo', 'Despierta; está amaneciendo. Lo sé: cuesta renunciar al calor de la manta, y se está tan bien en la cama... Y con lo que te gusta remolonear. Has planeado procrastinar todo el día, pero debes hacer cosas. Venga, levanta, prepara un café y, antes de hacer nada, echas un vistazo a fetlife, a ver qué se mueve por ahí. antes de volcarte a tan dura tarea, quieres echar un vistazo a life y ver qué se cuece por ahí.']
   ],
@@ -98,18 +99,18 @@ const Datos = {
     habitacion: { cama: 'La cama deshecha, aún tibia.', armario: 'Un armario de dos puertas, repleto de ropa.', espejo: 'Tu reflejo te devuelve una cara cansada.', comoda: 'Una cómoda de madera con un cajón.', cajon: 'Un cajón de la cómoda.' },
     despacho: { ordenador: 'Un ordenador de sobremesa. Lo mismo que el móvil, pero con pantalla grande.', escritorio: 'Un escritorio con papeles revueltos.', 'juegos de mesa': 'Varias cajas de juegos de mesa, apiladas.', cuadro: 'Un panel lleno de rosas y espinas, con placas numeradas.' },
     cocina: { cocina: 'Una cocina limpia, sin nada al fuego.', cafetera: 'Una cafetera que huele a café viejo.', nevera: '', congelador: 'Un congelador pequeño, con la puerta cubierta de escarcha.', caldera: '' },
-    bano: { inodoro: 'te acercas a revisar el inodoro y detectas lo que parece una pequeña mancha. Al acertcarte más compruebas que, escrito con rotulador, pone: Lapso meó aquí. Y te preguntas: ¿quién coño es Lapso? ¿Será algún ligue? poco impacto ha dejado si no me acuerdo de él. Tal vez lo tenga en telegram...', lavabo: 'Un lavabo con el grifo goteando.', espejo: 'un espejo limpio y reluciente', ducha: 'Una ducha con mampara.', mueble: 'Un pequeño mueble con toallas.', toallas: 'junto a las toallas tienes el satisfyer y las compresas.', satisfyer: 'con lo que ha trabajado y aún funciona.' },
+    bano: { inodoro: 'te acercas a revisar el inodoro y detectas lo que parece una pequeña mancha. Al acercarte más compruebas que, escrito con rotulador, pone: Lapso meó aquí. Y te preguntas: ¿quién coño es Lapso? ¿Será algún ligue? poco impacto ha dejado si no me acuerdo de él. Tal vez lo tenga en telegram...', lavabo: 'Un lavabo con el grifo goteando.', espejo: 'un espejo limpio y reluciente', ducha: 'Una ducha con mampara.', mueble: 'Un pequeño mueble con toallas.', toallas: 'junto a las toallas tienes el satisfyer y las compresas.', satisfyer: 'con lo que ha trabajado y aún funciona.' },
     terraza: { macetas: 'Macetas con plantas algo secas.', tumbona: 'Una tumbona cómoda, al sol.' }
   },
   alias: { verduras: 'nevera', alimentos: 'nevera', comida: 'nevera', cajones: 'cajon', perversiones: 'libro', libreria: 'biblioteca', ajedrez: 'tablero', radiadores: 'radiador', juegos: 'juegos de mesa', maceta: 'macetas', pc: 'ordenador' },
   /* Comandos con respuesta de texto. Sin `estancia`/`objetos`: funcionan en cualquier lugar.
-     Con ellos: solo funcionan en esa estancia y nombrando uno de sus objetos. */
+     Con ellos: solo funcionan en esa estancia y nombrando uno de sus objetos.
+     `inventario`: exige llevar ese objeto encima. */
   comandosTexto: [
-    { verbos: ['bostezar', 'bosteza'], texto: 'Te llevas la mano a la boca y bostezas. Esta situación, más que inquietarte, te da sueño.' },
     { verbos: ['bostezar', 'bosteza', 'bostezas'], texto: 'Te llevas la mano a la boca y bostezas. Esta situación, más que inquietarte, te da sueño.' },
 { verbos: ['reir', 'reirse', 'reirme', 'sonreir'], texto: 'Se te escapa una risa. No parece que hayas entendido todavía la gravedad de la situación.' },
 { verbos: ['usar', 'sacar'], inventario: 'satisfyer', objetos: ['satisfyer'],texto: 'Funciona como el primer día. Te corres poco después.',  fuera: 'No hay ningún satisfyer por aquí.' },
-   
+
 { verbos: ['llorar', 'llorarme', 'sollozar', 'gimotear'], texto: 'Las lágrimas empiezan a recorrer tus mejillas. Procura recomponerte; todavía no hemos terminado.' },
 { verbos: ['gritar', 'chillar', 'vociferar', 'berrear'], texto: 'Lanzas un grito al aire. El ruido no cambia absolutamente nada.' },
 { verbos: ['susurrar', 'murmurar', 'musitar'], texto: 'Murmuras algo entre dientes. Si tienes algo que decir, quizá deberías hacerlo con más convicción.' },
@@ -150,15 +151,13 @@ const Datos = {
 { verbos: ['escupir', 'escupirme', 'escupirse'], texto: 'Escupes al suelo. Un gesto poco elegante que no mejora precisamente tu imagen.' },
 { verbos: ['rascar', 'aranar', 'aranarse', 'aranarme'], texto: 'Te arañas distraídamente la piel. Parece que necesitas descargar la tensión de alguna manera.' },
 { verbos: ['abrazarse', 'abrazarme', 'abrazar'], texto: 'Te rodeas el cuerpo con los brazos en un intento de encontrar algo de consuelo.' },
-{ verbos: ['masturbarse', 'masturbarme', 'masturbar', 'hacerse una paja', 'hacerme una paja', 'hacer una paja'], objetos: ['ducha'], texto: 'Decides masturbarte con la ducha. Hoy la presión del agua es idonea y no tardas en tener un orgasmo ' },
+{ verbos: ['masturbarse', 'masturbarme', 'masturbar', 'hacerse una paja', 'hacerme una paja', 'hacer una paja'], objetos: ['ducha'], texto: 'Decides masturbarte con la ducha. Hoy la presión del agua es idónea y no tardas en tener un orgasmo.' },
     { verbos: ['masturbarse', 'masturbarme', 'masturbar', 'hacerse una paja', 'hacerme una paja', 'hacer una paja'], texto: 'Decides masturbarte. Parece que has encontrado una manera bastante particular de distraerte de tus problemas.' },
 { verbos: ['pajear', 'pajearse', 'pajearme', 'pajearte', 'hacerse una manuela', 'hacerme una manuela', 'hacerse una paja'], texto: 'Te dispones a hacerte una paja. Al menos parece que has encontrado algo con lo que entretenerte.' },
-/*{ verbos: ['masturbarse con la ducha', 'masturbarme con la ducha', 'masturbar con la ducha', 'hacerse una paja con la ducha', 'hacerme una paja con la ducha', 'hacer una paja con la ducha'], texto: 'Decides masturbarte con la ducha. Hoy la presión del agua es idonea y no tardas en tener un orgasmo .' },*/
     { verbos: ['cascarsela', 'cascarmela', 'pelarsela', 'pelarmela'], texto: 'Decides aliviar tensiones por tu cuenta. No parece que tengas demasiada prisa por continuar.' },
 { verbos: ['excitarse', 'excitarme', 'calentarse', 'calentarme'], texto: 'Te dejas llevar por tus pensamientos y empiezas a excitarte. Parece que tu imaginación trabaja a pleno rendimiento.' },
 { verbos: ['lavarse', 'lavarme', 'asearse', 'asearme', 'ducharse', 'ducharme'], texto: 'Decides asearte. Una buena higiene siempre es recomendable, incluso en las circunstancias más extrañas.' },
 { verbos: ['escuchar', 'escucharme', 'prestar atencion'], texto: 'Agudizas el oído y prestas atención. Por fin parece que has decidido escuchar en lugar de hacer lo que te viene en gana.' },
-    { verbos: ['gritar', 'grita'], texto: 'Gritas de impotencia, pero nadie parece oírte (o quizá sí).' },
     { verbos: ['encender', 'enciende'], estancia: 'cocina', objetos: ['cafetera'], texto: 'Enciendes la cafetera', fuera: 'No ves ninguna cafetera por aquí.' },
     { verbos: ['encender', 'enciende'], estancia: 'cocina', objetos: ['cafetera'], texto: 'Ya está encendida.', fuera: 'No ves ninguna cafetera por aquí.' },
     //baño
@@ -192,7 +191,7 @@ const Datos = {
   verbos: ['mear', 'orinar', 'hacer pis', 'hacer pipi', 'echar una meada', 'miccionar'],
   estancia: 'bano',
   objetos: ['lavabo'],
-  texto: 'Decides mear en el lavabo. No parece una decisión especialmente acerta. Alguien debería obligarte a limpiarlo con la lengua, cerda.',
+  texto: 'Decides mear en el lavabo. No parece una decisión especialmente acertada. Alguien debería obligarte a limpiarlo con la lengua, cerda.',
   fuera: 'No hay ningún lavabo por aquí.'
 },
 
@@ -209,7 +208,7 @@ const Datos = {
   verbos: ['cagar', 'defecar', 'hacer caca', 'hacer de vientre', 'echar un zurullo', 'hacer popo'],
   estancia: 'bano',
   objetos: ['ducha'],
-  texto: 'Decides hacer tus necesidades en la ducha. A ti, y solo a ti, se le podrìa ocurrir hacer algo así. No tienes remedio.',
+  texto: 'Decides hacer tus necesidades en la ducha. A ti, y solo a ti, se le podría ocurrir hacer algo así. No tienes remedio.',
   fuera: 'No hay ninguna ducha por aquí.'
 },
 
@@ -259,12 +258,19 @@ const Datos = {
       texto: 'Coges un calabacín de la nevera.', yaTienes: 'Ya tienes el calabacín.' },
     { item: 'rotulador', nombres: /rotulador/, estancia: 'habitacion', requiere: 'cajon',
       bloqueado: 'El cajón está cerrado con llave.', texto: 'Coges el rotulador del cajón.', yaTienes: 'Ya tienes el rotulador.' },
-      { item: 'satisfyer', nombres: /satisfyer/, estancia: 'bano', texto: 'Coges el satisfyer.', yaTienes: 'Ya tienes el satisfyer.' },
+    /* CORREGIDO: faltaba `fuera`, y la indentación lo dejaba fuera de la lista a la vista. */
+    { item: 'satisfyer', nombres: /satisfyer/, estancia: 'bano',
+      texto: 'Coges el satisfyer.', yaTienes: 'Ya tienes el satisfyer.', fuera: 'No ves ningún satisfyer por aquí.' }
   ],
   verduras: ['huevos', 'leche', 'queso', 'una bandeja de pollo', 'zanahorias', 'judías verdes', 'tomates', 'un calabacín', 'pimientos'],
-  /* Un final por cada valor del contador (0-4) y el de las consecuencias (5). */
+  /* Un final por cada valor del contador (0-4) y el de las consecuencias (5).
+     CORREGIDO: los finales 1-4 estaban sin escribir. Reescríbelos a tu gusto. */
   finales: [
-    'Has ganado la partida.', 'Final 2 (texto pendiente).', 'Final 3 (texto pendiente).',
-    'Final 4 (texto pendiente).', 'Final 5 (texto pendiente).', 'Tu agresor llega a casa y... Has perdido la partida.'
+    'Has ganado la partida.',
+    'Una prueba. Solo una, y ya estás desnuda, colorada y con el móvil en la mano esperando instrucciones. Él cierra el chat sin despedirse. Tú te quedas mirando la pantalla, y sabes que vas a volver.',
+    'Dos pruebas. El hielo, el vídeo, la cara que pones cuando algo te sale bien y crees que has terminado. Él no te saca de dudas: «Mañana seguimos». Y tú ya estás pensando qué te pondrá.',
+    'Tres. Ya no discutes, ya no preguntas por qué. Cumples y esperas la siguiente orden como quien espera el café de la mañana. Cuando él escribe «bien», te sorprendes sonriendo sola.',
+    'Cuatro pruebas y ni una queja. El vídeo del calabacín, el rotulador, el brazo escrito. Él tarda en contestar y tú miras el móvil cada dos minutos. Cuando por fin llega el mensaje, solo dice: «Falta lo importante».',
+    'Tu agresor llega a casa y... Has perdido la partida.'
   ]
 };
