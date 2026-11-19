@@ -4,7 +4,7 @@ const Ordenes = (() => {
   const secuencia = ['caldera', 'hielo', 'calabacin', 'rotulador'];   // Pruebas 1 a 4
   let indice = -1;
   const e = {
-    temperatura: 47, bloqueada: false, manoRoja: false, congelador: false, grabando: false,
+    temperatura: 48, bloqueada: false, manoRoja: false, congelador: false, grabando: false,
     fase3: null, neveraVista: false, cajon: false, brazo: false, fotos: [], videos: []
   };
   const DEF = {
