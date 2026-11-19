@@ -170,10 +170,10 @@ const Ordenes = (() => {
   /* ---- Fotos y vídeos (comunes) ---- */
   function hacerFoto(objeto) {
     if (!objeto) return UI.log('¿De qué quieres hacer la foto?');
-    if (/culo/.test(objeto)) {
-      e.fotos.push(e.manoRoja ? 'culo rojo' : 'culo');
-      return UI.log(t(e.manoRoja ? 'fotoManoRoja' : 'fotoManoNormal'));
-    }
+   if (/culo/.test(objeto) || /mano/.test(objeto)) {
+  e.fotos.push(e.manoRoja ? 'culo rojo' : 'culo');
+  return UI.log(t(e.manoRoja ? 'fotoManoRoja' : 'fotoManoNormal'));
+}
     if (/brazo/.test(objeto)) {
       e.fotos.push(e.brazo ? 'brazo escrito' : 'brazo');
       return UI.log(t(e.brazo ? 'fotoBrazoEscrito' : 'fotoBrazoNormal'));
