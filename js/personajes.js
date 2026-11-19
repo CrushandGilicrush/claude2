@@ -18,9 +18,8 @@ const Personajes = (() => {
       abre: 'Abres el chat con Lapso.',
       sinTexto: 'Escribe lo que quieras decirle, por ejemplo: «escribir a Lapso hola».',
       porDefecto: [
-        '«Me has pillado mirando el techo. Repite, que ahora sí te escucho.»',
-        '«No te he entendido, pero me ha gustado cómo lo has dicho.»',
-        '«Sigue por ahí, que me estás entreteniendo y eso no es fácil.»'
+        '«Me has pillado mirando el techo. Repite, que ahora sí te escucho, aunque hay temas de los que prefiero hablar por fetlife.»',
+        '«Hay cosas de las que no hablo por aquí. Prefiero usar Fetlife»'
       ],
       reglas: [
         /* --- Frases exactas: van arriba o se las comen --- */
