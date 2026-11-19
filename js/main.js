@@ -255,8 +255,8 @@ const Juego = (() => {
     if (['apoyar', 'poner', 'tocar', 'colocar', 'pegar', 'mantener'].includes(verbo) && /radiador/.test(arg)) return Ordenes.apoyarMano();
     if (['grabar', 'encender', 'hacer', 'empezar'].includes(verbo) && /video/.test(arg)) return Ordenes.grabarVideo();
     if (['parar', 'detener', 'terminar', 'dejar', 'cortar'].includes(verbo) && /video|grab/.test(arg)) return Ordenes.pararVideo();
-    if (/cubito|hielo/.test(arg) && (/boca/.test(arg) || ['chupar', 'lamer', 'comer'].includes(verbo))) return Ordenes.cubitoBoca();
-    if ((['morder', 'comer', 'masticar', 'mordisquear'].includes(verbo) || /mordisco/.test(arg)) && /calabac/.test(arg)) return Ordenes.morderCalabacin();
+    if (/cubito|hielo/.test(arg) && (/culo/.test(arg) || ['meter', 'meterme', 'introducirme', 'introducir'].includes(verbo))) return Ordenes.cubitoBoca();
+    if ((['meter', 'meterme', 'introducir', 'introducirme'].includes(verbo) || /coño/.test(arg)) && /calabac/.test(arg)) return Ordenes.morderCalabacin();
     if (['hacer', 'preparar', 'usar', 'poner'].includes(verbo) && /cafe/.test(arg)) return hacerCafe();
     if (['beber', 'tomar', 'tomarse'].includes(verbo) && /cafe/.test(arg)) return beberCafe();
     if (verbo === 'coger' || verbo === 'coge') return coger(sinArticulo(arg));
