@@ -22,22 +22,7 @@ const Personajes = (() => {
         '«Hay cosas de las que no hablo por aquí. Prefiero usar Fetlife»'
       ],
       reglas: [
-   {
-      id: 'lapso',
-      nombre: 'Lapso',
-      alias: ['Lap'],
-      color: '#fa5106',
-      etiqueta: true,
-      disponible: estado => true,
-      noDisponible: 'Ahora mismo no te contesta.',
-      abre: 'Abres el chat con Lapso.',
-      sinTexto: 'Escribe lo que quieras decirle, por ejemplo: «escribir a Lapso hola».',
-      porDefecto: [
-        '«Me has pillado mirando el techo. Repite, que ahora sí te escucho.»',
-        '«No te he entendido, pero me ha gustado cómo lo has dicho.»',
-        '«Sigue por ahí, que me estás entreteniendo y eso no es fácil.»'
-      ],
-      reglas: [
+   
         /* --- Frases exactas: van arriba o se las comen --- */
         { palabras: ['no se que decir', 'no se que decirte', 'que digo'],
           respuestas: ['«Pues no digas nada, que el silencio también se me da bien contigo. Pero no lo alargues, que luego me malacostumbro.»'] },
