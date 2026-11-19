@@ -12,10 +12,10 @@ const Ordenes = (() => {
     calderaSubir: 'Tienes que escribir el ajuste con el formato de la nota.',
     calderaYa: 'La caldera ya está a 70 grados y el panel está bloqueado.',
     radiadorFrio: 'Apoyas la mano en el radiador. Está templado, nada más.',
-    radiadorMano: 'Apoyas la mano sobre el radiador y la mantienes ahí un minuto entero. Cuando la retiras, la tienes roja.',
-    radiadorYa: 'Ya tienes la mano roja. No hace falta insistir.',
-    fotoManoNormal: 'Haces una foto de tu mano. No tiene nada de especial.',
-    fotoManoRoja: 'Haces una foto de tu mano enrojecida.',
+    radiadorMano: 'Apoyas el culo sobre el radiador y la mantienes ahí un minuto entero. Cuando la retiras, la tienes roja.',
+    radiadorYa: 'Ya tienes el culo roja. No hace falta insistir.',
+    fotoManoNormal: 'Haces una foto de tu culo. No tiene nada de especial.',
+    fotoManoRoja: 'Haces una foto de tu culo enrojecido.',
     sinTelegram: 'Primero tienes que abrir Telegram.',
     pedirHielo: '«Prueba 2. Coge un par de cubitos de hielo del congelador, sal a la terraza y grábate un vídeo metiéndote uno en la boca. Después, mándamelo.»',
     congelador: 'Abres el congelador. Entre la escarcha hay una bandeja con dos cubitos de hielo.',
@@ -45,7 +45,7 @@ const Ordenes = (() => {
     brazoYa: 'Ya te has escrito en el brazo.',
     fotoBrazoNormal: 'Haces una foto de tu brazo. No tiene nada escrito.',
     fotoBrazoEscrito: 'Haces una foto de tu brazo con la frase escrita.',
-    recuerdaCaldera: '«Te he pedido que te desnudes, subas la caldera a 70 grados, apoyes la mano en el radiador durante un minuto y me mandes una foto de la mano. Hazlo bien.»',
+    recuerdaCaldera: '«Te he pedido que te desnudes, subas la caldera a 70 grados, apoyes el culo en el radiador durante un minuto y me mandes una foto del culo. Hazlo bien.»',
     recuerdaHielo: '«Te he pedido un vídeo en la terraza, metiéndote un cubito de hielo en la boca. Un vídeo, no otra cosa.»',
     recuerdaCalabacin: '«Te he pedido que me digas qué verduras tienes en la nevera. Después ya te diré qué hacer con ellas.»',
     recuerdaCalabacinVideo: '«Te he pedido un vídeo mordiendo el calabacín. Un vídeo, no otra cosa.»',
@@ -171,7 +171,7 @@ const Ordenes = (() => {
   function hacerFoto(objeto) {
     if (!objeto) return UI.log('¿De qué quieres hacer la foto?');
     if (/mano/.test(objeto)) {
-      e.fotos.push(e.manoRoja ? 'mano roja' : 'mano');
+      e.fotos.push(e.manoRoja ? 'culo rojo' : 'culo');
       return UI.log(t(e.manoRoja ? 'fotoManoRoja' : 'fotoManoNormal'));
     }
     if (/brazo/.test(objeto)) {
@@ -198,7 +198,7 @@ const Ordenes = (() => {
     if (!telegramListo()) return;
     if (!e.fotos.length) return UI.log('No tienes ninguna foto que enviar.');
     const ultima = e.fotos[e.fotos.length - 1];
-    if (activa() === 'caldera' && e.bloqueada && ultima === 'mano roja') {
+    if (activa() === 'caldera' && e.bloqueada && ultima === 'culo rojo') {
       if (!est().desnuda) return UI.dialogo(t('recuerdaDesnudarse'));   // desnudarse es necesario en la prueba 1
       e.fotos.pop();
       UI.dialogo('«Muy bien. Veo que sabes obedecer.»');
