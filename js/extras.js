@@ -30,14 +30,12 @@ const Extras = (() => {
   const caliente = () => typeof Ordenes.radiadorCaliente === 'function' && Ordenes.radiadorCaliente();
   let traseroHecho = false;
 
-  function apoyarTrasero(est) {
-    if (est.estancia !== 'salon') return UI.log('No ves ningún radiador por aquí.');
-    if (!est.desnuda) return UI.log(t('traseroSinDesnudar'));   // «desnudarse» es previo a esta acción
-    if (!caliente()) return UI.log(t('traseroFrio'));
-    if (traseroHecho) return UI.log(t('traseroYa'));
-    traseroHecho = true;
-    UI.log(t('traseroApoya'));
-  }
+function apoyarTrasero(est) {
+  if (est.estancia !== 'salon') return UI.log('No ves ningún radiador por aquí.');
+  if (!est.desnuda) return UI.log(t('traseroSinDesnudar'));
+  if (!caliente()) return UI.log(t('traseroFrio'));
+  Ordenes.apoyarMano();   // marca manoRoja y escribe el texto (o «ya lo has hecho»)
+}
 
   /* Devuelve true si el comando era un atajo o una de estas acciones (y ya lo ha gestionado). */
   function comando(cmd) {
