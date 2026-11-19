@@ -1526,8 +1526,8 @@ const Personajes = (() => {
       if (dest) { UI.log(aviso()); return true; }
       return false;
     }
-    const contacto = norm(Datos.contacto || '');
-    if (contacto && (limpio === contacto || limpio.startsWith(contacto + ' '))) { est.chat = undefined; return false; }   // vuelve con el desconocido
+    const normales = [Datos.contacto, ...(Datos.aliasContacto || [])].map(norm);
+    if (normales.some(n => limpio === n || limpio.startsWith(n + ' '))) { est.chat = undefined; return false; }   // vuelve con el desconocido
     const p = dest ? dest.p : lista.find(x => x.id === est.chat);
     if (!p) return false;
     if (!(p.disponible ? p.disponible(est) : true)) { UI.log(p.noDisponible || 'Ahora mismo no te contesta.'); return true; }
