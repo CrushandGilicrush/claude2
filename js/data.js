@@ -2,6 +2,7 @@
 const Datos = {
   codigo: '885',
   contacto: '02E4E3E',          // CORREGIDO: era el placeholder 'nombre'; debe ser el contacto real de Telegram
+   aliasContacto: ['desconocido', 'el desconocido', 'tio', 'tío'],
   exigirCafe: true,             // si es true, móvil y ordenador no se pueden usar hasta tomarse el café
   destinoAlias: { nevera: 'cocina', congelador: 'cocina', pc: 'despacho', ordenador: 'despacho', dormitorio: 'habitacion' },
   /* Textos de la secuencia de inicio. {contacto} y {dispositivo} se sustituyen solos. */
