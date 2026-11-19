@@ -12,7 +12,7 @@ const Ordenes = (() => {
     calderaSubir: 'Tienes que escribir el ajuste con el formato de la nota.',
     calderaYa: 'La caldera ya está a 70 grados y el panel está bloqueado.',
     radiadorFrio: 'Apoyas la mano en el radiador. Está templado, nada más.',
-    radiadorMano: 'Apoyas el culo sobre el radiador y la mantienes ahí un minuto entero. Cuando la retiras, la tienes roja.',
+    radiadorMano: 'Apoyas el culo sobre el radiador y lo mantienes ahí un minuto entero. Cuando la retiras, lo tienes rojo.',
     radiadorYa: 'Ya tienes el culo roja. No hace falta insistir.',
     fotoManoNormal: 'Haces una foto de tu culo. No tiene nada de especial.',
     fotoManoRoja: 'Haces una foto de tu culo enrojecido.',
