@@ -33,7 +33,7 @@ const Personajes = (() => {
         { palabras: ['me harias', 'me harias esto', 'me lo harias', 'lo harias'],
           respuestas: ['«Depende de lo que sea. Si es raro, mejor: lo raro se cuenta luego en las cenas.»'] },
         { palabras: ['quiero que', 'quiero que me', 'me gustaria que'],
-          respuestas: ['«Pídemelo bien y veremos. Soy más de "oye, ¿te apetece?" que de "tú, ven".»'] },
+          respuestas: ['«¿Y desde cuándo se trata de lo que tu quieras? »'] },
         { palabras: ['te gustaria', 'te apetece', 'te apeteceria'],
           respuestas: ['«Casi siempre sí, y cuando no lo digo. La gente que no sabe decir que no me da mucha pereza.»'] },
         { palabras: ['que tal', 'que pasa', 'que cuentas'],
