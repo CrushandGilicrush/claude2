@@ -42,6 +42,8 @@ const Personajes = (() => {
           respuestas: ['«Tirado, literalmente. Si te digo la verdad, llevo media hora sin moverme para no despertar al gato.»'] },
         { palabras: ['me aburro', 'estoy aburrido', 'estoy aburrida'],
           respuestas: ['«Pues aprovecha y hazme caso, que el aburrimiento es el mejor sitio para empezar algo.»'] },
+          { palabras: ['me gustas', 'me pones'],
+          respuestas: ['«Eso sí que ser directo! pero... ¿lo dirías teniéndome delante?»'] },
 
         /* --- BDSM --- */
         { palabras: ['bdsm', 'bondage', 'sumision', 'sumiso', 'sumisa'],
