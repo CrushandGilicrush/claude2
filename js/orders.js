@@ -170,7 +170,7 @@ const Ordenes = (() => {
   /* ---- Fotos y vídeos (comunes) ---- */
   function hacerFoto(objeto) {
     if (!objeto) return UI.log('¿De qué quieres hacer la foto?');
-    if (/mano/.test(objeto)) {
+    if (/culo/.test(objeto)) {
       e.fotos.push(e.manoRoja ? 'culo rojo' : 'culo');
       return UI.log(t(e.manoRoja ? 'fotoManoRoja' : 'fotoManoNormal'));
     }
@@ -178,7 +178,7 @@ const Ordenes = (() => {
       e.fotos.push(e.brazo ? 'brazo escrito' : 'brazo');
       return UI.log(t(e.brazo ? 'fotoBrazoEscrito' : 'fotoBrazoNormal'));
     }
-    UI.log('No puedes hacer una foto de eso.');
+    UI.log('No es el momento de hacer una foto de eso');
   }
   function telegramListo() {
     if (!est().desbloqueado) { UI.log('Telegram sigue bloqueado.'); return false; }
