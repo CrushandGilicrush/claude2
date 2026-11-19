@@ -298,7 +298,7 @@ Quizá habría sido mejor hacerlo antes. Pero todavía estás a tiempo.
 
 La extorsión no se convierte en un acuerdo porque hayas cedido una vez. Tampoco eres responsable de las amenazas de quien pretende aprovecharse de ti.
 
-Apagas el ordenador. Esta vez no vas a responder a su siguiente mensaje. Tú partida acaba aquí. `,
+Apagas el ordenador. Esta vez no vas a responder a su siguiente mensaje. Tu partida acaba aquí. `,
     'Dos pruebas. El hielo, el vídeo, la cara que pones cuando algo te sale bien y crees que has terminado. Él no te saca de dudas: «Mañana seguimos». Y tú ya estás pensando qué te pondrá.',
     'Tres. Ya no discutes, ya no preguntas por qué. Cumples y esperas la siguiente orden como quien espera el café de la mañana. Cuando él escribe «bien», te sorprendes sonriendo sola.',
     'Cuatro pruebas y ni una queja. El vídeo del calabacín, el rotulador, el brazo escrito. Él tarda en contestar y tú miras el móvil cada dos minutos. Cuando por fin llega el mensaje, solo dice: «Falta lo importante».',
