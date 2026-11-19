@@ -267,8 +267,38 @@ const Datos = {
   /* Un final por cada valor del contador (0-4) y el de las consecuencias (5).
      CORREGIDO: los finales 1-4 estaban sin escribir. Reescríbelos a tu gusto. */
   finales: [
-    'Has ganado la partida.',
-    'Una prueba. Solo una, y ya estás desnuda, colorada y con el móvil en la mano esperando instrucciones. Él cierra el chat sin despedirse. Tú te quedas mirando la pantalla, y sabes que vas a volver.',
+   `Te quedas mirando la pantalla del ordenador. El último mensaje sigue ahí, iluminando la habitación con una luz fría y desagradable. Durante unos segundos piensas en las consecuencias: qué podría hacer con tus fotografías, a quién podría enviárselas, qué ocurriría si decides no obedecer.
+
+Pero hay algo que tienes claro: no vas a negociar con alguien que te está amenazando. Tampoco vas a esperar a descubrir hasta dónde está dispuesto a llegar.
+
+Coges el teléfono y marcas el número de la policía.
+
+Explicas lo sucedido. Enseñas los mensajes, las amenazas y todo aquello que pueda servir para identificar a la persona que está detrás de ellos. Te indican cómo proceder y te recomiendan conservar las conversaciones, no borrar nada y no responder a nuevas exigencias.
+
+Cuando cuelgas, el miedo no ha desaparecido. Tampoco sabes qué ocurrirá mañana. Pero has conseguido algo importante: has dejado de enfrentarte a la situación en solitario y has puesto los hechos en conocimiento de quienes pueden investigar lo sucedido.
+
+La extorsión se alimenta del silencio, de la vergüenza y de la sensación de que ya es demasiado tarde para pedir ayuda. Pero no tienes que esperar a que publiquen tus fotografías, a que contacten con tus conocidos o a que las amenazas se conviertan en algo peor.
+
+No necesitas demostrar hasta dónde puede llegar alguien para tener derecho a denunciar lo que ya está haciendo.
+
+Apagas la pantalla. Por primera vez en toda la noche, el siguiente movimiento ya no depende de quien te amenaza. Has ganado la partida`,
+    `Miras la pantalla del ordenador. Has cumplido una de sus exigencias. Quizá pensabas que, si cedías una sola vez, todo terminaría. Que conseguirías ganar tiempo, que se daría por satisfecho o que entendería que no quieres problemas.
+
+Pero apenas unos minutos después llega otro mensaje.
+
+Una nueva petición. Una nueva amenaza. Esta vez exige algo más.
+
+Entonces comprendes que no había ningún trato, ninguna negociación posible. La primera concesión no ha servido para detenerlo, sino para demostrarle que puede conseguir lo que quiere mediante el miedo.
+
+Te sientes engañada, vulnerable y enfadada contigo misma. Pero no tienes por qué seguir cediendo. Haber aceptado una exigencia no significa que hayas perdido el derecho a poner límites ni a pedir ayuda.
+
+Cierras la conversación, guardas las pruebas y decides que no habrá una segunda concesión. Coges el teléfono y contactas con la policía para denunciar lo ocurrido.
+
+Quizá habría sido mejor hacerlo antes. Pero todavía estás a tiempo.
+
+La extorsión no se convierte en un acuerdo porque hayas cedido una vez. Tampoco eres responsable de las amenazas de quien pretende aprovecharse de ti.
+
+Apagas el ordenador. Esta vez no vas a responder a su siguiente mensaje. Tú partida acaba aquí. `,
     'Dos pruebas. El hielo, el vídeo, la cara que pones cuando algo te sale bien y crees que has terminado. Él no te saca de dudas: «Mañana seguimos». Y tú ya estás pensando qué te pondrá.',
     'Tres. Ya no discutes, ya no preguntas por qué. Cumples y esperas la siguiente orden como quien espera el café de la mañana. Cuando él escribe «bien», te sorprendes sonriendo sola.',
     'Cuatro pruebas y ni una queja. El vídeo del calabacín, el rotulador, el brazo escrito. Él tarda en contestar y tú miras el móvil cada dos minutos. Cuando por fin llega el mensaje, solo dice: «Falta lo importante».',
