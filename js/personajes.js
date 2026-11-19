@@ -50,7 +50,7 @@ const Personajes = (() => {
         { palabras: ['te quiero comer la boca', 'quiero comerte la boca'],
           respuestas: ['«Ven a comérmela. Aviso: luego me cuesta callarme.»'] },
         { palabras: ['te quiero comer la polla', 'quiero comerte la polla'],
-          respuestas: ['«Está esperando. Yo también, para qué te voy a mentir.»'] },
+          respuestas: ['«No voy a poner ningún inconveniente a algo así. Podrías hacerlo a cada momento.»'] },
         { palabras: ['te comeria a besos'],
           respuestas: ['«Y yo me dejaría. Todo el rato que quisieras.»'] },
         { palabras: ['te comeria los morros'],
@@ -493,6 +493,12 @@ const Personajes = (() => {
           respuestas: ['«Me los meto. Uno primero, y luego me quedo quieto dentro.»'] },
         { palabras: ['mira que cuadro'],
           respuestas: ['«Me miro y me da la risa. Estoy hecho un cuadro y tú tienes la culpa.»'] },
+            { palabras: ['masturbate'],
+          respuestas: ['«Si deseas que me masturbe, me masturbo.»'] },
+            { palabras: ['tocate'],
+          respuestas: ['«Si deseas que me toque, me toco.»'] },
+            { palabras: ['acariciate'],
+          respuestas: ['«Por supuesto, me acaricio dónde quieras y cómo quieras.»'] },
 
         /* --- Verbos: infinitivo y primera persona --- */
         { palabras: ['andar', 'ando'], respuestas: ['«Ando mucho. Es la forma más barata de pensar sin que nadie te interrumpa.»'] },
