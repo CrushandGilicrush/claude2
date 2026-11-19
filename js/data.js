@@ -302,6 +302,6 @@ Apagas el ordenador. Esta vez no vas a responder a su siguiente mensaje. Tu part
     'Dos pruebas. El hielo, el vídeo, la cara que pones cuando algo te sale bien y crees que has terminado. Él no te saca de dudas: «Mañana seguimos». Y tú ya estás pensando qué te pondrá.',
     'Tres. Ya no discutes, ya no preguntas por qué. Cumples y esperas la siguiente orden como quien espera el café de la mañana. Cuando él escribe «bien», te sorprendes sonriendo sola.',
     'Cuatro pruebas y ni una queja. El vídeo del calabacín, el rotulador, el brazo escrito. Él tarda en contestar y tú miras el móvil cada dos minutos. Cuando por fin llega el mensaje, solo dice: «Falta lo importante».',
-    'Tu agresor llega a casa y... Has perdido la partida.'
+    'Has dejado abierta la puerta de tu casa, te has puesto una venda en los ojos y estás de rodillas junto a la cama. Pasado un rato oyer la puerta cerrarse. Alguien entra en la habitación. Sientes su presencia. Está justo enfrente de ti. Oyes como se desabrocha el pantalón y una voz que te dice -voy a hacer contigo cosas peores de las que aparecen en las fotos. Abre la boca-. Abres la boca... Has perdido la partida.'
   ]
 };
