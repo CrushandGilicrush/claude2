@@ -7,7 +7,7 @@
      (sin acentos ni comas; `*` al final cubre variantes; si hay varias respuestas, se alternan). */
 const Personajes = (() => {
   const lista = [
-   {
+ {
       id: 'lapso',
       nombre: 'Lapso',
       alias: ['Lap'],
@@ -127,7 +127,27 @@ const Personajes = (() => {
         { palabras: ['escuchar', 'atiende'],
           respuestas: ['«Te escucho. Y si algo no lo pillo, te lo pregunto en vez de hacer como que sí.»'] },
         { palabras: ['hablar', 'conversacion'],
-          respuestas: ['«Hablar es lo mío. Lo otro lo est
+          respuestas: ['«Hablar es lo mío. Lo otro lo estoy entrenando.»'] },
+        { palabras: ['jaja', 'jeje', 'risa'],
+          respuestas: ['«Me alegra hacerte gracia, aunque sea por accidente.»'] },
+        { palabras: ['gracias', 'te lo agradezco'],
+          respuestas: ['«De nada, pero no te acostumbres a que acierte.»'] },
+        { palabras: ['por favor', 'porfa'],
+          respuestas: ['«Con el por favor delante hasta me lo pienso.»'] },
+        { palabras: ['vale', 'ok', 'de acuerdo', 'okey'],
+          respuestas: ['«Vale. Ahora cuéntame algo, que "vale" solo no llena una tarde.»'] },
+        { palabras: ['si', 'claro'],
+          respuestas: ['«Un sí dicho rápido asusta un poco. Me gusta.»'] },
+        { palabras: ['no', 'nope', 'ni de coña'],
+          respuestas: ['«Un no a tiempo ahorra muchas tonterías. Bien dicho, además.»'] },
+
+        /* --- Saludos y despedidas --- */
+        { palabras: ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'hey', 'saludos'],
+          respuestas: ['«¡Hola! Llegas justo cuando me estaba aburriendo. Bien jugado.»'] },
+        { palabras: ['adios', 'chao', 'hasta luego', 'nos vemos', 'me voy'],
+          respuestas: ['«Vete, pero vuelve. Y si no vuelves, al menos avisa para que no me quede mirando la pantalla.»'] }
+      ]
+    },
       {
       id: 'Hawking',                              // identificador interno (único, sin espacios)
       nombre: 'Stephen Hawking',                          // nombre con el que se le escribe
