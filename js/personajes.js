@@ -7,28 +7,127 @@
      (sin acentos ni comas; `*` al final cubre variantes; si hay varias respuestas, se alternan). */
 const Personajes = (() => {
   const lista = [
-    {
-      id: 'lapso',                              // identificador interno (único, sin espacios)
-      nombre: 'Lapso',                          // nombre con el que se le escribe
-      alias: ['Lap'],                           // otras formas de nombrarla (opcional)
-      color: '#fa5106',                         // color de sus mensajes (opcional; quita la línea para el azul de siempre)
-      etiqueta: true,                           // muestra «Laura:» delante de sus mensajes
-      disponible: estado => true,               // cuándo se puede hablar con ella (p. ej. estado => estado.contador >= 1)
+   {
+      id: 'lapso',
+      nombre: 'Lapso',
+      alias: ['Lap'],
+      color: '#fa5106',
+      etiqueta: true,
+      disponible: estado => true,
       noDisponible: 'Ahora mismo no te contesta.',
       abre: 'Abres el chat con Lapso.',
       sinTexto: 'Escribe lo que quieras decirle, por ejemplo: «escribir a Lapso hola».',
-      porDefecto: ['«Jaja, no te entiendo, cuéntame más.»', '«Ay, qué cosas dices.»', '«Espera, que me llaman. Ahora te escribo.»'],
+      porDefecto: [
+        '«Me has pillado mirando el techo. Repite, que ahora sí te escucho.»',
+        '«No te he entendido, pero me ha gustado cómo lo has dicho.»',
+        '«Sigue por ahí, que me estás entreteniendo y eso no es fácil.»'
+      ],
       reglas: [
-        { palabras: ['hola', 'buenas', 'hey', 'que tal'],
-          respuestas: ['«¡Hola! ¿Cómo estás?»', '«¡Ey! Cuánto tiempo.»'] },
-        { palabras: ['como estas', 'como te va', 'y tú?', 'que haces'],
-          respuestas: ['«Aquí, tirado en el sofá. En realidad yo solo soy un diálogo programado, pero seguro que el Lapso real está tirado en el sofá, el muy vago»', '«Liado con el trabajo, como siempre.»'] },
-        { palabras: ['ayuda', 'ayudame', 'problema', 'necesito'],
-          respuestas: ['«Claro, dime qué te pasa.»', '«Cuenta conmigo para lo que sea, excepto follar. Ya sabes que yo esas cosas no las hago. Paso. Un rotundo NO»'] },
-        { palabras: ['adios', 'chao', 'hasta luego', 'nos vemos'],
-          respuestas: ['«¡Un beso!»', '«Hablamos pronto.»'] }
-      ]
-    },
+        /* --- Frases exactas: van arriba o se las comen --- */
+        { palabras: ['no se que decir', 'no se que decirte', 'que digo'],
+          respuestas: ['«Pues no digas nada, que el silencio también se me da bien contigo. Pero no lo alargues, que luego me malacostumbro.»'] },
+        { palabras: ['me gustaria conocerte', 'quiero conocerte', 'conocerte', 'podemos conocernos', 'quedamos', 'quedar'],
+          respuestas: ['«Puedes escribirme por fetlife y quedamos para tomar un café. Aviso: en persona soy más gracioso y bastante más feo.»'] },
+        { palabras: ['cuanto te mide', 'como la tienes de grande', 'la tienes grande', 'cuanto la tienes'],
+          respuestas: ['«Nunca me la he medido, pero tú podrías ayudarme con ello.»'] },
+        { palabras: ['me harias', 'me harias esto', 'me lo harias', 'lo harias'],
+          respuestas: ['«Depende de lo que sea. Si es raro, mejor: lo raro se cuenta luego en las cenas.»'] },
+        { palabras: ['quiero que', 'quiero que me', 'me gustaria que'],
+          respuestas: ['«Pídemelo bien y veremos. Soy más de "oye, ¿te apetece?" que de "tú, ven".»'] },
+        { palabras: ['te gustaria', 'te apetece', 'te apeteceria'],
+          respuestas: ['«Casi siempre sí, y cuando no lo digo. La gente que no sabe decir que no me da mucha pereza.»'] },
+        { palabras: ['que tal', 'que pasa', 'que cuentas'],
+          respuestas: ['«Aquí, en el sofá, dándole vueltas a cosas que no tienen solución. Lo de siempre. ¿Y tú?»'] },
+        { palabras: ['como estas', 'como te va', 'que haces'],
+          respuestas: ['«Tirado, literalmente. Si te digo la verdad, llevo media hora sin moverme para no despertar al gato.»'] },
+        { palabras: ['me aburro', 'estoy aburrido', 'estoy aburrida'],
+          respuestas: ['«Pues aprovecha y hazme caso, que el aburrimiento es el mejor sitio para empezar algo.»'] },
+
+        /* --- BDSM --- */
+        { palabras: ['bdsm', 'bondage', 'sumision', 'sumiso', 'sumisa'],
+          respuestas: ['«Me atrae más de lo que reconozco en voz alta. Todo lo que sea pactar y luego cumplir me parece muy civilizado.»'] },
+        { palabras: ['dominante', 'dominacion', 'dominar'],
+          respuestas: ['«Un buen dominante es el que recuerda tus límites cuando tú ya te has olvidado de ellos.»'] },
+        { palabras: ['cuerdas', 'shibari', 'ataduras'],
+          respuestas: ['«Las cuerdas me gustan por lo que tienen de dibujo. Y de promesa.»'] },
+        { palabras: ['azote', 'azotes', 'latigo', 'fusta'],
+          respuestas: ['«Un azote bien dado es una frase corta. Mal dado, un párrafo entero.»'] },
+        { palabras: ['collar'],
+          respuestas: ['«Un collar dice mucho sin decir nada. Sobre todo cuando lo llevas puesto y nadie más lo sabe.»'] },
+        { palabras: ['palabra de seguridad', 'palabra clave'],
+          respuestas: ['«Sin palabra de seguridad no hay juego, hay fe. Y yo tengo poca.»'] },
+        { palabras: ['aftercare', 'despues de la sesion'],
+          respuestas: ['«El aftercare es lo que separa a la gente seria del resto. Manta, agua y no desaparecer.»'] },
+        { palabras: ['sesion', 'juego de rol', 'roleplay', 'rol'],
+          respuestas: ['«Un papel es una excusa honesta para hacer lo que ya querías. Me apunto a casi todos.»'] },
+        { palabras: ['fetlife'],
+          respuestas: ['«Ahí me tienes, colgado y sin ninguna vergüenza.»'] },
+        { palabras: ['obedecer', 'obediencia'],
+          respuestas: ['«Obedecer por miedo es fácil. Obedecer por gusto ya es otra cosa, y se nota en la cara.»'] },
+
+        /* --- Palabras sexuales --- */
+        { palabras: ['coño', 'concha', 'chocho', 'vagina'],
+          respuestas: ['«Ocho centímetros de conducto, pH ácido y más terminaciones nerviosas que el resto del cuerpo junto. Un diseño interesante.»'] },
+        { palabras: ['polla', 'pene', 'verga', 'nabo'],
+          respuestas: ['«Hidráulica pura. Y aun así nos empeñamos en darle importancia sentimental.»'] },
+        { palabras: ['tetas', 'pecho', 'pechuga'],
+          respuestas: ['«Entre primates es un caso raro. Nosotros también lo somos, así que empate.»'] },
+        { palabras: ['culo', 'trasero', 'pompis', 'nalgas'],
+          respuestas: ['«Glúteo sobre pelvis: la palanca que nos puso de pie. Y luego lo usamos para otras cosas.»'] },
+        { palabras: ['follar', 'sexo', 'echar un polvo'],
+          respuestas: ['«Yo no follo, que conste. Bueno, sí, pero poco y con suerte. Me da que se me da mejor hablar.»'] },
+        { palabras: ['correrse', 'orgasmo', 'acabar'],
+          respuestas: ['«Un reflejo del sistema nervioso autónomo que dura segundos. Lo de antes y lo de después es lo que vale.»'] },
+        { palabras: ['masturbarse', 'masturbacion', 'paja', 'pajearse'],
+          respuestas: ['«El entretenimiento más honesto que existe: nadie te aplaude y aun así repites.»'] },
+        { palabras: ['caliente', 'cachonda', 'cachondo', 'excitada'],
+          respuestas: ['«Eso se arregla o se empeora, según con quién hables. Conmigo suele empeorar.»'] },
+        { palabras: ['desnuda', 'desnudo', 'en pelotas'],
+          respuestas: ['«Es el único estado en el que no hay nada que disimular. Aprovecha, que la ropa vuelve.»'] },
+        { palabras: ['besar', 'morreo', 'beso'],
+          respuestas: ['«Los buenos besos se dan despacio y se quitan despacio. El resto son choques.»'] },
+
+        /* --- Insultos --- */
+        { palabras: ['idiota', 'imbecil', 'tonto', 'cabron', 'gilipollas', 'capullo', 'payaso', 'inutil', 'subnormal', 'mamon', 'bobo', 'cretino', 'memo', 'pendejo'],
+          respuestas: ['«Me lo apunto. Aunque si me insultas tanto será porque te caigo bien, y eso no se arregla con palabras.»'] },
+
+        /* --- Temas generales --- */
+        { palabras: ['politica', 'soy de izquierdas', 'izquierdas'],
+          respuestas: ['«Soy de izquierdas y no lo disimulo. Si eso te echa para atrás, mejor saberlo ahora que en la tercera cita.»'] },
+        { palabras: ['arte', 'pintura', 'museo'],
+          respuestas: ['«El arte que me gusta no pide permiso ni da explicaciones. Como la gente que merece la pena.»'] },
+        { palabras: ['videojuegos', 'videojuego', 'consola'],
+          respuestas: ['«Juego, sí. Y pierdo con dignidad, que es lo único que se puede entrenar de verdad.»'] },
+        { palabras: ['pelicula', 'peliculas', 'cine'],
+          respuestas: ['«Prefiero las que se quedan conmigo dos días. El resto se me olvidan en el coche.»'] },
+        { palabras: ['series', 'serie'],
+          respuestas: ['«Veo pocas y enteras. Las series se han vuelto un sitio donde esconder guiones malos durante diez horas.»'] },
+        { palabras: ['libros', 'libro', 'leer'],
+          respuestas: ['«Leo de todo y subrayo, que para algunos es un crimen. Que se aguanten.»'] },
+        { palabras: ['filosofia', 'la vida', 'sentido de la vida'],
+          respuestas: ['«La vida no trae sentido de fábrica. Hay que ponérselo, y eso es trabajo de dos.»'] },
+        { palabras: ['ciencia', 'universo', 'fisica'],
+          respuestas: ['«La ciencia es el único sitio donde equivocarse bien cuenta como avance. Me gusta esa humildad.»'] },
+        { palabras: ['musica', 'cancion', 'grupo'],
+          respuestas: ['«Escucho de todo menos lo que ponen en el súper. Ahí pongo la raya.»'] },
+
+        /* --- Verbos y expresiones --- */
+        { palabras: ['ir', 'vamos', 'vete'],
+          respuestas: ['«Vamos a ningún sitio concreto, que es como mejor se sale.»'] },
+        { palabras: ['venir', 'ven'],
+          respuestas: ['«Voy, pero aviso que llego tarde y con excusas.»'] },
+        { palabras: ['salir'],
+          respuestas: ['«Salir está bien. Volver a casa a tiempo está mejor.»'] },
+        { palabras: ['comer', 'tengo hambre'],
+          respuestas: ['«Come algo y luego hablamos, que discutir con hambre sale mal.»'] },
+        { palabras: ['beber', 'cafe', 'cerveza'],
+          respuestas: ['«Café ahora, cerveza cuando la cosa se alargue. Y se va a alargar.»'] },
+        { palabras: ['dormir', 'sueño', 'cansado', 'cansada'],
+          respuestas: ['«Duerme, que el mundo sigue igual de tonto mañana y tú con más ganas.»'] },
+        { palabras: ['escuchar', 'atiende'],
+          respuestas: ['«Te escucho. Y si algo no lo pillo, te lo pregunto en vez de hacer como que sí.»'] },
+        { palabras: ['hablar', 'conversacion'],
+          respuestas: ['«Hablar es lo mío. Lo otro lo est
       {
       id: 'Hawking',                              // identificador interno (único, sin espacios)
       nombre: 'Stephen Hawking',                          // nombre con el que se le escribe
