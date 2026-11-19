@@ -151,7 +151,8 @@ const Juego = (() => {
       UI.dialogo(T('respuesta'));
       return Ordenes.siguiente();
     }
-    const texto = arg.replace(new RegExp('^(a )?' + escapa(norm(Datos.contacto)) + '\\s*'), '').trim();
+    const alias = [Datos.contacto, ...(Datos.aliasContacto || [])].map(norm).map(escapa).join('|');
+    const texto = arg.replace(new RegExp('^(a |al )?(' + alias + ')\\s*'), '').trim();
     if (!texto) return UI.log(Dialogos.sinTexto);
     conversar(texto);
   }
