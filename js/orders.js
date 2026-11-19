@@ -206,7 +206,7 @@ const Ordenes = (() => {
     }
     if (activa() === 'rotulador' && ultima === 'brazo escrito') {
       e.fotos.pop();
-      UI.dialogo('«Eso es. Justo lo que quería ver.»');
+      UI.dialogo('«¿Ya intuyes lo que te espera ahora, verdad? Dentro de 45 minutos, dejarás la puerta de tu casa abierta y esperarás desnuda a que yo llegue, de rodillas frente a la cama y con los ojos vendados»');
       return superar();
     }
     UI.dialogo(recordatorio());
