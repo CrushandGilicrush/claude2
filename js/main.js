@@ -3,7 +3,7 @@ const Juego = (() => {
   const estado = {
     estancia: 'habitacion', inventario: [], contador: 0, terminado: false,
     dispositivo: null, app: null, esperandoCodigo: false, desbloqueado: false,
-    desnuda: false, cafeHecho: false, cafeTomado: false, mensajeLeido: false, cuadroVisto: false, contactado: false
+    desnuda: false, cafeHecho: false, cafeTomado: false, mensajeLeido: false, cuadroVisto: false, contactado: false, pastillaTomada: false, pasadizo: false
   };
   const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
   const sinArticulo = t => t.replace(/^(en|sobre|contra|a|al|la|el|los|las|un|una|de|del)\s+/, '').replace(/^(a|al|la|el|los|las|un|una|de|del)\s+/, '');
@@ -26,6 +26,11 @@ const Juego = (() => {
     const nombre = sinArticulo(arg);
     const destino = Datos.destinoAlias[nombre] || nombre;
     if (!Datos.estancias[destino]) return UI.log('No puedes ir a ese lugar o no existe.');
+       if (destino === 'mazmorra') {
+      if (!estado.pasadizo) return UI.log(nombre === 'armario' ? T('armarioNormal') : 'No puedes ir a ese lugar o no existe.');
+      if (estado.estancia !== 'habitacion') return UI.log(T('mazmorraLejos'));
+    }
+   
     Ordenes.cortarVideo();
     estado.estancia = destino;
     mostrarSala();
@@ -48,6 +53,9 @@ const Juego = (() => {
     if (clave === 'cuadro') estado.cuadroVisto = true;
     if (clave === 'cajon') return Ordenes.examinarCajon();
     if (clave === 'tablero') return Ajedrez.examinar();
+        if (clave === 'comoda') return UI.log(desc + (!estado.pastillaTomada && !estado.inventario.includes('pastilla') ? ' ' + T('comodaPastilla') : ''));
+    if (clave === 'armario') return UI.log(estado.pasadizo ? T('armarioAbierto') : desc);
+    if (clave === 'pastilla' && estado.pastillaTomada) return UI.log(T('pastillaNoQueda'));
     const img = Datos.imagenesObjetos[clave];
     if (img) {
       estado.dispositivo = 'vista';
@@ -91,6 +99,7 @@ const Juego = (() => {
     if (/nevera/.test(arg)) return examinar('nevera');
     if (/congelador/.test(arg)) return Ordenes.abrirCongelador();
     if (/comoda|cajon/.test(arg)) return Ordenes.abrirCajon();
+        if (/armario/.test(arg)) return abrirArmario();
     const pc = /ordenador|pc/.test(arg), movil = /movil/.test(arg);
     if (!pc && !movil) return UI.log('No puedes abrir eso.');
     if (pc && estado.estancia !== 'despacho') return UI.log('El ordenador está en el despacho.');
@@ -195,6 +204,7 @@ const Juego = (() => {
   function coger(arg) {
     const o = Datos.cogibles.find(c => c.nombres.test(arg));
     if (!o) return UI.log('No puedes coger eso.');
+        if (o.item === 'pastilla' && estado.pastillaTomada) return UI.log(T('pastillaNoQueda'));
     if (estado.inventario.includes(o.item)) return UI.log(o.yaTienes);
     if (o.estancia !== estado.estancia) return UI.log(o.fuera || `No ves ningún ${o.item} por aquí.`);
     if (o.requiere && !Ordenes.cumple(o.requiere)) return UI.log(o.bloqueado);
@@ -237,6 +247,28 @@ const Juego = (() => {
     }
     return true;
   }
+
+    /* ---------- Pastilla y pasadizo ---------- */
+  function comerPastilla() {
+    if (estado.pastillaTomada) return UI.log(T('pastillaYa'));
+    const i = estado.inventario.indexOf('pastilla');
+    if (i < 0) return UI.log(T('pastillaSinTener'));
+    estado.inventario.splice(i, 1);
+    UI.inventario(estado.inventario);
+    estado.pastillaTomada = true;
+    estado.pasadizo = true;
+    UI.log(T('pastillaComida'));
+    UI.log(estado.estancia === 'habitacion' ? T('pasadizoAbre') : T('pasadizoLejano'));
+  }
+  function abrirArmario() {
+    if (estado.estancia !== 'habitacion') return UI.log('No ves ningún armario por aquí.');
+    UI.log(estado.pasadizo ? T('armarioAbierto') : T('armarioNormal'));
+  }
+  function entrarArmario() {
+    if (estado.estancia !== 'habitacion') return UI.log('No ves ningún armario por aquí.');
+    if (!estado.pasadizo) return UI.log(T('armarioNormal'));
+    ir('mazmorra');
+  }
   function ayuda() {
     UI.log('Comandos: «ir a [estancia]», «examinar [objeto]», «coger [objeto]», «leer [objeto]», «encender móvil», «encender ordenador», «mirar red social», «abrir telegram», «escribir [mensaje]», «hacer foto [objeto]», «enviar foto», «cerrar», «llamar a la policía».');
   }
@@ -265,6 +297,9 @@ const Juego = (() => {
     if ((['meter', 'meterme', 'introducir', 'introducirme'].includes(verbo) || /coño/.test(arg)) && /calabac/.test(arg)) return Ordenes.morderCalabacin();
     if (['hacer', 'preparar', 'usar', 'poner'].includes(verbo) && /cafe/.test(arg)) return hacerCafe();
     if (['beber', 'tomar', 'tomarse'].includes(verbo) && /cafe/.test(arg)) return beberCafe();
+        if (['comer', 'comerse', 'tomar', 'tomarse', 'tragar', 'tragarse', 'ingerir'].includes(verbo) && /pastilla|pildora/.test(arg)) return comerPastilla();
+    if (['entrar', 'pasar', 'cruzar', 'meterse'].includes(verbo) && /armario|pasadizo/.test(arg)) return entrarArmario();
+    if (verbo === 'salir' && estado.estancia === 'mazmorra') return ir('habitacion');
     if (verbo === 'coger' || verbo === 'coge') return coger(sinArticulo(arg));
     if (verbo === 'leer' || verbo === 'lee') return leer(sinArticulo(arg));
     if (verbo === 'abrir' || verbo === 'encender') return abrir(arg);
