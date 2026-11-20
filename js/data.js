@@ -4,7 +4,7 @@ const Datos = {
   contacto: '02E4E3E',          // CORREGIDO: era el placeholder 'nombre'; debe ser el contacto real de Telegram
    aliasContacto: ['desconocido', 'el desconocido', 'tio', 'tío'],
   exigirCafe: true,             // si es true, móvil y ordenador no se pueden usar hasta tomarse el café
-  destinoAlias: { nevera: 'cocina', congelador: 'cocina', pc: 'despacho', ordenador: 'despacho', dormitorio: 'habitacion' },
+  destinoAlias: { nevera: 'cocina', congelador: 'cocina', pc: 'despacho', ordenador: 'despacho', dormitorio: 'habitacion',  armario: 'mazmorra', pasadizo: 'mazmorra'},
   /* Textos de la secuencia de inicio. {contacto} y {dispositivo} se sustituyen solos. */
   textos: {
     sinCafe: 'Antes de ponerte a mirar nada, ve a prepararte un café.',
@@ -84,7 +84,7 @@ const Datos = {
     pasadizoLejano: 'En algún lugar de la casa oyes un chasquido sordo, como de una cerradura vieja. Viene de la habitación.',
     armarioNormal: 'Abres las puertas del armario. Solo hay ropa colgada y un fondo de madera. Un armario normal y corriente.',
     armarioAbierto: 'El armario está abierto de par en par. Tras la ropa se ve el pasadizo que baja hacia la oscuridad.',
-    comodaPastilla: 'Sobre ella hay una pastilla blanca.',
+    comodaPastilla: 'Sobre ella hay una pastilla de color lila.',
     pastillaYa: 'Ya te has tomado la pastilla.',
     pastillaSinTener: 'No tienes ninguna pastilla. Quizá haya alguna sobre la cómoda.',
     pastillaNoQueda: 'Ya no queda ninguna pastilla.',
@@ -108,7 +108,7 @@ const Datos = {
   /* Descripciones provisionales de «examinar»: reescribir a gusto. */
   objetos: {
     salon: { sofa: 'Un sofá mullido, con una manta arrugada.', biblioteca: 'La mayoría de los libros ya los has leído. De entre todos, sobresale el que te estás leyendo ahora: las perversiones de Emily.', radiador: 'Un radiador de hierro, ahora apagado.', luz: 'Una lámpara de pie con luz cálida.', mueble: 'Un mueble antiguo de madera oscura. Encima hay un tablero de ajedrez con una partida a medias.', tablero: '', libro: 'Las perversiones de Emily. Es el libro que te estás leyendo ahora.' },
-    habitacion: { cama: 'La cama deshecha, aún tibia.', armario: 'Un armario de dos puertas, repleto de ropa.', espejo: 'Tu reflejo te devuelve una cara cansada.', comoda: 'Una cómoda de madera con un cajón. Sobre hay una pastilla', pastilla: 'Se trata de una pastilla de color lila. Te la dio tu mejor amiga y aún no sabes qué efectos tiene, pero estás segura de que no servirá para quitar el dolor de cabeza', cajon: 'Un cajón de la cómoda.' },
+    habitacion: { cama: 'La cama deshecha, aún tibia.', armario: 'Un armario de dos puertas, repleto de ropa.', espejo: 'Tu reflejo te devuelve una cara cansada.', comoda: 'Una cómoda de madera con un cajón', pastilla: 'Se trata de una pastilla de color lila. Te la dio tu mejor amiga y aún no sabes qué efectos tiene, pero estás segura de que no servirá para quitar el dolor de cabeza', cajon: 'Un cajón de la cómoda.' },
     mazmorra: { mesa: 'Una mesa de madera maciza, con marcas de uso.', cadenas: 'Unas cadenas oxidadas colgadas de la pared.', puerta: 'Una puerta de hierro. Está cerrada.' },
     despacho: { ordenador: 'Un ordenador de sobremesa. Lo mismo que el móvil, pero con pantalla grande.', escritorio: 'Un escritorio con papeles revueltos.', 'juegos de mesa': 'Varias cajas de juegos de mesa, apiladas.', cuadro: 'Un panel lleno de rosas y espinas, con placas numeradas.' },
     cocina: { cocina: 'Una cocina limpia, sin nada al fuego.', cafetera: 'Una cafetera que huele a café viejo.', nevera: '', congelador: 'Un congelador pequeño, con la puerta cubierta de escarcha.', caldera: '' },
