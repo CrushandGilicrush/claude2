@@ -297,6 +297,31 @@ const Juego = (() => {
     document.addEventListener('keydown', ev => { if (ev.key === 'Escape') UI.cerrarLectura(); });
   }
 
-  window.addEventListener('load', iniciar);
+  /* Portada: aviso +21 → vídeo → partida. */
+  function portada() {
+    const $ = id => document.getElementById(id);
+    const empezar = () => { $('portada').remove(); iniciar(); };
+
+    function verVideo() {
+      $('aviso-edad').classList.add('hidden');
+      $('intro-video').classList.remove('hidden');
+      const v = $('video-intro');
+      v.onended = empezar;
+      v.onerror = empezar;                       // si falta el archivo, no bloquea el juego
+      $('btn-saltar').onclick = () => { v.pause(); empezar(); };
+      v.play().catch(empezar);                   // si el navegador no deja reproducir, entra directo
+    }
+
+    $('btn-mayor').onclick = () => {
+      try { sessionStorage.setItem('mayor21', '1'); } catch (e) {}
+      verVideo();
+    };
+    $('btn-menor').onclick = () => { window.location.href = 'https://www.google.com'; };
+
+    /* Si ya confirmó en esta sesión (p. ej. al pulsar ↻), no se lo vuelve a preguntar. */
+    try { if (sessionStorage.getItem('mayor21') === '1') verVideo(); } catch (e) {}
+  }
+
+  window.addEventListener('load', portada);
   return { estado, norm, terminar, ejecutar };
 })();
