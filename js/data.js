@@ -175,7 +175,7 @@ const Datos = {
         {
   verbos: ['tirar huevo', 'lanzar huevo'],
   estancia: 'terraza',
-  texto: 'Dejas caer el huevo por el balcón. Que le da... que le da... ¡Ostras! ¡diana en la cabeza de un calvo! Con lo que te gustan los calvos con barba...',
+  texto: 'Dejas caer el huevo por el balcón. Que le da... que le da... ¡Ostras! ¡diana en la cabeza de un calvo! Con lo que te gustan los calvos con barba... De todas formas, esto no se hace. Deberían castigarte por ello.',
   fuera: 'No estás en la terraza.'
 },
 
