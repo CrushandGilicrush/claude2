@@ -121,6 +121,36 @@
             <div id="lectura-texto" class="flex-1 overflow-y-auto px-6 sm:px-12 py-6 text-base sm:text-lg leading-8 select-text"></div>
         </div>
     </div>
+<!-- PORTADA: aviso de edad + vídeo de introducción -->
+<div id="portada" class="fixed inset-0 z-[60] bg-black flex items-center justify-center p-4">
+
+    <div id="aviso-edad" class="max-w-lg w-full text-center border-2 border-retro-redhi rounded-xl bg-retro-panel p-6">
+        <h1 class="font-pixel text-retro-magenta text-sm mb-4">+21</h1>
+        <h2 class="text-retro-cyan font-bold text-lg mb-3">Contenido para adultos</h2>
+        <p class="text-retro-amber text-sm leading-relaxed mb-5">
+            Este juego contiene temas y situaciones explícitas de extorsión, humillación y contenido sexual.
+            Está destinado exclusivamente a mayores de 21 años.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <button id="btn-mayor" class="px-4 py-2 bg-retro-red hover:bg-retro-redhi text-neutral-200 font-bold rounded-lg text-sm">
+                Confirmo que soy mayor de 21 años
+            </button>
+            <button id="btn-menor" class="px-4 py-2 border border-retro-border text-retro-dim hover:text-neutral-200 rounded-lg text-sm">
+                Soy menor, salir
+            </button>
+        </div>
+    </div>
+
+    <div id="intro-video" class="hidden w-full max-w-4xl text-center">
+        <video id="video-intro" class="w-full max-h-[80vh] rounded-xl bg-black" playsinline preload="auto">
+            <source src="video/intro.mp4" type="video/mp4">
+        </video>
+        <button id="btn-saltar" class="mt-3 px-4 py-1.5 border border-retro-border text-retro-dim hover:text-neutral-200 rounded-lg text-xs">
+            Saltar introducción ▸
+        </button>
+    </div>
+</div>
+    
     <script src="js/data.js"></script>
     <script src="js/relato.js"></script>
     <script src="js/ui.js"></script>
