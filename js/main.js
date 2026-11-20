@@ -351,16 +351,6 @@ const Juego = (() => {
     $('btn-menor').onclick = () => { window.location.href = 'https://www.google.com'; };
   }
 
-    $('btn-mayor').onclick = () => {
-      try { sessionStorage.setItem('mayor21', '1'); } catch (e) {}
-      verVideo();
-    };
-    $('btn-menor').onclick = () => { window.location.href = 'https://www.google.com'; };
-
-    /* Si ya confirmó en esta sesión (p. ej. al pulsar ↻), no se lo vuelve a preguntar. */
-    try { if (sessionStorage.getItem('mayor21') === '1') verVideo(); } catch (e) {}
-  }
-
   window.addEventListener('load', portada);
   return { estado, norm, terminar, ejecutar };
 })();
