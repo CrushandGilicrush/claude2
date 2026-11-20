@@ -101,7 +101,7 @@ const Datos = {
     despacho: { ordenador: 'Un ordenador de sobremesa. Lo mismo que el móvil, pero con pantalla grande.', escritorio: 'Un escritorio con papeles revueltos.', 'juegos de mesa': 'Varias cajas de juegos de mesa, apiladas.', cuadro: 'Un panel lleno de rosas y espinas, con placas numeradas.' },
     cocina: { cocina: 'Una cocina limpia, sin nada al fuego.', cafetera: 'Una cafetera que huele a café viejo.', nevera: '', congelador: 'Un congelador pequeño, con la puerta cubierta de escarcha.', caldera: '' },
     bano: { inodoro: 'te acercas a revisar el inodoro y detectas lo que parece una pequeña mancha. Al acercarte más compruebas que, escrito con rotulador, pone: Lapso meó aquí. Y te preguntas: ¿quién coño es Lapso? ¿Será algún ligue? poco impacto ha dejado si no me acuerdo de él. Tal vez lo tenga en telegram...', lavabo: 'Un lavabo con el grifo goteando.', espejo: 'un espejo limpio y reluciente', ducha: 'Una ducha con mampara.', mueble: 'Un pequeño mueble con toallas.', toallas: 'junto a las toallas tienes el satisfyer y las compresas.', satisfyer: 'con lo que ha trabajado y aún funciona.' },
-    terraza: { macetas: 'Macetas con plantas algo secas.', calle: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', huevo: 'Dejas caer el huevo por el balcón. Que le da... que le da... ¡Ostras! ¡diana en la cabeza de un calvo! Con lo que te gustan los calvos con barba... De todas formas, esto no se hace. Deberían castigarte por ello', balcon: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', tumbona: 'Una tumbona cómoda, al sol.' }
+    terraza: { macetas: 'Macetas con plantas algo secas.', calle: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', huevo: 'Un huevo con forma de... huevo', balcon: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', tumbona: 'Una tumbona cómoda, al sol.' }
   },
   alias: { verduras: 'nevera', alimentos: 'nevera', comida: 'nevera', cajones: 'cajon', perversiones: 'libro', libreria: 'biblioteca', ajedrez: 'tablero', radiadores: 'radiador', juegos: 'juegos de mesa', maceta: 'macetas', pc: 'ordenador' },
   /* Comandos con respuesta de texto. Sin `estancia`/`objetos`: funcionan en cualquier lugar.
@@ -173,9 +173,10 @@ const Datos = {
   fuera: 'No estás en la terraza.'
 },
         {
-  verbos: ['tirar huevo', 'lanzar huevo'],
+  verbos: ['tirar', 'lanzar', 'arrojar'],
   estancia: 'terraza',
             objetos: ['huevo'],
+           imagen: 'img/Huevo.png',  
   texto: 'Dejas caer el huevo por el balcón. Que le da... que le da... ¡Ostras! ¡diana en la cabeza de un calvo! Con lo que te gustan los calvos con barba... De todas formas, esto no se hace. Deberían castigarte por ello.',
   fuera: 'No estás en la terraza.'
 },
