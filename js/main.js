@@ -228,8 +228,14 @@ const Juego = (() => {
       if (p > puntos) { mejor = c; puntos = p; }
     }
     if (!mejor) return false;
-   UI.log(mejor.estancia && mejor.estancia !== estado.estancia ? mejor.fuera : mejor.texto);
-return true;
+    const lejos = mejor.estancia && mejor.estancia !== estado.estancia;
+    UI.log(lejos ? mejor.fuera : mejor.texto);
+    if (!lejos && mejor.imagen) {
+      estado.dispositivo = 'vista';
+      UI.vista(mejor.titulo || 'Imagen', mejor.imagen, false, true);
+      UI.log('Escribe «cerrar» para volver a ver la estancia.');
+    }
+    return true;
   }
   function ayuda() {
     UI.log('Comandos: «ir a [estancia]», «examinar [objeto]», «coger [objeto]», «leer [objeto]», «encender móvil», «encender ordenador», «mirar red social», «abrir telegram», «escribir [mensaje]», «hacer foto [objeto]», «enviar foto», «cerrar», «llamar a la policía».');
