@@ -333,7 +333,7 @@ const Juego = (() => {
   }
 
   /* Portada: aviso +21 → vídeo → partida. */
-  function portada() {
+   function portada() {
     const $ = id => document.getElementById(id);
     const empezar = () => { $('portada').remove(); iniciar(); };
 
@@ -342,10 +342,14 @@ const Juego = (() => {
       $('intro-video').classList.remove('hidden');
       const v = $('video-intro');
       v.onended = empezar;
-      v.onerror = empezar;                       // si falta el archivo, no bloquea el juego
+      v.querySelector('source').onerror = empezar;   // si falta el archivo, no bloquea el juego
       $('btn-saltar').onclick = () => { v.pause(); empezar(); };
-      v.play().catch(empezar);                   // si el navegador no deja reproducir, entra directo
+      v.play().catch(empezar);
     }
+
+    $('btn-mayor').onclick = verVideo;
+    $('btn-menor').onclick = () => { window.location.href = 'https://www.google.com'; };
+  }
 
     $('btn-mayor').onclick = () => {
       try { sessionStorage.setItem('mayor21', '1'); } catch (e) {}
