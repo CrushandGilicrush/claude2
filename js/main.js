@@ -228,9 +228,7 @@ const Juego = (() => {
       if (p > puntos) { mejor = c; puntos = p; }
     }
     if (!mejor) return false;
-   const lejos = mejor.estancia && mejor.estancia !== estado.estancia;
-UI.log(lejos ? mejor.fuera : mejor.texto);
-if (!lejos && mejor.imagen) UI.logImagen(mejor.imagen);
+   UI.log(mejor.estancia && mejor.estancia !== estado.estancia ? mejor.fuera : mejor.texto);
 return true;
   }
   function ayuda() {
