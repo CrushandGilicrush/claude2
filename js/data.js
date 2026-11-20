@@ -175,7 +175,11 @@ const Datos = {
     { verbos: ['encender', 'enciende'], estancia: 'cocina', objetos: ['cafetera'], texto: 'Ya está encendida.', fuera: 'No ves ninguna cafetera por aquí.' },
     //baño
     { verbos: ['mirarse', 'mirar', 'observar'], estancia: 'bano', objetos: ['espejo'], texto: 'Te observas detenidamente en el espejo. Tu reflejo te devuelve una mirada algo cansada.', fuera: 'No ves ningún espejo por aquí.' },
-
+{ verbos: ['abrir', 'forzar'], estancia: 'mazmorra', objetos: ['puerta'],
+  texto: 'Empujas la puerta de hierro. No cede.', fuera: 'No ves ninguna puerta de hierro por aquí.' },
+{ verbos: ['tirar', 'mover'], estancia: 'mazmorra', objetos: ['cadenas'],
+  texto: 'Tiras de las cadenas. Se oye un eco metálico que se pierde en la oscuridad.',
+  imagen: 'img/cadenas.png', titulo: 'Cadenas', fuera: 'No ves cadenas por aquí.' },
     
     //Terraza
     {
