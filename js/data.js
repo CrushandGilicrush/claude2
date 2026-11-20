@@ -163,7 +163,24 @@ const Datos = {
     { verbos: ['encender', 'enciende'], estancia: 'cocina', objetos: ['cafetera'], texto: 'Ya está encendida.', fuera: 'No ves ninguna cafetera por aquí.' },
     //baño
     { verbos: ['mirarse', 'mirar', 'observar'], estancia: 'bano', objetos: ['espejo'], texto: 'Te observas detenidamente en el espejo. Tu reflejo te devuelve una mirada algo cansada.', fuera: 'No ves ningún espejo por aquí.' },
-// MEAR SIN OBJETO
+
+    
+    //Terraza
+    {
+  verbos: ['mirar balcón', 'mirar calle', 'observar calle', 'observar calle', 'observar balcón'],
+  estancia: 'terraza',
+  texto: 'Te asomas por el balcón. Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ',
+  fuera: 'No estás en la terraza.'
+},
+        {
+  verbos: ['tirar huevo', 'lanzar huevo'],
+  estancia: 'terraza',
+  texto: 'Dejas caer el huevo por el balcón. Que le da... que le da... ¡Ostras! ¡diana en la cabeza de un calvo! Con lo que te gustan los calvos con barba...',
+  fuera: 'No estás en la terraza.'
+},
+
+
+    // MEAR SIN OBJETO
 {
   verbos: ['mear', 'orinar', 'hacer pis', 'hacer pipi', 'echar una meada', 'miccionar'],
   estancia: 'bano',
