@@ -167,7 +167,7 @@ const Datos = {
     
     //Terraza
     {
-  verbos: ['mirar balcón', 'mirar calle', 'observar calle', 'observar calle', 'observar balcón'],
+  verbos: ['mirar balcón', 'mirar calle', 'observar calle', 'observar calle', 'observar balcón', 'ver calle'],
   estancia: 'terraza',
   texto: 'Te asomas por el balcón. Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ',
   fuera: 'No estás en la terraza.'
