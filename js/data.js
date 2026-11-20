@@ -78,7 +78,17 @@ const Datos = {
     recuerdaDesnudarse: '«Te he dicho que te desnudaras. Hazlo y vuelve a mandármela.»',
     desnudarse: 'Con las manos temblorosas, te quitas toda la ropa. Estás completamente desnuda, vulnerable.',
     yaDesnuda: 'Ya estás desnuda.',
-    policiaSinMotivo: 'No ha pasado nada que merezca llamar a la policía.'
+    policiaSinMotivo: 'No ha pasado nada que merezca llamar a la policía.',
+        pastillaComida: 'Te metes la pastilla en la boca y la tragas sin agua. Sabe amarga. Durante unos segundos no pasa nada; luego notas un cosquilleo cálido que te recorre el cuerpo.',
+    pasadizoAbre: 'En la habitación, el armario cruje y se entreabre solo. Tras la ropa, el fondo de madera ha desaparecido: hay un pasadizo oscuro que baja hacia algún lugar. Puedes «entrar en el armario».',
+    pasadizoLejano: 'En algún lugar de la casa oyes un chasquido sordo, como de una cerradura vieja. Viene de la habitación.',
+    armarioNormal: 'Abres las puertas del armario. Solo hay ropa colgada y un fondo de madera. Un armario normal y corriente.',
+    armarioAbierto: 'El armario está abierto de par en par. Tras la ropa se ve el pasadizo que baja hacia la oscuridad.',
+    comodaPastilla: 'Sobre ella hay una pastilla blanca.',
+    pastillaYa: 'Ya te has tomado la pastilla.',
+    pastillaSinTener: 'No tienes ninguna pastilla. Quizá haya alguna sobre la cómoda.',
+    pastillaNoQueda: 'Ya no queda ninguna pastilla.',
+    mazmorraLejos: 'El pasadizo está en el armario de la habitación.',
   },
   imagenSala: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80",
   /* CORREGIDO: lifeNuevo y lifeLeido apuntaban a img/mi-foto-1.jpg y img/mi-foto-2.jpg, que no existen. */
@@ -88,22 +98,24 @@ const Datos = {
   ],
   estancias: {
     salon: { nombre: 'Salón', imagen: 'img/salon.png', desc: 'Estancia principal. Hay un sofá, una biblioteca, radiadores y un mueble antiguo.' },
-    habitacion: { nombre: 'Habitación', imagen: 'img/habitacion2.png', desc: 'Tu espacio privado. Contiene la cama, el armario, un espejo y una cómoda con cajón.' },
+    habitacion: { nombre: 'la habitación', imagen: 'img/habitacion2.png', desc: 'Se trata de tu espacio más personal y el que te ofrece mayor tranquilidad. Aquí tienes la cama, tu armario, un espejo y una cómoda con cajón.' },
     despacho: { nombre: 'Despacho', imagen: 'img/despacho.png', desc: 'Zona de trabajo con un ordenador de sobremesa, escritorio, juegos de mesa y un cuadro.' },
     cocina: { nombre: 'Cocina', imagen: 'img/cocina1.png', desc: 'Equipada con cocina, cafetera, nevera y una caldera con panel digital.' },
     bano: { nombre: 'el baño', imagen: 'img/baño.png', desc: 'Se trata de una estancia pequeña pero confortable, iluminada por una luz tenue que apenas consigue disipar las sombras de los rincones. A un lado se encuentra el inodoro, junto al lavabo, cuya superficie de porcelana conserva algunas marcas de uso. Sobre él, un espejo refleja la estancia con claridad. Bajo este, pegado a la pared, hay un mueble de baño con varios compartimentos donde se guardan los productos de higiene y otros objetos cotidianos. Al fondo, la ducha, protegida por una mampara de cristal, permanece silenciosa. ' },
-    terraza: { nombre: 'Terraza', imagen: 'img/terraza.png', desc: 'Espacio exterior con macetas y una tumbona cómoda.' }
+    terraza: { nombre: 'Terraza', imagen: 'img/terraza.png', desc: 'Espacio exterior con macetas y una tumbona cómoda.' },
+        mazmorra: { nombre: 'Mazmorra', imagen: 'img/mazmorra.png', desc: 'Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro. Para volver, escribe «salir».' }
   },
   /* Descripciones provisionales de «examinar»: reescribir a gusto. */
   objetos: {
     salon: { sofa: 'Un sofá mullido, con una manta arrugada.', biblioteca: 'La mayoría de los libros ya los has leído. De entre todos, sobresale el que te estás leyendo ahora: las perversiones de Emily.', radiador: 'Un radiador de hierro, ahora apagado.', luz: 'Una lámpara de pie con luz cálida.', mueble: 'Un mueble antiguo de madera oscura. Encima hay un tablero de ajedrez con una partida a medias.', tablero: '', libro: 'Las perversiones de Emily. Es el libro que te estás leyendo ahora.' },
-    habitacion: { cama: 'La cama deshecha, aún tibia.', armario: 'Un armario de dos puertas, repleto de ropa.', espejo: 'Tu reflejo te devuelve una cara cansada.', comoda: 'Una cómoda de madera con un cajón.', cajon: 'Un cajón de la cómoda.' },
+    habitacion: { cama: 'La cama deshecha, aún tibia.', armario: 'Un armario de dos puertas, repleto de ropa.', espejo: 'Tu reflejo te devuelve una cara cansada.', comoda: 'Una cómoda de madera con un cajón. Sobre hay una pastilla', pastilla: 'Se trata de una pastilla de color lila. Te la dio tu mejor amiga y aún no sabes qué efectos tiene, pero estás segura de que no servirá para quitar el dolor de cabeza'. cajon: 'Un cajón de la cómoda.' },
+    mazmorra: { mesa: 'Una mesa de madera maciza, con marcas de uso.', cadenas: 'Unas cadenas oxidadas colgadas de la pared.', puerta: 'Una puerta de hierro. Está cerrada.' },
     despacho: { ordenador: 'Un ordenador de sobremesa. Lo mismo que el móvil, pero con pantalla grande.', escritorio: 'Un escritorio con papeles revueltos.', 'juegos de mesa': 'Varias cajas de juegos de mesa, apiladas.', cuadro: 'Un panel lleno de rosas y espinas, con placas numeradas.' },
     cocina: { cocina: 'Una cocina limpia, sin nada al fuego.', cafetera: 'Una cafetera que huele a café viejo.', nevera: '', congelador: 'Un congelador pequeño, con la puerta cubierta de escarcha.', caldera: '' },
     bano: { inodoro: 'te acercas a revisar el inodoro y detectas lo que parece una pequeña mancha. Al acercarte más compruebas que, escrito con rotulador, pone: Lapso meó aquí. Y te preguntas: ¿quién coño es Lapso? ¿Será algún ligue? poco impacto ha dejado si no me acuerdo de él. Tal vez lo tenga en telegram...', lavabo: 'Un lavabo con el grifo goteando.', espejo: 'un espejo limpio y reluciente', ducha: 'Una ducha con mampara.', mueble: 'Un pequeño mueble con toallas.', toallas: 'junto a las toallas tienes el satisfyer y las compresas.', satisfyer: 'con lo que ha trabajado y aún funciona.' },
     terraza: { macetas: 'Macetas con plantas algo secas.', calle: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', huevo: 'Un huevo con forma de... huevo', balcon: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', tumbona: 'Una tumbona cómoda, al sol.' }
   },
-  alias: { verduras: 'nevera', alimentos: 'nevera', comida: 'nevera', cajones: 'cajon', perversiones: 'libro', libreria: 'biblioteca', ajedrez: 'tablero', radiadores: 'radiador', juegos: 'juegos de mesa', maceta: 'macetas', pc: 'ordenador' },
+  alias: { verduras: 'nevera', alimentos: 'nevera', comida: 'nevera', cajones: 'cajon', perversiones: 'libro', libreria: 'biblioteca', ajedrez: 'tablero', radiadores: 'radiador', juegos: 'juegos de mesa', maceta: 'macetas', pc: 'ordenador', armario: 'mazmorra', pasadizo: 'mazmorra' },
   /* Comandos con respuesta de texto. Sin `estancia`/`objetos`: funcionan en cualquier lugar.
      Con ellos: solo funcionan en esa estancia y nombrando uno de sus objetos.
      `inventario`: exige llevar ese objeto encima. */
@@ -278,6 +290,9 @@ const Datos = {
       texto: 'Coges un calabacín de la nevera.', yaTienes: 'Ya tienes el calabacín.' },
     { item: 'rotulador', nombres: /rotulador/, estancia: 'habitacion', requiere: 'cajon',
       bloqueado: 'El cajón está cerrado con llave.', texto: 'Coges el rotulador del cajón.', yaTienes: 'Ya tienes el rotulador.' },
+        { item: 'pastilla', nombres: /pastilla|pildora/, estancia: 'habitacion',
+      texto: 'Coges la pastilla de la cómoda.', yaTienes: 'Ya tienes la pastilla.', fuera: 'No ves ninguna pastilla por aquí.' },
+
     /* CORREGIDO: faltaba `fuera`, y la indentación lo dejaba fuera de la lista a la vista. */
     { item: 'satisfyer', nombres: /satisfyer/, estancia: 'bano',
       texto: 'Coges el satisfyer.', yaTienes: 'Ya tienes el satisfyer.', fuera: 'No ves ningún satisfyer por aquí.' }
