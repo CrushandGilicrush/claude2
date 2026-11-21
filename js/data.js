@@ -267,7 +267,7 @@ const Datos = {
 },
     // Mazmorra hasta la linea 571
 
-    const acciones = [
+    
   { verbos: ['atar', 'amarrar', 'inmovilizar'], estancia: 'mazmorra', objetos: ['mesa', 'cuerdas'], texto: 'Tumbas a la esclava boca arriba sobre la mesa, muñecas y tobillos atados a las patas, abierta de par en par, y obligas al esclavo a mirarla mientras se masturba sin permiso de correrse.', fuera: 'No hay ninguna mesa por aquí.' },
   { verbos: ['usar de plato', 'servir', 'comer'], estancia: 'mazmorra', objetos: ['mesa'], texto: 'Usas la espalda de la esclava como mantel y sirves la cena encima; el esclavo come de su piel y tú le azotas los dedos cada vez que derrama una gota.', fuera: 'No hay ninguna mesa por aquí.' },
   { verbos: ['atar', 'estirar', 'exponer'], estancia: 'mazmorra', objetos: ['mesa', 'cuerdas'], texto: 'Atas al esclavo a la mesa por las cuatro extremidades, tirando hasta que los talones no toquen la madera, y dejas que la esclava le pase la lengua por todo el cuerpo sin tocarle la polla.', fuera: 'No hay ninguna mesa por aquí.' },
@@ -567,8 +567,10 @@ const Datos = {
   { verbos: ['ritualizar', 'hacer sonar', 'aguantar'], estancia: 'mazmorra', objetos: ['campana'], texto: 'Inventas un código de campanadas y el esclavo debe responder con la postura correcta a cada una.', fuera: 'No hay ninguna campana por aquí.' },
   { verbos: ['usar de noria humana', 'circular', 'azotar'], estancia: 'mazmorra', objetos: ['fusta'], texto: 'Los pones a caminar en círculo y das con la fusta al que se retrase; la esclava marca el paso.', fuera: 'No hay fusta por aquí.' },
   { verbos: ['ritualizar', 'obedecer', 'humillar'], estancia: 'mazmorra', objetos: ['etiquetas'], texto: 'Les pones etiquetas de roles y deben actuar así toda la sesión, llamándose por el rol y no por el nombre.', fuera: 'No hay etiquetas por aquí.' },
-  { verbos: ['usar de altar', 'arrodillar', 'exponer'], estancia: 'mazmorra', objetos: ['mesa', 'vela'], texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'No hay ninguna mesa por aquí.' }
-];
+  { verbos: ['usar de altar', 'arrodillar', 'exponer'], estancia: 'mazmorra', objetos: ['mesa', 'vela'], texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'No hay ninguna mesa por aquí.' },
+
+    
+    
 { verbos: ['ducharse', 'duchar', 'ducharme', 'bañarse'], estancia: 'bano', texto: 'Abres el grifo y te das una ducha. El agua caliente te ayuda a relajarte durante unos minutos.', fuera: 'No ves ninguna ducha por aquí.' },
 { verbos: ['lavarse', 'lavar','lavarme'], estancia: 'bano', texto: 'Abres el grifo, te enjabonas las manos y las aclaras cuidadosamente.', fuera: 'No tienes ningún lavabo a mano.' },
 { verbos: ['cepillarse', 'cepillar', 'cepillarme'], estancia: 'bano', objetos: ['dientes', 'cepillo dientes'], texto: 'Coges el cepillo de dientes y te los limpias durante un par de minutos.', fuera: 'No tienes ningún cepillo de dientes por aquí.' },
