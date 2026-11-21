@@ -103,7 +103,7 @@ const Datos = {
     cocina: { nombre: 'Cocina', imagen: 'img/cocina1.png', desc: 'Equipada con cocina, cafetera, nevera y una caldera con panel digital.' },
     bano: { nombre: 'el baño', imagen: 'img/baño.png', desc: 'Se trata de una estancia pequeña pero confortable, iluminada por una luz tenue que apenas consigue disipar las sombras de los rincones. A un lado se encuentra el inodoro, junto al lavabo, cuya superficie de porcelana conserva algunas marcas de uso. Sobre él, un espejo refleja la estancia con claridad. Bajo este, pegado a la pared, hay un mueble de baño con varios compartimentos donde se guardan los productos de higiene y otros objetos cotidianos. Al fondo, la ducha, protegida por una mampara de cristal, permanece silenciosa. ' },
     terraza: { nombre: 'Terraza', imagen: 'img/terraza.png', desc: 'Espacio exterior con macetas y una tumbona cómoda.' },
-        mazmorra: { nombre: 'Mazmorra', imagen: 'img/mazmorra.png', desc: 'Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro. Para volver, escribe «salir».' }
+        mazmorra: { nombre: 'Mazmorra', imagen: 'img/escalera.png', desc: 'Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro. Para volver, escribe «salir».' }
   },
   /* Descripciones provisionales de «examinar»: reescribir a gusto. */
   objetos: {
