@@ -230,11 +230,20 @@ const Juego = (() => {
       /* CORREGIDO: `inventario` ya se tiene en cuenta (antes era código muerto). */
       if (c.inventario && !estado.inventario.includes(c.inventario)) continue;
       if (soloAqui && c.estancia && c.estancia !== estado.estancia) continue;
-      const objeto = sinArticulo(frase.slice(v.length).trim());
+      const resto = frase.slice(v.length).trim();
+      const objeto = sinArticulo(resto);
+      const palabras = ' ' + resto.replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
       let p;
       if (!c.objetos) p = 1;                                    // sin objetos: vale para cualquiera
-      else if (c.objetos.map(norm).includes(objeto)) p = 2;     // objeto exacto: gana a la genérica
-      else continue;
+      else {
+        const lista = c.objetos.map(norm);
+        if (lista.includes(objeto)) p = 3;                      // objeto exacto: gana a todo
+        else {                                                  // objeto como palabra dentro de una frase larga
+          const hit = lista.filter(o => palabras.includes(' ' + o + ' ')).sort((a, b) => b.length - a.length)[0];
+          if (hit === undefined) continue;
+          p = 2 + hit.length / 1000;                            // entre varios objetos, el más largo
+        }
+      }
       if (c.estancia === estado.estancia) p += 4;               // se prefiere la entrada de esta estancia
       if (p > puntos) { mejor = c; puntos = p; }
     }
