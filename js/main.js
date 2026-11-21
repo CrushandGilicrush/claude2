@@ -270,7 +270,7 @@ const Juego = (() => {
     ir('mazmorra');
   }
   function ayuda() {
-    UI.log('Comandos: «ir a [estancia]», «examinar [objeto]», «coger [objeto]», «leer [objeto]», «encender móvil», «encender ordenador», «mirar red social», «abrir telegram», «escribir [mensaje]», «hacer foto [objeto]», «enviar foto», «cerrar», «llamar a la policía».');
+    UI.log('Comandos principales, aunque puedes probar tantos como se te ocurran (algunos funcionarán, otros no): «ir a [despacho/terraza/baño...]», «escribir a...», «examinar [objeto]», «coger [objeto]», «leer [objeto]», «encender móvil», «encender ordenador», «mirar red social», «abrir telegram», «escribir [mensaje]», «hacer foto [objeto]», «enviar foto», «cerrar», «llamar a la policía», «poner/apoyar/cantar...».');
   }
 
   /* ---------- Intérprete ---------- */
