@@ -95,13 +95,13 @@ const Juego = (() => {
     return estado.contactado ? (im.telegramDesconocido || 'img/telegram-desconocido.svg') : im.telegram;
   }
 
-  function abrir(arg) {
+  function abrir(arg, verbo) {
     if (/nevera/.test(arg)) return examinar('nevera');
     if (/congelador/.test(arg)) return Ordenes.abrirCongelador();
     if (/comoda|cajon/.test(arg)) return Ordenes.abrirCajon();
         if (/armario/.test(arg)) return abrirArmario();
     const pc = /ordenador|pc/.test(arg), movil = /movil/.test(arg);
-    if (!pc && !movil) return UI.log('No puedes abrir eso.');
+    if (!pc && !movil) return comandoTexto(verbo, arg) || UI.log('No puedes abrir eso.');
     if (pc && estado.estancia !== 'despacho') return UI.log('El ordenador está en el despacho.');
     if (Datos.exigirCafe && !estado.cafeTomado) return UI.log(T('sinCafe'));
     estado.dispositivo = pc ? 'ordenador' : 'movil';
@@ -215,13 +215,13 @@ const Juego = (() => {
 
   function leer(arg) {
     if (/mensaje|correo/.test(arg)) return leerMensaje();
-    if (!/libro|perversion|emily/.test(arg)) return UI.log('No hay nada que leer ahí.');
+    if (!/libro|perversion|emily/.test(arg)) return comandoTexto('leer', arg) || UI.log('No hay nada que leer ahí.');
     if (!estado.inventario.includes('libro') && estado.estancia !== 'salon') return UI.log('No ves ningún libro por aquí.');
     UI.lectura(Relato.titulo, Relato.texto);
   }
 
   /* Comandos de texto: globales o ligados a una estancia y un objeto. */
-  function comandoTexto(verbo, arg) {
+  function comandoTexto(verbo, arg, soloAqui) {
     const frase = (verbo + ' ' + arg).trim();
     let mejor = null, puntos = 0;
     for (const c of Datos.comandosTexto) {
@@ -229,6 +229,7 @@ const Juego = (() => {
       if (v === undefined) continue;
       /* CORREGIDO: `inventario` ya se tiene en cuenta (antes era código muerto). */
       if (c.inventario && !estado.inventario.includes(c.inventario)) continue;
+      if (soloAqui && c.estancia && c.estancia !== estado.estancia) continue;
       const objeto = sinArticulo(frase.slice(v.length).trim());
       let p;
       if (!c.objetos) p = 1;                                    // sin objetos: vale para cualquiera
@@ -288,13 +289,13 @@ const Juego = (() => {
     const arg = resto.join(' ');
     if (['abrir', 'mirar', 'ver', 'examinar'].includes(verbo) && /mensaje/.test(arg)) return leerMensaje();
     if (verbo === 'ir') return ir(arg);
-    if (['examinar', 'ver', 'mirar'].includes(verbo)) return examinar(arg);
+    if (['examinar', 'ver', 'mirar'].includes(verbo)) return comandoTexto(verbo, arg, true) || examinar(arg);
     if (verbo === 'subir' && /temperatura|caldera|calefaccion/.test(arg)) return Ordenes.subirTemperatura();
     if (['apoyar', 'poner', 'tocar', 'colocar', 'pegar', 'mantener'].includes(verbo) && /radiador/.test(arg)) return Ordenes.apoyarMano();
     if (['grabar', 'encender', 'hacer', 'empezar'].includes(verbo) && /video/.test(arg)) return Ordenes.grabarVideo();
     if (['parar', 'detener', 'terminar', 'dejar', 'cortar'].includes(verbo) && /video|grab/.test(arg)) return Ordenes.pararVideo();
     if (/cubito|hielo/.test(arg) && (/culo/.test(arg) || ['meter', 'meterme', 'introducirme', 'introducir'].includes(verbo))) return Ordenes.cubitoBoca();
-    if ((['meter', 'meterme', 'introducir', 'introducirme'].includes(verbo) || /coño/.test(arg)) && /calabac/.test(arg)) return Ordenes.morderCalabacin();
+    if ((['meter', 'meterme', 'introducir', 'introducirme'].includes(verbo) || /cono/.test(arg)) && /calabac/.test(arg)) return Ordenes.morderCalabacin();
     if (['hacer', 'preparar', 'usar', 'poner'].includes(verbo) && /cafe/.test(arg)) return hacerCafe();
     if (['beber', 'tomar', 'tomarse'].includes(verbo) && /cafe/.test(arg)) return beberCafe();
         if (['comer', 'comerse', 'tomar', 'tomarse', 'tragar', 'tragarse', 'ingerir'].includes(verbo) && /pastilla|pildora/.test(arg)) return comerPastilla();
@@ -302,9 +303,12 @@ const Juego = (() => {
     if (verbo === 'salir' && estado.estancia === 'mazmorra') return ir('habitacion');
     if (verbo === 'coger' || verbo === 'coge') return coger(sinArticulo(arg));
     if (verbo === 'leer' || verbo === 'lee') return leer(sinArticulo(arg));
-    if (verbo === 'abrir' || verbo === 'encender') return abrir(arg);
+    if (verbo === 'abrir' || verbo === 'encender') return abrir(arg, verbo);
     if (['escribir', 'escribirme', 'pintar', 'anotar'].includes(verbo) && /brazo/.test(arg)) return Ordenes.escribirBrazo();
-    if (['escribir', 'decir', 'responder', 'contestar', 'preguntar', 'hablar'].includes(verbo)) return Personajes.manejar(arg) || Ordenes.responder(cmd) || escribir(arg);
+    if (['escribir', 'decir', 'responder', 'contestar', 'preguntar', 'hablar'].includes(verbo)) {
+      if (estado.app !== 'telegram' && comandoTexto(verbo, arg, true)) return;
+      return Personajes.manejar(arg) || Ordenes.responder(cmd) || escribir(arg);
+    }
     if (verbo === 'cerrar' && estado.dispositivo) return mostrarSala();
     if (/^desnud|^desvest/.test(verbo) || (/^quit/.test(verbo) && /ropa/.test(arg))) return desnudarse();
     if (/^llam/.test(verbo)) return llamar(cmd);
