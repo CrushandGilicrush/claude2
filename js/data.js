@@ -699,7 +699,7 @@ const Datos = {
   { verbos: ['codificar', 'responder'], estancia: 'mazmorra', objetos: ['campana'], texto: 'Inventas un código de campanadas y el esclavo debe responder con la postura correcta a cada una.', fuera: 'No hay ninguna campana por aquí.' },
   { verbos: ['ordenar', 'puntear'], estancia: 'mazmorra', objetos: ['fusta'], texto: 'Los pones a caminar en círculo y das con la fusta al que se retrase; la esclava marca el paso.', fuera: 'No hay fusta por aquí.' },
   { verbos: ['encasillar', 'nominar'], estancia: 'mazmorra', objetos: ['etiquetas'], texto: 'Les pones etiquetas de roles y deben actuar así toda la sesión, llamándose por el rol y no por el nombre.', fuera: 'No hay etiquetas por aquí.' },
-  { verbos: ['adorar', 'arrodillar'], estancia: 'mazmorra', objetos: ['mesa', 'vela'], texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'No hay ninguna mesa por aquí.' }
+  { verbos: ['adorar', 'arrodillar'], estancia: 'mazmorra', objetos: ['mesa', 'vela'], texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'No hay ninguna mesa por aquí.' },
 
     
     
