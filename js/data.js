@@ -4,7 +4,7 @@ const Datos = {
   contacto: '02E4E3E',          // CORREGIDO: era el placeholder 'nombre'; debe ser el contacto real de Telegram
    aliasContacto: ['desconocido', 'el desconocido', 'tio', 'tío'],
   exigirCafe: true,             // si es true, móvil y ordenador no se pueden usar hasta tomarse el café
-  destinoAlias: { nevera: 'cocina', congelador: 'cocina', pc: 'despacho', ordenador: 'despacho', dormitorio: 'habitacion',  armario: 'mazmorra', pasadizo: 'mazmorra'},
+  destinoAlias: { nevera: 'cocina', congelador: 'cocina', pc: 'despacho', ordenador: 'despacho', dormitorio: 'habitacion' },
   /* Textos de la secuencia de inicio. {contacto} y {dispositivo} se sustituyen solos. */
   textos: {
     sinCafe: 'Antes de ponerte a mirar nada, ve a prepararte un café.',
@@ -103,62 +103,19 @@ const Datos = {
     cocina: { nombre: 'la cocina', imagen: 'img/cocina1.png', desc: 'Equipada con cocina, cafetera, nevera y una caldera con panel digital.' },
     bano: { nombre: 'el baño', imagen: 'img/baño.png', desc: 'Se trata de una estancia pequeña pero confortable, iluminada por una luz tenue que apenas consigue disipar las sombras de los rincones. A un lado se encuentra el inodoro, junto al lavabo, cuya superficie de porcelana conserva algunas marcas de uso. Sobre él, un espejo refleja la estancia con claridad. Bajo este, pegado a la pared, hay un mueble de baño con varios compartimentos donde se guardan los productos de higiene y otros objetos cotidianos. Al fondo, la ducha, protegida por una mampara de cristal, permanece silenciosa. ' },
     terraza: { nombre: 'la terraza', imagen: 'img/terraza.png', desc: 'Espacio exterior con macetas y una tumbona cómoda.' },
-        mazmorra: { nombre: 'una mazmorra', imagen: 'img/escalera.png', desc: 'Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro. A la izquierda, donde la luz apenas llega, dos figuras esperan de rodillas: un hombre y una mujer, desnudos los dos, con el collar ceñido al cuello y la cadena tensa hasta las argollas. No dicen nada. Ella levanta la vista y te sigue con los ojos; él mira al suelo y respira despacio, como quien ya ha aprendido a esperar. Cada vez que se atreven a moverse, resuena el tintineo de las cadenas en toda la estancia. Nadie te ha explicado ninguna regla, y aun así entiendes que no hay: la mesa está vacía y el tiempo es tuyo. Puedes quedarte mirándolos desde la penumbra, acercarte a uno, soltar una cadena o apretarla. Ellos aguantan. Tú decides. Para volver, escribe «salir».' }  },
+},
   /* Descripciones provisionales de «examinar»: reescribir a gusto. */
   objetos: {
     salon: { sofa: 'Un sofá mullido, con una manta arrugada.', biblioteca: 'La mayoría de los libros ya los has leído. De entre todos, sobresale el que te estás leyendo ahora: las perversiones de Emily.', radiador: 'Un radiador de hierro, ahora apagado.', luz: 'Una lámpara de pie con luz cálida.', mueble: 'Un mueble antiguo de madera oscura. Encima hay un tablero de ajedrez con una partida a medias.', tablero: '', libro: 'Las perversiones de Emily. Es el libro que te estás leyendo ahora.' },
     habitacion: { cama: 'La cama deshecha, aún tibia.', armario: 'Un armario de dos puertas, repleto de ropa.', espejo: 'Tu reflejo te devuelve una cara cansada.', comoda: 'Una cómoda de madera con un cajón', pastilla: 'Se trata de una pastilla de color lila. Te la dio tu mejor amiga y aún no sabes qué efectos tiene, pero estás segura de que no servirá para quitar el dolor de cabeza', cajon: 'Un cajón de la cómoda.' },
-     mazmorra: {
-      mesa: 'Una mesa de madera maciza, con marcas de uso y una pata coja.',
-      cadenas: 'Unas cadenas oxidadas colgadas de la pared.',
-      cuerdas: 'Un rollo de cuerda de cáñamo, áspera y con olor a saco.',
-      grilletes: 'Un par de grilletes de hierro con tornillos de mariposa.',
-      anillas: 'Argollas soldadas al muro, a distintas alturas.',
-      látigo: 'Un látigo de cuero trenzado, gastado en la punta.',
-      fusta: 'Una fusta corta de mango de cuero.',
-      vara: 'Una vara de avellano, flexible y ligera.',
-      venda: 'Una venda de tela negra.',
-      capucha: 'Una capucha de lona gruesa, sin abertura para los ojos.',
-      mordaza: 'Una mordaza de bola con correas.',
-      bozal: 'Un bozal de tiras de cuero.',
-      jaula: 'Una jaula de barrotes bajos, del tamaño de un perro grande.',
-      cepo: 'Un cepo de madera con dos huecos.',
-      banco: 'Un banco largo, con anillas en los extremos.',
-      potro: 'Un potro de tres patas, acolchado por arriba.',
-      cubo: 'Un cubo de agua fría.',
-      jarra: 'Una jarra de barro.',
-      cuenco: 'Un cuenco de cerámica.',
-      comedero: 'Un comedero metálico para el suelo.',
-      agua: 'Un barreño de agua.',
-      espejo: 'Un espejo de cuerpo entero, manchado por los bordes.',
-      plumas: 'Un manojo de plumas largas.',
-      campana: 'Una campana pequeña de bronce.',
-      dados: 'Dos dados de madera.',
-      ruleta: 'Una ruleta de cartón con casillas numeradas.',
-      plug: 'Un plug de metal.',
-      consolador: 'Un consolador de cristal.',
-      aceite: 'Una botella de aceite tibio.',
-      miel: 'Un tarro de miel.',
-      sal: 'Un cuenco de sal gruesa.',
-      limón: 'Dos limones partidos.',
-      aguja: 'Una aguja larga de coser.',
-      tinta: 'Un tintero con una pluma.',
-      etiquetas: 'Un taco de etiquetas de papel.',
-      paja: 'Un montón de paja suelta.',
-      saco: 'Un saco de arpillera.',
-      polea: 'Una polea con su cuerda, sujeta al techo.',
-      correa: 'Una correa de perro con hebilla.',
-      vela: 'Varias velas encendidas.',
-      hielo: 'Un cubo lleno de hielo.',
-      cinta: 'Una cinta métrica.',
-      puerta: 'Una puerta de hierro. Está cerrada.' },
+
     despacho: { ordenador: 'Un ordenador de sobremesa. Lo mismo que el móvil, pero con pantalla grande.', escritorio: 'Un escritorio con papeles revueltos.', 'juegos de mesa': 'Varias cajas de juegos de mesa, apiladas.', cuadro: 'Un panel lleno de rosas y espinas, con placas numeradas.' },
     cocina: { cocina: 'Una cocina limpia, sin nada al fuego.', cafetera: 'Una cafetera que huele a café viejo.', nevera: '', congelador: 'Un congelador pequeño, con la puerta cubierta de escarcha.', caldera: '' },
     bano: { inodoro: 'te acercas a revisar el inodoro y detectas lo que parece una pequeña mancha. Al acercarte más compruebas que, escrito con rotulador, pone: Lapso meó aquí. Y te preguntas: ¿quién coño es Lapso? ¿Será algún ligue? poco impacto ha dejado si no me acuerdo de él. Tal vez lo tenga en telegram...', lavabo: 'Un lavabo con el grifo goteando.', espejo: 'un espejo limpio y reluciente', ducha: 'Una ducha con mampara.', mueble: 'Un pequeño mueble con toallas.', toallas: 'junto a las toallas tienes el satisfyer y las compresas.', satisfyer: 'con lo que ha trabajado y aún funciona.' },
     terraza: { macetas: 'Macetas con plantas algo secas.', calle: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', huevo: 'Un huevo con forma de... huevo', balcon: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', tumbona: 'Una tumbona cómoda, al sol.' }
   },
    alias: { verduras: 'nevera', alimentos: 'nevera', comida: 'nevera', cajones: 'cajon', perversiones: 'libro', libreria: 'biblioteca', ajedrez: 'tablero', radiadores: 'radiador', juegos: 'juegos de mesa', maceta: 'macetas', pc: 'ordenador',
-    latigo: 'látigo', limon: 'limón', limones: 'limón', velas: 'vela', pluma: 'plumas', dado: 'dados', etiqueta: 'etiquetas', anilla: 'anillas', grillete: 'grilletes', argolla: 'anillas', argollas: 'anillas', cadenita: 'cadenas', cuerda: 'cuerdas', tablas: 'mesa', mesita: 'mesa', varas: 'vara', vendas: 'venda', capuchas: 'capucha', mordazas: 'mordaza', bozales: 'bozal', jaulas: 'jaula', cepos: 'cepo', bancos: 'banco', potros: 'potro', cubos: 'cubo', jarras: 'jarra', cuencos: 'cuenco', comederos: 'comedero', espejos: 'espejo', plumas: 'plumas', campanas: 'campana', ruletas: 'ruleta', plugs: 'plug', consoladores: 'consolador', aceites: 'aceite', mieles: 'miel', sales: 'sal', agujas: 'aguja', tintas: 'tinta', pajitas: 'paja', sacos: 'saco', poleas: 'polea', correas: 'correa', hielos: 'hielo', cubitos: 'hielo', cintas: 'cinta', esclavas: 'esclava', esclavos: 'esclavo', mujer: 'esclava', hombre: 'esclavo', chica: 'esclava', chico: 'esclavo', ella: 'esclava', el: 'esclavo' },
+  },
   /* Comandos con respuesta de texto. Sin `estancia`/`objetos`: funcionan en cualquier lugar.
      Con ellos: solo funcionan en esa estancia y nombrando uno de sus objetos.
      `inventario`: exige llevar ese objeto encima. */
@@ -218,11 +175,6 @@ const Datos = {
     { verbos: ['encender', 'enciende'], estancia: 'cocina', objetos: ['cafetera'], texto: 'Ya está encendida.', fuera: 'No ves ninguna cafetera por aquí.' },
     //baño
     { verbos: ['mirarse', 'mirar', 'observar'], estancia: 'bano', objetos: ['espejo'], texto: 'Te observas detenidamente en el espejo. Tu reflejo te devuelve una mirada algo cansada.', fuera: 'No ves ningún espejo por aquí.' },
-{ verbos: ['abrir', 'forzar'], estancia: 'mazmorra', objetos: ['puerta'],
-  texto: 'Empujas la puerta de hierro. No cede.', fuera: 'No ves ninguna puerta de hierro por aquí.' },
-{ verbos: ['tirar', 'mover'], estancia: 'mazmorra', objetos: ['cadenas'],
-  texto: 'Tiras de las cadenas. Se oye un eco metálico que se pierde en la oscuridad.',
-  imagen: 'img/cadenas.png', titulo: 'Cadenas', fuera: 'No ves cadenas por aquí.' },
     
     //Terraza
     {
@@ -310,333 +262,88 @@ const Datos = {
 
     
 // MESA
-  { verbos: ['atar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a la esclava boca arriba sobre la mesa, muñecas y tobillos atados a las patas, abierta de par en par, y obligas al esclavo a mirarla mientras se masturba sin permiso de correrse.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['servir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Usas la espalda de la esclava como mantel y sirves la cena encima; el esclavo come de su piel y tú le azotas los dedos cada vez que derrama una gota.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['inmovilizar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Atas al esclavo a la mesa por las cuatro extremidades, tirando hasta que los talones no toquen la madera, y dejas que la esclava le pase la lengua por todo el cuerpo sin tocarle la polla.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tumbar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tumbas al esclavo boca arriba sobre la mesa y sientas a la esclava encima, de cara a ti, para que cabalgue mientras le cuentas en voz alta cada error que comete.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['doblar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a la esclava sobre el borde de la mesa con el culo en pompa y haces que el esclavo la penetre mientras tú le sujetas la cabeza contra la madera.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['encadenar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encadenas al esclavo despatarrado sobre la mesa y conviertes su cuerpo en expositor: la esclava debe lamer cada cadena antes de pasar a la siguiente.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['alimentar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones a la esclava a cuatro patas sobre la mesa y colocas el cuenco de su comida entre sus omóplatos; el esclavo come de ahí sin usar las manos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['mecer'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Sientas a la esclava en el borde de la mesa, piernas abiertas, y ordenas al esclavo que la lama despacio mientras le cuentas los minutos en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['apilar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a los dos sobre la mesa, uno encima del otro, y los dejas hechos un sándwich humano mientras das vueltas alrededor silbando.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['vendar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a la esclava de pie contra el borde de la mesa, le vendas los ojos y haces que el esclavo le dé azotes que ella debe adivinar contando en alto.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['exhibir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Subes a la esclava a la mesa y la haces girar despacio sobre sí misma mientras el esclavo, arrodillado, describe en voz alta cada parte de su cuerpo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['penetrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Doblas al esclavo sobre la mesa y lo penetras mientras la esclava, debajo, le lame la cara y le cuenta lo bien que aguanta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tensar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas una cuerda de cada muñeca de la esclava al otro lado de la mesa y la obligas a mantenerse estirada sin apoyarse mientras el esclavo le pasa hielo por la espalda.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['marcar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tumbas al esclavo boca abajo sobre la mesa y le das con la vara contando en voz alta, mientras la esclava repite cada número como un eco.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['apuntar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Sientas a la esclava en el suelo con la espalda recta contra la mesa y usas su vientre como escritorio para apuntar sus castigos pendientes.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['colgar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cuelgas al esclavo de la polea justo encima de la mesa, a un palmo de la madera, y haces que la esclava intente alcanzarle con la lengua.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['lamer'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Vuelcas la jarra sobre la mesa y pones a la esclava a lamer el charco con las manos atrás, mientras el esclavo espera su turno sin tocar nada.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['presentar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones a la esclava doblada sobre la mesa y follas al esclavo contra su espalda, de modo que cada empujón le machaque las costillas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['medir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Mides al esclavo con la cinta sobre la mesa, anotando en voz alta cada medida como si fuera ganado, y la esclava aplaude cada cifra.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['dictar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Te subes a la mesa y desde ahí dictas a la esclava las posturas que el esclavo debe copiar a cámara lenta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['untar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de aceite la mesa, tumbas al esclavo encima y ordenas a la esclava que se deslice sobre él hasta quedar resbaladiza como un pez.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tapar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Mete la cabeza del esclavo en el saco, lo tumbas sobre la mesa y la esclava debe adivinar por el tacto qué partes de su cuerpo tocas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['fustigar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a la esclava sobre la mesa y le das con la fusta por turnos: un golpe tuyo, un golpe del esclavo, y ella lleva la cuenta sin equivocarse.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['meter'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Sientas al esclavo en el borde de la mesa, le metes el consolador y ordenas a la esclava que lo mueva con la boca mientras le sujetas las caderas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['pisar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a la esclava bajo la mesa y la usas de alfombra: el esclavo camina descalzo sobre ella contando cada paso.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['cosquillear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Atas al esclavo abierto sobre la mesa y le haces cosquillas con plumas hasta que suplica, mientras la esclava le tapa la boca con la mano.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['golpear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Usas la espalda del esclavo como yunque: apoyas la mano y golpeas suave con la palma para que la esclava sienta la vibración en su propia piel.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['juntar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a los dos sobre la mesa, uno al lado del otro, y les obligas a lamerse mutuamente las manos mientras les pisas los tobillos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['equilibrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones una vela encendida en equilibrio sobre la espalda del esclavo, tumbado en la mesa, y la esclava debe recoger la cera con la lengua sin apagarla.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['acostar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a la esclava sobre la mesa y al esclavo encima, y follas desde atrás de modo que los tres quedéis apilados y jadeando a la vez.', fuera: 'Aquí no hay ninguna esclava.' },
 
   // CUERDAS
-  { verbos: ['suspender'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Atas al esclavo de muñecas y tobillos y lo suspendes de la polea boca abajo, girando despacio, mientras la esclava lo empuja con la nariz.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['trenzar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Trenzas las cuerdas alrededor del torso de la esclava hasta dejarle los pechos apretados y enmarcados, y la paseas así por la mazmorra.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['ovillar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas las muñecas de la esclava a los tobillos, hecha un ovillo, y haces que el esclavo la haga rodar por el suelo de un puntapié suave.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['crucificar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'La atas en cruz entre dos anillas, tirante como una vela, y le das con la vara en las zonas que el esclavo le va señalando.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['guiar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas las manos a la espalda, le vendas los ojos y dejas que el esclavo la guíe por la mazmorra a base de empujones y susurros.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['pasear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas una cuerda al cuello al esclavo y haces que la esclava tire de él a cuatro patas por toda la estancia, marcando el ritmo con palmadas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['apretar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas las cuerdas alrededor de los muslos hasta que las piernas se le pongan rojas y le ordenas no quejarse mientras la esclava le sopla encima.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['columpiar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Atas al esclavo de pies y manos a la polea del techo y dejas que la esclava lo balancee como un péndulo, apartándose justo antes de cada choque.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['conectar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas una muñeca de la esclava a una del esclavo y los dejas así toda la escena: cada movimiento de uno arrastra al otro.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['amordazar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas firme, le pones la mordaza y haces que el esclavo le cuente al oído todo lo que le hará cuando la sueltes.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['recostar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a la esclava boca arriba con la mordaza puesta y te sientas sobre su vientre a leerle sus faltas en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['abrir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas los tobillos a los muslos al esclavo, dejándolo abierto, y ordenas a la esclava que lo monte mientras tú sujetas las cuerdas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['arrodillar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a la esclava a un pilar con los brazos en alto y haces que el esclavo se arrodille a lamerle los pies hasta que le duelan las rodillas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['contar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas las manos a la nuca al esclavo y le das con la fusta en los muslos mientras la esclava le cuenta cada golpe en la oreja.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['izar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas los pies al techo, le pones el saco en la cabeza y la esclava le golpea suave con las palmas como si fuera un costal.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['unir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a los dos, espalda contra espalda, y les obligas a decir en voz alta qué le harían al otro si pudieran moverse.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['liar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a la esclava con las piernas abiertas y la cuerda tirante, y el esclavo debe lamerla sin poder apartarse el pelo con las manos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['boxear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cuelgas al esclavo por los tobillos y la esclava lo usa de saco de boxeo con las palmas abiertas, contando los impactos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['ceñir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas las cuerdas al pecho al esclavo y le pides que respire hondo mientras la esclava comprueba con la mano cuánto cede la cuerda.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['atirantar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a la esclava por la cintura y la llevas de la cuerda como un globo, obligando al esclavo a seguirla de rodillas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['anudar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas las manos a la espalda, le vendas los ojos y la esclava debe adivinar con la lengua qué nudo le has hecho en el pecho.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['flagelar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a la anilla del muro y alternas latigazos suaves con besos de la esclava en la misma zona.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['esposar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas las muñecas entre los muslos al esclavo y le obligas a caminar así por la mazmorra mientras la esclava se ríe.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tender'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas en el suelo abierto de brazos y piernas y la esclava le dibuja números en la piel que él debe adivinar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['empalar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Suspende a la esclava a media altura y folla al esclavo de pie contra ella, dejando que la cuerda se balancee con cada empujón.', fuera: 'Aquí no hay ninguna esclava.' },
 
   // CADENAS
-  { verbos: ['sujetar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encadenas al esclavo por el cuello a la anilla del muro y haces que la esclava pasee a su lado relamiéndose el dedo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['grilletear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones los grilletes a la esclava en muñecas y tobillos y ordenas al esclavo que la arrastre por el suelo hasta el centro de la sala.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['sacudir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le encadenas las manos al techo al esclavo y le das con el látigo en la espalda mientras la esclava le sopla las marcas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['rozar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encadenas a la esclava en cruz y dejas que el esclavo le pase la lengua por los eslabones que le rozan la piel.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['trotar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones los grilletes y le obligas a dar cincuenta pasos contados alrededor de la mesa; la esclava lleva la cuenta en voz alta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cabalgar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encadenas al esclavo sentado en el suelo y ordenas a la esclava que se siente encima y se mueva a la orden de tu mano.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['balancear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le cuelgas de las cadenas y la esclava lo empuja para que se balancee, esquivando sus pies como en un columpio.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['conducir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le grilleteas las manos a la espalda a la esclava, le vendas los ojos y el esclavo la guía de la correa por la mazmorra.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['estirar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encadenas al esclavo abierto al muro y la esclava le mide la resistencia tirando de cada cadena a su vez.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['enfrentar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encadenas a los dos por el cuello al mismo punto y los dejas tirar el uno del otro como perros rivales.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['clavar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones los grilletes a la esclava en los tobillos, la doblas y la penetras mientras el esclavo le sujeta la cadena de las muñecas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['usar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cuelgas al esclavo de las cadenas y la esclava lo usa de péndola golpeándolo con la cadera al pasar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sortear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encadenas a la esclava y tiras los dados: el número que salga son los tirones de cadena que el esclavo debe darle.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['subir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Grilleteas las muñecas del esclavo a la polea y lo subes hasta que solo los dedos de los pies toquen el suelo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['leer'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encadenas a la esclava a tus pies y lees sus faltas en voz alta mientras el esclavo le sostiene la cabeza para que no la baje.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['morder'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encadenas al esclavo tirante, le pones la mordaza y la esclava le muerde el hombro hasta dejarle marca.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['caminar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones los grilletes a los dos y los obligas a caminar pegados, tropezando el uno con el otro, mientras tú silbas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['palpar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava le hace recorrer las cadenas del muro con los labios adivinando qué anilla es cada una.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['abanicar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encadenas a la esclava a cuatro patas y te sientas en su espalda mientras el esclavo te abanica con la mano.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['fornicar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encadenas al esclavo boca arriba al suelo y montas sobre él mientras la esclava le sujeta las cadenas y le mira a los ojos.', fuera: 'Aquí no hay ningún esclavo.' },
 
   // LÁTIGO
-  { verbos: ['azotar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Das diez latigazos al esclavo y diez a la esclava, alternando, y cada uno debe contar los del otro sin perder el ritmo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['hostigar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a la esclava y le das con la fusta en la parte alta de los muslos mientras el esclavo le sujeta la cintura.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['varear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tumbas al esclavo y le mides la espalda a varazos, marcando líneas paralelas que la esclava repasa con el dedo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['situar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava y le das latigazos suaves que ella debe situar nombrando la zona del cuerpo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['chicotear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le das con la fusta al esclavo cada vez que baja los brazos; la esclava le grita que aguante como si fuera su entrenadora.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['elegir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tiras los dados y el resultado son los latigazos que se lleva el esclavo; la esclava elige dónde recibirlos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['compasar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le das con la vara a la esclava en cada embestida que da al esclavo, marcando el compás de la follada.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['corregir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Haces que el esclavo azote a la esclava y la esclava al esclavo, turnándose, mientras tú corriges la técnica de los dos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['soplar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Sientas al esclavo en el suelo con las piernas abiertas y le das con la fusta en la cara interna de los muslos; la esclava le sopla después.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cronometrar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a la anilla y le das latigazos contados por la esclava, que debe ir cada vez más alto.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['lamer'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le das con la vara al esclavo hasta que la piel se le pone rosada y ordenas a la esclava lamer cada línea.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['arrear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le das un latigazo al aire detrás de los talones al esclavo para que camine más rápido; la esclava corre a su lado riéndose.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['zurrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le das con la fusta al esclavo en las plantas de los pies y la esclava cuenta en voz alta mientras le sujeta los tobillos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cintarear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a la esclava sobre el potro y le das con el látigo en las nalgas mientras el esclavo le aparta el pelo de la cara.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['saltar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones la vara en el suelo y haces que los dos salten por encima; el que la toca recibe un golpe del otro.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['chasquear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la capucha al esclavo y le das latigazos al azar mientras la esclava le avisa solo con chasquidos de lengua.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['mirar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le sujetas los tobillos a la esclava entre tus rodillas y le das con la fusta en las plantas mientras el esclavo la mira a los ojos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['cuadricular'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Marcas con latigazos una cuadrícula en la espalda del esclavo y la esclava bautiza cada casilla con un nombre ridículo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sostener'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la fusta en equilibrio sobre la nuca al esclavo y le obligas a aguantarla mientras la esclava le pasa hielo por el pecho.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['gemir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Follas a la esclava y le das al esclavo un latigazo por cada vez que ella gime demasiado alto.', fuera: 'Aquí no hay ninguna esclava.' },
+
+  // FUSTA
+
+  // VARA
 
   // VELAS
-  { verbos: ['derretir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Derrites cera sobre la espalda del esclavo y ordenas a la esclava recogerla con la lengua antes de que se enfríe.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['chorrear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a la esclava y dejas caer cera caliente en la cara interna de los muslos, contando cada gota en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['nombrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava deja caer cera en puntos distintos que él debe nombrar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['besar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le metes un cubito en la boca a la esclava y otro al esclavo y les obligas a besarse hasta que se derritan.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['escribir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Escribes el nombre de la esclava con cera en la espalda del esclavo y ella debe adivinarlo por la posición de las gotas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['licuar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a la esclava y le dejas caer cera en la espalda mientras el esclavo la penetra despacio.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['frotar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Frotas hielo en los pezones de la esclava hasta que se le endurecen y luego haces que el esclavo los caliente con la boca.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['cubrir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cubres de cera el pecho del esclavo hasta hacerle una armadura y la esclava la rompe con las uñas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['gotelear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas tirante y dejas caer una gota por cada error que haya cometido; la esclava lleva la lista en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['esconder'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Escondes hielo en la mano y se lo pasas por la nuca a la esclava por sorpresa mientras el esclavo la distrae hablando.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['empuñar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones la vela en la mano del esclavo y le obligas a sostenerla mientras la esclava le lame el pecho sin que caiga cera.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['perder'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Una gota a la esclava, una al esclavo, y el que se queje primero pierde el turno de montar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['anticipar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Sientas a la esclava sobre un cubito de hielo y haces que el esclavo le cuente despacio lo que le espera.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['recoger'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Apagas la vela con la lengua de la esclava y ordenas al esclavo que recoja la cera de sus labios.', fuera: 'Aquí no hay ninguna esclava.' },
+
+  // HIELO
 
   // VENDA
-  { verbos: ['cegar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava y dejas que el esclavo la guíe con la punta de los dedos por toda la mazmorra.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['encapuchar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la capucha al esclavo y lo haces girar hasta que pierda el norte; la esclava lo empuja hacia donde tú estés.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['enmudecer'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones la mordaza a la esclava, la atas y haces que el esclavo le cuente todo lo que le haría si pudiera hablar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['embozalar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones el bozal al esclavo y la esclava lo pasea del pelo por la estancia, enseñándolo como a un animal.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['explorar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava le toca partes del cuerpo que él debe nombrar con una sola palabra.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['follar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones la mordaza a la esclava y la follas mientras el esclavo le sujeta la cabeza para que mire.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['describir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la capucha al esclavo, le atas las manos y le das latigazos que la esclava le describe al oído.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['topar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos a los dos y los obligas a encontrarse a tientas mientras tú te apartas del camino.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['traducir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones el bozal al esclavo y solo puedes darle órdenes por gestos; la esclava traduce lo que debe hacer.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['palmear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la mordaza al esclavo y le das con la mano en las nalgas; la esclava cuenta los golpes porque él no puede.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['colocar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava y la colocas de rodillas; el esclavo debe adivinar su posición por los sonidos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['susurrar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones la capucha a la esclava y el esclavo le susurra al oído todo lo que le va a hacer hasta hacerla temblar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['ofrecer'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas y le pones el bozal al esclavo; la esclava le da de comer de su mano como a un perro.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['callar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la mordaza a los dos y los dejas comunicarse solo con miradas hasta que uno se rinda.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sobresaltar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava le hace cosquillas en los costados sin avisar; él no puede apartarse.', fuera: 'Aquí no hay ningún esclavo.' },
+
+  // CAPUCHA
+
+  // MORDAZA
+
+  // BOZAL
 
   // JAULA
-  { verbos: ['encerrar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encierras a la esclava en la jaula y haces que el esclavo se arrodille fuera, mirándola, sin poder tocarla.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['cepar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le metes las muñecas en el cepo al esclavo y dejas que la esclava le haga cosquillas hasta que suplica.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['encorvar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas al banco boca abajo a la esclava y le das con la mano en las nalgas mientras el esclavo le cuenta los golpes.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['exponer'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas al banco al esclavo, sentado y abierto, y la esclava se arrodilla delante a mirarlo sin tocar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['aprisionar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encierras al esclavo en la jaula y la esclava le da de comer por los barrotes con los dedos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['repetir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le metes la cabeza en el cepo al esclavo, le vendas los ojos y la esclava le susurra cosas que debe repetir.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cabalgar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Doblas al esclavo sobre el potro y ordenas a la esclava que se siente encima y marque el ritmo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sentar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas al banco a la esclava y el esclavo le da con la fusta en las plantas de los pies.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['apretujar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encierras a los dos en la jaula, apretados, y les obligas a decir qué harían si cupieran más.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['azuzar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le metes los tobillos en el cepo al esclavo y la esclava le hace cosquillas en las plantas con una pluma.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['recitar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Doblas a la esclava sobre el potro y te sientas en su espalda mientras el esclavo te lee sus faltas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['enumerar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Sientas a la esclava en el banco con las piernas abiertas y el esclavo le cuenta en voz alta las partes que ve.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['jalear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Encierras al esclavo y le haces contar en voz alta hasta cien; la esclava aplaude cada decena.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cepar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le metes las muñecas en el cepo a la esclava, la doblas y la penetras mientras el esclavo le sostiene el pelo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['apartar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Doblas al esclavo sobre el potro y alternas latigazos con lametones de la esclava en la misma zona.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['acertar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo, sentado en el banco, y la esclava le toca zonas que él debe nombrar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['rodear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Encierras a la esclava y dejas que el esclavo pasee alrededor de la jaula describiendo lo que haría con ella.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['bromear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le metes la cabeza y las muñecas en el cepo al esclavo y la esclava le cuenta chistes malos hasta que se ríe con la cara apretada.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['helar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava, doblada sobre el potro, y el esclavo le pasa hielo por la espalda sin avisar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['obedecer'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Sientas al esclavo en el banco, montas sobre él y ordenas a la esclava que se arrodille delante a mirarlo a los ojos.', fuera: 'Aquí no hay ningún esclavo.' },
+
+  // CEPO
+
+  // BANCO
+
+  // POTRO
 
   // CUBO
-  { verbos: ['volcar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Vuelcas el cubo de agua sobre el esclavo y haces que la esclava le seque el cuerpo con la lengua.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['beber'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones el cuenco en el suelo y obligas a los dos a beber de él a la vez, hocico contra hocico.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['vaciar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Llenas la jarra y la vacías despacio sobre la espalda de la esclava mientras el esclavo lame el reguero.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['comer'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones el comedero en el suelo y la esclava debe comer de él sin manos mientras el esclavo la vigila.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['restregar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Moja la mano en el cubo y frótale el pecho al esclavo hasta que la piel se le eriza; la esclava sopla para enfriar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['compartir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Llenas el cuenco y solo dejas beber al que aguante más tiempo con la boca cerrada; la esclava decide quién empieza.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['verter'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a la esclava y viertes agua poco a poco por la espalda mientras el esclavo cuenta las gotas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['paladear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava le da de comer del comedero con la mano; él debe adivinar qué es.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['empapar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Moja la espalda del esclavo y le das con la fusta: cada golpe salpica y la esclava se lame los dedos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sorber'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Haces que el esclavo sostenga la jarra en la boca y la esclava la vuelca sobre su propio pecho sin poder usar las manos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['escupir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Bebe la esclava del cuenco y escupe el agua en la boca del esclavo; luego se invierten los papeles.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['escurrir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Usas el pelo de la esclava de esponja para mojar el cuerpo del esclavo, y luego la obligas a escurrirlo sobre su cabeza.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['racionar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones el comedero entre los dos y solo uno puede comer; tú eliges quién y el otro lame el borde.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['derramar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Viertes agua helada sobre la espalda de la esclava y el esclavo la seca a lametones temblando.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['tragar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Obligas al esclavo a beber de la jarra mientras la esclava le cuenta los tragos en voz alta.', fuera: 'Aquí no hay ningún esclavo.' },
+
+  // JARRA
+
+  // CUENCO
+
+  // COMEDERO
+
+  // AGUA
 
   // ESPEJO
-  { verbos: ['reflejar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones el espejo delante de la esclava y le obligas a mirarse mientras el esclavo la acaricia por detrás.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['plumear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas al esclavo y la esclava le hace cosquillas con plumas hasta que las lágrimas le ruedan.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['repicar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones la campana en la mano a la esclava: cada vez que la toque, el esclavo debe cambiar de postura al instante.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['tirar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tiras los dados y el resultado marca cuántos minutos debe aguantar el esclavo en la postura que la esclava elija.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['girar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Giras la ruleta y quien salga recibe lo que indique la casilla; la esclava sopla para que pare antes.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['comparar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones el espejo entre los dos y les obligas a comparar sus cuerpos en voz alta, uno por uno.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['azuzar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava y el esclavo la sorprende con plumas en el cuello y las axilas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['pautar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cada toque de campana de la esclava son cinco golpes de fusta para el esclavo; ella decide el ritmo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['asignar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tiras los dados por cada esclavo: el número más alto decide quién manda durante los próximos diez minutos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['personificar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Giras la ruleta y el que salga debe imitar al animal que la esclava nombre hasta el siguiente giro.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['enderezar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Haces que la esclava se mire en el espejo y corrija ella misma la postura que tú consideres mala.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['retorcer'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le haces cosquillas con la pluma al esclavo en el costado justo mientras follas a la esclava, que se retuerce contagiada.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['orientar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava y debe seguir el sonido de la campana que el esclavo toca por la sala.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['repartir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tiras los dados y reparte tú los golpes de vara según el número, uno para cada uno, como tú quieras.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['humillar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Giras la ruleta y el señalado debe decir en voz alta una humillación que se merezca el otro.', fuera: 'Aquí no hay ningún esclavo.' },
+
+  // PLUMAS
+
+  // CAMPANA
+
+  // DADOS
+
+  // RULETA
 
   // PLUG
-  { verbos: ['encajar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le metes el plug al esclavo y le obligas a caminar así por la mazmorra mientras la esclava le va dando palmadas en las nalgas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['engrasar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Untas de aceite el cuerpo de la esclava y la haces deslizarse contra el del esclavo hasta que los dos brillen.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['introducir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le metes el plug a la esclava, la atas boca arriba y dejas que el esclavo le cuente cada minuto que pasa.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['patinar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de aceite al esclavo y ordenas a la esclava que lo monte hasta que resbale y tenga que agarrarse a ti.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['chupar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le metes el consolador a la esclava mientras el esclavo la lame, alternando ritmos sin avisar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['masajear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de aceite las manos del esclavo y le ordenas masajear los pies de la esclava hasta que ella se duerma casi.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['adivinar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava le introduce el plug; él debe adivinar el tamaño.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['desplazar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de aceite al esclavo atado y la esclava se desliza sobre él sin poder agarrarse a nada.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['palmear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le metes el plug a la esclava doblada y le das en las nalgas para que lo apriete.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['reptar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas el suelo de aceite y los obligas a arrastrarse el uno hacia el otro sin levantarse.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['numerar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le metes el consolador a la esclava y le haces contar en voz alta cada embestida del esclavo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['saborear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de aceite el pecho del esclavo y la esclava debe secarlo a lametones sin dejar brillo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['elevar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le metes el plug al esclavo y lo cuelgas de las cuerdas para que lo note con cada balanceo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['embarrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de aceite al esclavo y lo penetras mientras la esclava le sujeta las caderas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sincronizar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones el plug al esclavo y el consolador a la esclava y hacéis los tres el mismo ritmo hasta que se rompe.', fuera: 'Aquí no hay ninguna esclava.' },
+
+  // ACEITE
+
+  // CONSOLADOR
 
   // MIEL
-  { verbos: ['untar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Untas de miel el vientre de la esclava y ordenas al esclavo lamerlo hasta dejarlo limpio.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['salar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas miel y espolvoreas sal en la espalda del esclavo; la esclava lame la mezcla y le muerde el hombro.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['chupetear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Untas limón en los labios de la esclava y el esclavo debe chuparlos hasta que se le pase el ardor.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['besar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de miel la cara del esclavo y la esclava le da besos hasta que se le pega todo el pelo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['espolvorear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Espolvoreas sal en la espalda húmeda de la esclava y el esclavo la lame mientras tú le das palmadas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['endulzar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de miel el dedo y se lo metes al esclavo; la esclava debe lamerlo al sacarlo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['discernir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas limón en puntos del cuerpo del esclavo y la esclava debe adivinar cuáles lamiendo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['degustar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Sirves la merienda sobre el pecho de la esclava con miel y dejas que el esclavo coma de ella.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['mordiscar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Espolvoreas sal en los muslos del esclavo y la esclava los muerde suave hasta dejar marca.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['embadurnar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Untas de miel el pecho de la esclava y follas al esclavo mientras él se lame los labios mirándola.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['dulcificar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de miel las cuerdas que atan al esclavo y la esclava lame los nudos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['recontar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le das a chupar limón a la esclava y la obligas a contar hasta veinte sin hacer gestos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['raspar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Espolvoreas sal en el pecho de la esclava y el esclavo la lame hasta que la piel queda limpia y roja.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['bañar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Untas de miel la espalda del esclavo y la esclava come de ella a lametones como un gato.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['mezclar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Untas miel a uno y limón al otro y los obligas a besarse hasta mezclarlo todo.', fuera: 'Aquí no hay ninguna esclava.' },
 
   // SAL
-  { verbos: ['repasar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Marcas con la aguja el número de faltas en el brazo del esclavo y la esclava las repasa con el dedo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['descifrar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Escribes con tinta en la espalda de la esclava una palabra ridícula y el esclavo debe leerla en el espejo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['etiquetar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pegas etiquetas al esclavo con nombres de muebles y la esclava debe tratarlo como tal.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cotejar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pinchas suave con la aguja en cada golpe de fusta y la esclava lleva la cuenta de los dos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['rastrear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Escribes con tinta en el vientre del esclavo y la esclava debe adivinar la palabra por el tacto de sus dedos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tasar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pones etiquetas a la esclava con precios ridículos y el esclavo debe pujar por ella en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['localizar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le vendas los ojos al esclavo y la esclava le pincha suave en puntos que él debe situar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['declamar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Escribes las medidas del esclavo en su propio pecho y la esclava las lee en voz alta como un sastre.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['desenvolver'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas y le pones una etiqueta de regalo en el pecho; la esclava debe desenvolverte el paquete.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tararear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pinchas suave al esclavo diez veces y la esclava cuenta en voz alta cada uno.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['corear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Escribes en la frente de la esclava la palabra que debe repetir durante toda la sesión.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['llevar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones etiquetas de acciones por la sala y el esclavo debe llevar a la esclava a la que tú señales.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['contraer'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le pinchas suave en las nalgas a la esclava doblada y ella aprieta con cada pinchazo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['manchar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Escribes con tinta en la espalda de la esclava y el esclavo debe adivinar las letras con la lengua.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['premiar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones etiquetas al esclavo con defectos y la esclava lee cada uno en voz alta antes de darle un beso.', fuera: 'Aquí no hay ningún esclavo.' },
+
+  // LIMÓN
+
+  // AGUJA
+
+  // TINTA
+
+  // ETIQUETAS
 
   // PAJA
-  { verbos: ['revolcar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Esparces la paja por el suelo y revuelcas a la esclava en ella hasta que se le pega en todo el cuerpo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['embolsar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Mete al esclavo en el saco hasta la cintura, le atas y dejas que la esclava lo empuje de un lado a otro.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['ascender'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Izas al esclavo con la polea y la esclava cuenta las vueltas en voz alta hasta que no llega más arriba.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['argollar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a las anillas del muro y tensas hasta que los talones se le levanten; luego le das con la mano.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['arrollar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Revolcas al esclavo en la paja y la esclava se sienta a mirar cómo se le llena el pelo de briznas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['enfundar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones el saco en la cabeza al esclavo y lo obligas a caminar a gatas chocando con los muros.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['oscilar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Izas a la esclava y el esclavo la empuja como un columpio, esquivando sus pies al pasar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['admirar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas de pie a las anillas del muro, con los brazos en alto, y dejas que el esclavo la admire sin tocar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['derrocar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Haces montones de paja y los obligas a tirarse de uno a otro a cuatro patas hasta derribarlos todos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['embozar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones el saco al esclavo y la esclava le hace cosquillas por fuera sin que sepa por dónde vienen.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['percutir'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le izas de las muñecas al esclavo y le das con la fusta en los costados; la esclava cuenta los golpes.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['describir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a las anillas a la esclava, le vendas los ojos y el esclavo le describe lo que hay a su alrededor.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['desparramar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'La revuelcas en la paja y le das latigazos que levantan briznas con cada golpe.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['enfardar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas las manos a la espalda al esclavo, le pones el saco y follas a la esclava delante de su cabeza tapada.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['desplegar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Izas a la esclava con las piernas abiertas y el esclavo se arrodilla debajo a mirar hacia arriba.', fuera: 'Aquí no hay ninguna esclava.' },
+
+  // SACO
+
+  // POLEA
+
+  // ANILLAS
 
   // CORREA
-  { verbos: ['remolcar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la correa al esclavo y la esclava lo pasea a cuatro patas por toda la estancia, tirando de vez en cuando.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['ladrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la correa al esclavo y le obligas a ladrar cada vez que la esclava chasquea los dedos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['pastorear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'La esclava hace de pastora con la correa y tú de perro: le gruñes y ella te lleva de un extremo a otro.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['dar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones el comedero al esclavo en el suelo y la esclava le da de comer de la mano mientras él mueve el rabo imaginario.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['correr'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la correa al esclavo y lo haces trotar a cuatro patas mientras la esclava corre a su lado riéndose.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['espolear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones la correa a la esclava y la montas como a un caballo, usando la correa de riendas por la estancia.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['aullar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'El esclavo debe ladrar tantas veces como toques de correa des; la esclava lleva la cuenta en voz alta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['jaular'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'La esclava lleva al esclavo de la correa hasta la jaula y lo encierra allí como a un perro en su caseta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['abrevar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Llenas el comedero de agua y los dos deben beber a la vez, uno por cada lado, como animales.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['apurar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Paseas al esclavo de la correa y le das con la fusta en las nalgas cuando se para a olfatear el suelo.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['galopar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Montas al esclavo y la esclava hace de látigo de aire con la correa, chascando detrás para que corra.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['adiestrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le pones la correa al esclavo y le enseñas órdenes nuevas: sentado, quieto, patita; la esclava aplaude cada acierto.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['tropezar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Vendas los ojos al esclavo, le pones la correa y la esclava lo guía a tirones por un recorrido con obstáculos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['ordenar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Solo come del comedero el que antes haga la reverencia que tú pidas; la esclava decide el orden.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['saludar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Paseas a los dos de la correa, uno a cada lado, y les haces saludar a los muros de la mazmorra.', fuera: 'Aquí no hay ningún esclavo.' },
 
   // CASTIDAD
-  { verbos: ['cronometrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas la polla con una cuerda al esclavo y la esclava cuenta en voz alta los segundos que aguanta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['parar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Excitas a la esclava con la pluma hasta que gime y paras en seco; el esclavo se ríe y ella le muerde.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['masturbar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas las manos a la anilla del muro al esclavo y la esclava lo masturba al ritmo que tú marcas con la palma.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['temporizar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tiras los dados: el resultado son los minutos que debe aguantar la esclava sin correrse mientras el esclavo la lame.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['azotar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas al esclavo y la esclava lo excita; cada vez que se le escapa un gemido, tú le das con la fusta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['suplicar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le atas a la esclava y el esclavo la excita; cuando ella suplica, él se aparta y la deja con la boca abierta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['avisar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'La esclava toca la campana cada vez que está a punto; entonces el esclavo para y cuenta hasta diez.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['ordeñar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas a las anillas al esclavo y la esclava lo excita con la boca; tú decides cuándo puede correrse.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['competir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Excitas a la esclava con el consolador y al esclavo con la mano, alternando, y el primero que gime pierde.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['prometer'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas al esclavo y le prometes el orgasmo por cada minuto que aguante; la esclava lleva el reloj en voz alta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['privar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos a la esclava y el esclavo la excita sin que ella sepa con qué; luego paran sin avisar.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['pactar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas al esclavo y la esclava lo excita; cada toque de campana son diez segundos más de espera.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['cortar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Excitas a la esclava y de repente le pasas hielo por el vientre; el sobresalto le corta el orgasmo en seco.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['observar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le atas al esclavo y follas a la esclava delante de él, que no puede tocarse ni correrse.', fuera: 'Aquí no hay ningún esclavo.' },
 
   // BIZARRO
-  { verbos: ['tamborilear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Conviertes los cuerpos en tambores: la esclava marca el ritmo en la espalda del esclavo y tú corriges los golpes flojos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['contorsionar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Atas a la esclava en una postura imposible, con un pie en la nuca, y la dejas así hasta que suplica.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['embalar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Apilas a los dos en el suelo, uno encima del otro, y los atas juntos como un fardo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['ritualizar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Inventas un ritual absurdo: tres reverencias, un beso al suelo y una vuelta; el que se equivoque recibe cera.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['cartografiar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Dibujas un mapa en la espalda del esclavo y la esclava debe encontrar el tesoro siguiendo tus indicaciones.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['imitar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones a la esclava delante del espejo y el esclavo debe imitar exactamente cada gesto que ella haga.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['arrodillar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'La esclava es tu reloj: debe tocar la campana cada minuto mientras el esclavo aguanta de rodillas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['yantar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a los dos sobre la mesa y usas sus vientres de plato y de mantel a la vez; comen el uno del otro.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['renombrar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Les cambias las etiquetas de nombre y durante el resto de la sesión deben responder al del otro.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['hamacar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Cuelgas a la esclava de la polea y el esclavo la empuja mientras tú cuentas las vueltas en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['tambalear'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones el cuenco en el centro y los obligas a caminar en círculo alrededor hasta que se marea el primero.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['registrar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'La espalda de la esclava es el cuaderno: el esclavo escribe ahí sus faltas y tú las lees en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['encarnar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tiras los dados: 1 perro, 2 gato, 3 yegua; los dos deben imitar el animal que salga hasta el siguiente tiro.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['mantener'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le vendas los ojos y le haces mantener una postura ridícula; el esclavo la corrige con toques de dedo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['estibar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a la esclava en la mesa, al esclavo encima y follas desde atrás hasta que la mesa chirría.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['escalar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Amontonas paja y los obligas a subir el uno sobre el otro hasta tocar el techo con la mano.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['activar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cada vez que digas una palabra clave, la esclava debe pinchar suave al esclavo; él debe repetir la palabra.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['sujetar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'La esclava hace de cepo: sujeta las muñecas del esclavo entre sus manos mientras tú lo cosquilleas.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['orbitar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Los pones a girar en círculo alrededor de la polea y cada vuelta suma un minuto de rodillas.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['puntuar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Usas el vientre de la esclava de escritorio para apuntar el marcador de la sesión y se lo lees al esclavo.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['esconder'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones al esclavo de pie con el saco abierto delante y la esclava se esconde detrás de él a ratos.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['apagar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Enciendes una vela por cada falta y las apagáis con la lengua de los dos, alternando.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['mandar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Sientas a la esclava en el banco y el esclavo se arrodilla a sus pies; ella debe darle órdenes.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['titiriterar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Atas cuerdas a las muñecas y tobillos del esclavo y lo mueves como una marioneta; la esclava pone la voz.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['narrar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Los obligas a caminar uno detrás del otro frente al espejo describiendo lo que ven en voz alta.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['rebotar'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Tumbas al esclavo en la paja y la esclava salta encima suave para hacerlo rebotar.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['adherir'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Untas de miel la espalda de la esclava y la dejas hecha un tapiz pegajoso mientras el esclavo la admira.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['designar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Giras la ruleta y el señalado elige la postura del otro para los próximos cinco minutos.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['pendular'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Cuelgas al esclavo y lo balanceas; la esclava cuenta cada pasada por delante de ella.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['arrimarse'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Pones al esclavo de pie delante de la esclava, tapándola, y te acercas por detrás sin que ella te vea.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['responder'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Inventas un código de campanadas y el esclavo debe responder con la postura correcta a cada una.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['puntear'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Los pones a caminar en círculo y das con la fusta al que se retrase; la esclava marca el paso.', fuera: 'Aquí no hay ningún esclavo.' },
-  { verbos: ['nominar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Les pones etiquetas de roles y deben actuar así toda la sesión, llamándose por el rol y no por el nombre.', fuera: 'Aquí no hay ninguna esclava.' },
-  { verbos: ['adorar'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
 
     
     
