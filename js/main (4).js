@@ -1,0 +1,370 @@
+/* Motor: estado, intérprete de comandos y arranque. */
+const Juego = (() => {
+  const estado = {
+    estancia: 'habitacion', inventario: [], contador: 0, terminado: false,
+    dispositivo: null, app: null, esperandoCodigo: false, desbloqueado: false,
+    desnuda: false, cafeHecho: false, cafeTomado: false, mensajeLeido: false, cuadroVisto: false, contactado: false, pastillaTomada: false, pasadizo: false
+  };
+  const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const sinArticulo = t => t.replace(/^(en|sobre|contra|a|al|la|el|los|las|un|una|de|del)\s+/, '').replace(/^(a|al|la|el|los|las|un|una|de|del)\s+/, '');
+  /* CORREGIDO: si la clave no existe en Datos.textos ya no revienta; devuelve lo que haya o ''. */
+  const T = (clave, datos = {}) => {
+    const base = (Datos.textos && Datos.textos[clave]) || '';
+    return base.replace(/\{(\w+)\}/g, (_, k) => datos[k] !== undefined ? datos[k] : (Datos[k] !== undefined ? Datos[k] : ''));
+  };
+
+  /* ---------- Estancias y objetos ---------- */
+  function mostrarSala() {
+    const s = Datos.estancias[estado.estancia];
+    estado.dispositivo = null;
+    estado.app = null;
+    UI.vista(s.nombre, s.imagen || Datos.imagenSala, false, false, false);
+    UI.log(`Te encuentras en <b>${s.nombre}</b>. ${s.desc}`);
+  }
+
+  function ir(arg) {
+    const nombre = sinArticulo(arg);
+    const destino = Datos.destinoAlias[nombre] || nombre;
+    if (!Datos.estancias[destino]) return UI.log('No puedes ir a ese lugar o no existe.');
+       if (destino === 'mazmorra') {
+      if (!estado.pasadizo) return UI.log(nombre === 'armario' ? T('armarioNormal') : 'No puedes ir a ese lugar o no existe.');
+      if (estado.estancia !== 'habitacion') return UI.log(T('mazmorraLejos'));
+    }
+   
+    Ordenes.cortarVideo();
+    estado.estancia = destino;
+    mostrarSala();
+  }
+
+  function examinar(arg) {
+    const nombre = sinArticulo(arg);
+    if (!nombre) return UI.log('¿Qué quieres examinar?');
+    /* Objetos de la estancia + los que llevas encima (p. ej. el libro). */
+    const propios = {};
+    estado.inventario.forEach(i => { for (const e in Datos.objetos) if (Datos.objetos[e][i] !== undefined) propios[i] = Datos.objetos[e][i]; });
+    const objetos = Object.assign({}, propios, Datos.objetos[estado.estancia]);
+    /* Busca el objeto como palabra completa dentro de la frase: «mueble antiguo» → «mueble». */
+    const frase = ' ' + nombre + ' ';
+    const hallado = [...Object.keys(objetos), ...Object.keys(Datos.alias)]
+      .filter(k => frase.includes(' ' + k + ' ')).sort((a, b) => b.length - a.length)[0];
+    const clave = Datos.alias[hallado] || hallado;
+    const desc = objetos[clave];
+    if (desc === undefined) return UI.log('No ves nada parecido por aquí.');
+    if (clave === 'cuadro') estado.cuadroVisto = true;
+    if (clave === 'cajon') return Ordenes.examinarCajon();
+    if (clave === 'tablero') return Ajedrez.examinar();
+        if (clave === 'comoda') return UI.log(desc + (!estado.pastillaTomada && !estado.inventario.includes('pastilla') ? ' ' + T('comodaPastilla') : ''));
+    if (clave === 'armario') return UI.log(estado.pasadizo ? T('armarioAbierto') : desc);
+    if (clave === 'pastilla' && estado.pastillaTomada) return UI.log(T('pastillaNoQueda'));
+    const img = Datos.imagenesObjetos[clave];
+    if (img) {
+      estado.dispositivo = 'vista';
+      UI.vista(clave.charAt(0).toUpperCase() + clave.slice(1), img, false, true);
+    }
+    const pista = () => { if (img) UI.log('Escribe «cerrar» para volver a ver la estancia.'); };
+    if (clave === 'nevera') return Ordenes.examinarNevera();
+    if (clave === 'caldera') { Ordenes.examinarCaldera(); return pista(); }
+    UI.log(desc);
+    pista();
+  }
+
+  /* ---------- Café ---------- */
+  function hacerCafe() {
+    if (estado.estancia !== 'cocina') return UI.log(T('cafeLejos'));
+    if (estado.cafeTomado) return UI.log(T('cafeYaBebido'));
+    if (estado.cafeHecho) return UI.log(T('cafeRepetido'));
+    estado.cafeHecho = true;
+    UI.log(T('cafeHecho'));
+  }
+  function beberCafe() {
+    if (estado.cafeTomado) return UI.log(T('cafeYaBebido'));
+    if (!estado.cafeHecho) return UI.log(T('cafeNoHay'));
+    estado.cafeTomado = true;
+    UI.log(T('cafeBebido'));
+  }
+
+  /* ---------- Móvil, ordenador y apps (Life y Telegram) ---------- */
+  const encendido = () => estado.dispositivo === 'movil' || estado.dispositivo === 'ordenador';
+  const titulo = () => (estado.dispositivo === 'movil' ? 'Móvil' : 'Ordenador');
+
+  /* CORREGIDO: antes vivía dentro de abrir() y por eso mostrarApp(), leerMensaje() y escribir() lanzaban
+     «imagenApp is not defined» en cuanto se abría el móvil. Ahora está en el ámbito del módulo. */
+  function imagenApp(app) {
+    const im = Datos.imagenes;
+    if (app === 'life') return estado.mensajeLeido ? (im.lifeLeido || 'img/life-leido.svg') : (im.lifeNuevo || 'img/life-nuevo.svg');
+    return estado.contactado ? (im.telegramDesconocido || 'img/telegram-desconocido.svg') : im.telegram;
+  }
+
+  function abrir(arg, verbo) {
+    if (/nevera/.test(arg)) return examinar('nevera');
+    if (/congelador/.test(arg)) return Ordenes.abrirCongelador();
+    if (/comoda|cajon/.test(arg)) return Ordenes.abrirCajon();
+        if (/armario/.test(arg)) return abrirArmario();
+    const pc = /ordenador|pc/.test(arg), movil = /movil/.test(arg);
+    if (!pc && !movil) return comandoTexto(verbo, arg) || UI.log('No puedes abrir eso.');
+    if (pc && estado.estancia !== 'despacho') return UI.log('El ordenador está en el despacho.');
+    if (Datos.exigirCafe && !estado.cafeTomado) return UI.log(T('sinCafe'));
+    estado.dispositivo = pc ? 'ordenador' : 'movil';
+    estado.app = null;
+    UI.vista(titulo(), Datos.imagenes[estado.dispositivo]);
+    UI.log(T('enciende', { dispositivo: pc ? 'el ordenador' : 'el móvil' }));
+  }
+
+  function mostrarApp(app, texto) {
+    estado.app = app;
+    UI.vista(`${titulo()} · ${app === 'life' ? 'Life' : 'Telegram'}`, imagenApp(app));
+    UI.log(texto);
+  }
+
+  function abrirApp(cmd) {
+    if (!encendido()) {
+      if (Datos.exigirCafe && !estado.cafeTomado) return UI.log(T('sinCafe'));
+      estado.dispositivo = 'movil';   // el móvil siempre está a mano
+    }
+    if (/life|red social/.test(cmd)) return mostrarApp('life', T(estado.mensajeLeido ? 'lifeVacio' : 'lifeNuevo'));
+    if (estado.desbloqueado) return mostrarApp('telegram', estado.mensajeLeido && !estado.contactado ? T('telegramEscribe') : T('telegramListo'));
+    UI.vista(`${titulo()} · Telegram`, Datos.imagenes.telegram, true);
+    if (!estado.cuadroVisto) return UI.log(T('telegramBloqueado'));
+    estado.esperandoCodigo = true;
+    UI.log(T('pideCodigo'));
+  }
+
+  function comprobarCodigo(cmd) {
+    if (['cancelar', 'salir', 'cerrar', 'volver'].includes(cmd)) {
+      estado.esperandoCodigo = false;
+      UI.vista(titulo(), Datos.imagenes[estado.dispositivo]);
+      return UI.log('Apartas la vista de la pantalla.');
+    }
+    if (cmd !== Datos.codigo) return UI.log(T('codigoMal'));   // sigue esperando el código
+    estado.esperandoCodigo = false;
+    estado.desbloqueado = true;
+    mostrarApp('telegram', T('telegramAbre') + (estado.mensajeLeido ? ' ' + T('telegramEscribe') : ''));
+  }
+
+  function leerMensaje() {
+    if (estado.app !== 'life') return UI.log(T('sinMensaje'));
+    estado.mensajeLeido = true;
+    UI.vista(`${titulo()} · Life`, imagenApp('life'));
+    UI.log(T('mensajeIntro'));
+    UI.log(T('mensaje'), 'dialogo');
+  }
+
+  const escapa = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  function escribir(arg) {
+    if (estado.app !== 'telegram') return UI.log(T('escribirSinApp'));
+    if (!estado.mensajeLeido) return UI.log(T('escribirSinMensaje'));
+    if (!estado.contactado) {
+      estado.contactado = true;
+      UI.vista(`${titulo()} · Telegram`, imagenApp('telegram'));
+      UI.log(T('escribirOk'));
+      UI.dialogo(T('respuesta'));
+      return Ordenes.siguiente();
+    }
+    const alias = [Datos.contacto, ...(Datos.aliasContacto || [])].map(norm).map(escapa).join('|');
+    const texto = arg.replace(new RegExp('^(a |al )?(' + alias + ')\\s*'), '').trim();
+    if (!texto) return UI.log(Dialogos.sinTexto);
+    conversar(texto);
+  }
+
+  /* Conversación por palabras clave (reglas en js/dialogos.js). */
+  const turnos = {};
+  function conversar(texto) {
+    const msg = ' ' + norm(texto).replace(/[^a-z0-9 ]/g, ' ') + ' ';
+    const coincide = p => { p = norm(p); return p.endsWith('*') ? msg.includes(' ' + p.slice(0, -1)) : msg.includes(' ' + p + ' '); };
+    const i = Dialogos.reglas.findIndex(r => r.palabras.some(coincide));
+    const lista = i >= 0 ? Dialogos.reglas[i].respuestas : Dialogos.porDefecto;
+    turnos[i] = (turnos[i] || 0) + 1;
+    UI.dialogo(lista[(turnos[i] - 1) % lista.length]);
+  }
+
+  /* ---------- Otros comandos ---------- */
+  const TF = (clave, defecto) => (Datos.textos && Datos.textos[clave]) || defecto;
+
+  function llamar(cmd) {
+    if (cmd.includes('policia')) {
+      if (!estado.mensajeLeido) return UI.log(TF('policiaSinMotivo', 'No ha pasado nada que merezca llamar a la policía.'));
+      return terminar(estado.contador);
+    }
+    UI.log('Parece que no hay nadie al otro lado.');
+  }
+
+  function desnudarse() {
+    if (estado.desnuda) return UI.log(TF('yaDesnuda', 'Ya estás desnuda.'));
+    estado.desnuda = true;
+    UI.log(TF('desnudarse', 'Con las manos temblorosas, te quitas la ropa.'));
+  }
+
+  function terminar(i) {
+    estado.terminado = true;
+    UI.vaciarCola();
+    UI.log(`<b>FIN DE LA PARTIDA</b><br>${Datos.finales[i] || 'Fin.'}<br><br>Pulsa el botón ↻ para volver a empezar.`, 'final');
+    UI.bloquearEntrada();
+  }
+
+  function coger(arg) {
+    const o = Datos.cogibles.find(c => c.nombres.test(arg));
+    if (!o) return UI.log('No puedes coger eso.');
+        if (o.item === 'pastilla' && estado.pastillaTomada) return UI.log(T('pastillaNoQueda'));
+    if (estado.inventario.includes(o.item)) return UI.log(o.yaTienes);
+    if (o.estancia !== estado.estancia) return UI.log(o.fuera || `No ves ningún ${o.item} por aquí.`);
+    if (o.requiere && !Ordenes.cumple(o.requiere)) return UI.log(o.bloqueado);
+    estado.inventario.push(o.item);
+    UI.inventario(estado.inventario);
+    UI.log(o.texto);
+  }
+
+  function leer(arg) {
+    if (/mensaje|correo/.test(arg)) return leerMensaje();
+    if (!/libro|perversion|emily/.test(arg)) return comandoTexto('leer', arg) || UI.log('No hay nada que leer ahí.');
+    if (!estado.inventario.includes('libro') && estado.estancia !== 'salon') return UI.log('No ves ningún libro por aquí.');
+    UI.lectura(Relato.titulo, Relato.texto);
+  }
+
+  /* Comandos de texto: globales o ligados a una estancia y un objeto. */
+  function comandoTexto(verbo, arg, soloAqui) {
+    const frase = (verbo + ' ' + arg).trim();
+    let mejor = null, puntos = 0;
+    for (const c of Datos.comandosTexto) {
+      const v = c.verbos.map(norm).find(v => frase === v || frase.startsWith(v + ' '));
+      if (v === undefined) continue;
+      /* CORREGIDO: `inventario` ya se tiene en cuenta (antes era código muerto). */
+      if (c.inventario && !estado.inventario.includes(c.inventario)) continue;
+      if (soloAqui && c.estancia && c.estancia !== estado.estancia) continue;
+      const resto = frase.slice(v.length).trim();
+      const objeto = sinArticulo(resto);
+      const palabras = ' ' + resto.replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+      let p;
+      if (!c.objetos) p = 1;                                    // sin objetos: vale para cualquiera
+      else {
+        const lista = c.objetos.map(norm);
+        if (lista.includes(objeto)) p = 3;                      // objeto exacto: gana a todo
+        else {                                                  // objeto como palabra dentro de una frase larga
+          const hit = lista.filter(o => palabras.includes(' ' + o + ' ')).sort((a, b) => b.length - a.length)[0];
+          if (hit === undefined) continue;
+          p = 2 + hit.length / 1000;                            // entre varios objetos, el más largo
+        }
+      }
+      if (c.estancia === estado.estancia) p += 4;               // se prefiere la entrada de esta estancia
+      if (p > puntos) { mejor = c; puntos = p; }
+    }
+    if (!mejor) return false;
+    const lejos = mejor.estancia && mejor.estancia !== estado.estancia;
+    UI.log(lejos ? mejor.fuera : mejor.texto);
+    if (!lejos && mejor.imagen) {
+      estado.dispositivo = 'vista';
+      UI.vista(mejor.titulo || 'Imagen', mejor.imagen, false, true);
+      UI.log(mejor.pista || 'Escribe «cerrar» para volver a ver la estancia.');
+    }
+    if (!lejos && mejor.cerrarVista) mostrarSala();            // p. ej. «apagar televisión»: vuelve a la vista de la estancia
+    return true;
+  }
+
+    /* ---------- Pastilla y pasadizo ---------- */
+  function comerPastilla() {
+    if (estado.pastillaTomada) return UI.log(T('pastillaYa'));
+    const i = estado.inventario.indexOf('pastilla');
+    if (i < 0) return UI.log(T('pastillaSinTener'));
+    estado.inventario.splice(i, 1);
+    UI.inventario(estado.inventario);
+    estado.pastillaTomada = true;
+    estado.pasadizo = true;
+    UI.log(T('pastillaComida'));
+    UI.log(estado.estancia === 'habitacion' ? T('pasadizoAbre') : T('pasadizoLejano'));
+  }
+  function abrirArmario() {
+    if (estado.estancia !== 'habitacion') return UI.log('No ves ningún armario por aquí.');
+    UI.log(estado.pasadizo ? T('armarioAbierto') : T('armarioNormal'));
+  }
+  function entrarArmario() {
+    if (estado.estancia !== 'habitacion') return UI.log('No ves ningún armario por aquí.');
+    if (!estado.pasadizo) return UI.log(T('armarioNormal'));
+    ir('mazmorra');
+  }
+  function ayuda() {
+    UI.log('Comandos principales, aunque puedes probar tantos como se te ocurran (algunos funcionarán, otros no): «ir a [despacho/terraza/baño...]», «escribir a...», «examinar [objeto]», «coger [objeto]», «leer [objeto]», «encender móvil», «encender ordenador», «mirar red social», «abrir telegram», «escribir [mensaje]», «hacer foto [objeto]», «enviar foto», «cerrar», «llamar a la policía», «poner/apoyar/cantar...».');
+  }
+
+  /* ---------- Intérprete ---------- */
+  function ejecutar(entrada) {
+    if (estado.terminado || !entrada.trim()) return;
+    UI.log(entrada, 'usuario');
+    const cmd = norm(entrada);
+    if (Extras.comando(cmd)) return;
+    if (estado.esperandoCodigo) return comprobarCodigo(cmd);
+    const ajuste = cmd.match(/^([+-])\s*(\d+)\s*[º°]?\s*c?$/);
+    if (ajuste) return Ordenes.ajustar(ajuste[1], parseInt(ajuste[2], 10));
+    if (Ajedrez.mover(cmd)) return;
+    if (/\b(life|telegram)\b|red social/.test(cmd)) return abrirApp(cmd);
+    const [verbo, ...resto] = cmd.split(' ');
+    const arg = resto.join(' ');
+    if (['abrir', 'mirar', 'ver', 'examinar'].includes(verbo) && /mensaje/.test(arg)) return leerMensaje();
+    if (verbo === 'ir') return ir(arg);
+    if (['examinar', 'ver', 'mirar'].includes(verbo)) return comandoTexto(verbo, arg, true) || examinar(arg);
+    if (verbo === 'subir' && /temperatura|caldera|calefaccion/.test(arg)) return Ordenes.subirTemperatura();
+    if (['apoyar', 'poner', 'tocar', 'colocar', 'pegar', 'mantener'].includes(verbo) && /radiador/.test(arg)) return Ordenes.apoyarMano();
+    if (['grabar', 'encender', 'hacer', 'empezar'].includes(verbo) && /video/.test(arg)) return Ordenes.grabarVideo();
+    if (['parar', 'detener', 'terminar', 'dejar', 'cortar'].includes(verbo) && /video|grab/.test(arg)) return Ordenes.pararVideo();
+    if (/cubito|hielo/.test(arg) && (/culo/.test(arg) || ['meter', 'meterme', 'introducirme', 'introducir'].includes(verbo))) return Ordenes.cubitoBoca();
+    if ((['meter', 'meterme', 'introducir', 'introducirme'].includes(verbo) || /cono/.test(arg)) && /calabac/.test(arg)) return Ordenes.morderCalabacin();
+    if (['hacer', 'preparar', 'usar', 'poner'].includes(verbo) && /cafe/.test(arg)) return hacerCafe();
+    if (['beber', 'tomar', 'tomarse'].includes(verbo) && /cafe/.test(arg)) return beberCafe();
+        if (['comer', 'comerse', 'tomar', 'tomarse', 'tragar', 'tragarse', 'ingerir'].includes(verbo) && /pastilla|pildora/.test(arg)) return comerPastilla();
+    if (['entrar', 'pasar', 'cruzar', 'meterse'].includes(verbo) && /armario|pasadizo/.test(arg)) return entrarArmario();
+    if (verbo === 'salir' && estado.estancia === 'mazmorra') return ir('habitacion');
+    if (verbo === 'coger' || verbo === 'coge') return coger(sinArticulo(arg));
+    if (verbo === 'leer' || verbo === 'lee') return leer(sinArticulo(arg));
+    if (verbo === 'abrir' || verbo === 'encender') return abrir(arg, verbo);
+    if (['escribir', 'escribirme', 'pintar', 'anotar'].includes(verbo) && /brazo/.test(arg)) return Ordenes.escribirBrazo();
+    if (['escribir', 'decir', 'responder', 'contestar', 'preguntar', 'hablar'].includes(verbo)) {
+      if (estado.app !== 'telegram' && comandoTexto(verbo, arg, true)) return;
+      return Personajes.manejar(arg) || Ordenes.responder(cmd) || escribir(arg);
+    }
+    if (verbo === 'cerrar' && estado.dispositivo) return mostrarSala();
+    if (/^desnud|^desvest/.test(verbo) || (/^quit/.test(verbo) && /ropa/.test(arg))) return desnudarse();
+    if (/^llam/.test(verbo)) return llamar(cmd);
+    if (verbo === 'ayuda') return ayuda();
+    const sujeto = sinArticulo(arg);
+    if ((verbo === 'hacer' || verbo === 'sacar') && /^foto/.test(sujeto)) return Ordenes.hacerFoto(sinArticulo(sujeto.replace(/^foto\s*/, '')));
+    if (['enviar', 'mandar', 'subir'].includes(verbo) && /^foto/.test(sujeto)) return Ordenes.enviarFoto();
+    if (['enviar', 'mandar', 'subir'].includes(verbo) && /^video/.test(sujeto)) return Ordenes.enviarVideo();
+    if (comandoTexto(verbo, arg)) return;
+    if (Personajes.manejar(cmd) || Ordenes.responder(cmd)) return;
+    if (estado.app === 'telegram' && estado.desbloqueado && estado.mensajeLeido) return escribir(cmd);   // texto libre en Telegram = mensaje
+    UI.log('No entiendo ese comando.');
+  }
+
+  function iniciar() {
+    Datos.intro.forEach(([tipo, texto]) => UI.log(texto, tipo));
+    mostrarSala();
+    UI.inventario(estado.inventario);
+    UI.$('terminal').scrollTop = 0;   // el inicio se lee desde arriba
+    const input = UI.$('command-input');
+    const lanzar = () => { const v = input.value; input.value = ''; ejecutar(v); };
+    input.addEventListener('keypress', ev => { if (ev.key === 'Enter') lanzar(); });
+    UI.$('btn-ejecutar').addEventListener('click', lanzar);
+    UI.$('lectura-cerrar').addEventListener('click', UI.cerrarLectura);
+    document.addEventListener('keydown', ev => { if (ev.key === 'Escape') UI.cerrarLectura(); });
+  }
+
+  /* Portada: aviso +21 → vídeo → partida. */
+   function portada() {
+    const $ = id => document.getElementById(id);
+    const empezar = () => { $('portada').remove(); iniciar(); };
+
+    function verVideo() {
+      $('aviso-edad').classList.add('hidden');
+      $('intro-video').classList.remove('hidden');
+      const v = $('video-intro');
+      v.onended = empezar;
+      v.querySelector('source').onerror = empezar;   // si falta el archivo, no bloquea el juego
+      $('btn-saltar').onclick = () => { v.pause(); empezar(); };
+      v.play().catch(empezar);
+    }
+
+    $('btn-mayor').onclick = verVideo;
+    $('btn-menor').onclick = () => { window.location.href = 'https://www.google.com'; };
+  }
+
+  window.addEventListener('load', portada);
+  return { estado, norm, terminar, ejecutar };
+})();
