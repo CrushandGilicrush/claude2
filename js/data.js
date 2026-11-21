@@ -94,7 +94,7 @@ const Datos = {
   /* CORREGIDO: lifeNuevo y lifeLeido apuntaban a img/mi-foto-1.jpg y img/mi-foto-2.jpg, que no existen. */
   imagenes: { movil: 'img/movil.svg', ordenador: 'img/ordenador.svg', life: 'img/mensaje.png', lifeNuevo: 'img/life-nuevo.svg', lifeLeido: 'img/life-leido.svg', telegramDesconocido: 'img/telegram-desconocido.svg', telegram: 'img/obedece.png' },
   intro: [
-    ['narrativo', 'Despierta; está amaneciendo. Lo sé: cuesta renunciar al calor de la manta, y se está tan bien en la cama... Y con lo que te gusta remolonear. Has planeado procrastinar todo el día, pero debes hacer cosas. Venga, levanta, prepara un café y, antes de hacer nada, echas un vistazo a fetlife, a ver qué se mueve por ahí. antes de volcarte a tan dura tarea, quieres echar un vistazo a life y ver qué se cuece por ahí.']
+    ['narrativo', 'Despierta; está amaneciendo. Lo sé: cuesta mucho renunciar al calor de la manta, y te gusta remolonear. Habías planeado procrastinar todo el día, pero debes hacer cosas. Venga, levanta, prepara un café y, antes de hacer nada, echas un vistazo a fetlife, a ver qué se cuece por ahí. Si necesitas ayuda, solo tienes que pedirla escribiendo la palabra «ayuda». Puedes empezar escribiendo «levantarme», y luego, «ir a la cocina». ¡Vivir sola en casa puede ser toda una aventura!']
   ],
   estancias: {
     salon: { nombre: 'Salón', imagen: 'img/salon.png', desc: 'Estancia principal. Hay un sofá, una biblioteca, radiadores y un mueble antiguo.' },
