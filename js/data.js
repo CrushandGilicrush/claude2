@@ -97,13 +97,15 @@ const Datos = {
     ['narrativo', 'Despierta; está amaneciendo. Lo sé: cuesta mucho renunciar al calor de la manta, y te gusta remolonear. Habías planeado procrastinar todo el día, pero debes hacer cosas. Venga, levanta, prepara un café y, antes de hacer nada, echas un vistazo a fetlife, a ver qué se cuece por ahí. Si necesitas ayuda, solo tienes que pedirla escribiendo la palabra «ayuda». Puedes empezar escribiendo «levantarme», y luego, «ir a la cocina». ¡Vivir sola en casa puede ser toda una aventura!']
   ],
   estancias: {
-    salon: { nombre: 'Salón', imagen: 'img/salon.png', desc: 'Estancia principal. Hay un sofá, una biblioteca, radiadores y un mueble antiguo.' },
+    salon: { nombre: 'el balón', imagen: 'img/salon.png', desc: 'Estancia principal. Hay un sofá, una biblioteca, radiadores y un mueble antiguo.' },
     habitacion: { nombre: 'la habitación', imagen: 'img/habitacion2.png', desc: 'Se trata de un espacio íntimo y acogedor. En él te sientes tranquila. Aquí tienes la cama, tu armario, un espejo y una cómoda con cajón.' },
-    despacho: { nombre: 'Despacho', imagen: 'img/despacho.png', desc: 'Zona de trabajo con un ordenador de sobremesa, escritorio, juegos de mesa y un cuadro.' },
-    cocina: { nombre: 'Cocina', imagen: 'img/cocina1.png', desc: 'Equipada con cocina, cafetera, nevera y una caldera con panel digital.' },
+    despacho: { nombre: 'el despacho', imagen: 'img/despacho.png', desc: 'Zona de trabajo con un ordenador de sobremesa, escritorio, juegos de mesa y un cuadro.' },
+    cocina: { nombre: 'la cocina', imagen: 'img/cocina1.png', desc: 'Equipada con cocina, cafetera, nevera y una caldera con panel digital.' },
     bano: { nombre: 'el baño', imagen: 'img/baño.png', desc: 'Se trata de una estancia pequeña pero confortable, iluminada por una luz tenue que apenas consigue disipar las sombras de los rincones. A un lado se encuentra el inodoro, junto al lavabo, cuya superficie de porcelana conserva algunas marcas de uso. Sobre él, un espejo refleja la estancia con claridad. Bajo este, pegado a la pared, hay un mueble de baño con varios compartimentos donde se guardan los productos de higiene y otros objetos cotidianos. Al fondo, la ducha, protegida por una mampara de cristal, permanece silenciosa. ' },
-    terraza: { nombre: 'Terraza', imagen: 'img/terraza.png', desc: 'Espacio exterior con macetas y una tumbona cómoda.' },
-        mazmorra: { nombre: 'Mazmorra', imagen: 'img/escalera.png', desc: 'Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro. Para volver, escribe «salir».' }
+    terraza: { nombre: 'la terraza', imagen: 'img/terraza.png', desc: 'Espacio exterior con macetas y una tumbona cómoda.' },
+        mazmorra: { nombre: 'una mazmorra', imagen: 'img/escalera.png', desc: 'Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro.A la izquierda, donde la luz apenas llega, dos figuras esperan de rodillas: un hombre y una mujer, desnudos los dos, con el collar ceñido al cuello y la cadena tensa hasta las argollas. No dicen nada. Ella levanta la vista y te sigue con los ojos; él mira al suelo y respira despacio, como quien ya ha aprendido a esperar. Cada vez que se atreven a moverse, las cadenas tintinean y ese ruido llena la sala de una forma que no sabías que podía llenarla. Nadie te ha explicado ninguna regla, y aun así entiendes que no hay: la mesa está vacía y el tiempo es tuyo. Puedes quedarte mirándolos desde la penumbra, acercarte a uno, soltar una cadena o apretarla. Ellos aguantan. Tú decides. Para volver, escribe «salir».' }
+
+
   },
   /* Descripciones provisionales de «examinar»: reescribir a gusto. */
   objetos: {
