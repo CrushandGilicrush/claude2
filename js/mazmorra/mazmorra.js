@@ -754,7 +754,7 @@
   { verbos: ['nomina'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Les pones etiquetas de roles y deben actuar así toda la sesión, llamándose por el rol y no por el nombre.', fuera: 'Aquí no hay ninguna esclava.' },
   { verbos: ['adora'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'Aquí no hay ninguna esclava.' },
   // MEADAS
-  { verbos: ['méale', 'méalo'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le haces abrir la boca, te colocas encima y le meas dentro. Él traga sin apartar la vista y la esclava cuenta en voz alta los segundos que aguanta.', fuera: 'Aquí no hay ningún esclavo.' },
+  { verbos: ['méale', 'méalo'], estancia: 'mazmorra',  texto: 'Le haces abrir la boca, te colocas encima y le meas dentro. Él traga sin apartar la vista y la esclava cuenta en voz alta los segundos que aguanta.', fuera: 'Aquí no hay ningún esclavo.' },
   { verbos: ['méale'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Pones a la esclava de rodillas, le apartas el pelo de la cara y le meas encima. Ella cierra los ojos y no se limpia hasta que se lo ordenas.', fuera: 'Aquí no hay ninguna esclava.' },
   { verbos: ['méala'], estancia: 'mazmorra', objetos: ['esclava'], texto: 'Le meas en el pecho, despacio, dejando que resbale hasta el vientre, y el esclavo lame el reguero desde abajo.', fuera: 'Aquí no hay ninguna esclava.' },
   { verbos: ['méalo'], estancia: 'mazmorra', objetos: ['esclavo'], texto: 'Le meas en la espalda mientras está doblado sobre la mesa y dejas que la esclava lo seque con la lengua.', fuera: 'Aquí no hay ningún esclavo.' },
