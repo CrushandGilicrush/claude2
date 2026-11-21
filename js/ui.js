@@ -71,12 +71,29 @@ const UI = (() => {
     document.querySelectorAll('.escribiendo').forEach(n => n.remove());
   }
 
+   const esVideo = src => /\.(mp4|webm|ogv)(\?.*)?$/i.test(src);
+
   function vista(titulo, imagen, bloqueado = false, grande = false, contener = true) {
     $('visor').classList.toggle('visor-grande', grande);
     $('room-title').innerText = titulo;
-    $('room-bg').style.backgroundImage = `url('${imagen}')`;
-    $('room-bg').classList.toggle('bg-contain', contener);
-    $('room-bg').classList.toggle('bg-no-repeat', contener);
+    const v = $('room-video');
+    if (esVideo(imagen)) {
+      $('room-bg').style.backgroundImage = 'none';
+      if (v.getAttribute('src') !== imagen) v.setAttribute('src', imagen);
+      v.classList.remove('hidden');
+      v.classList.toggle('object-contain', contener);
+      v.classList.toggle('object-cover', !contener);
+      v.muted = false;
+      v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });   // si el navegador no deja con sonido, sin sonido
+    } else {
+      v.pause();
+      v.classList.add('hidden');
+      v.removeAttribute('src');
+      v.load();
+      $('room-bg').style.backgroundImage = `url('${imagen}')`;
+      $('room-bg').classList.toggle('bg-contain', contener);
+      $('room-bg').classList.toggle('bg-no-repeat', contener);
+    }
     $('bloqueo').classList.toggle('hidden', !bloqueado);
   }
 
