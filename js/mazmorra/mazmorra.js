@@ -114,7 +114,6 @@
 
   /* ---------- Comandos de texto ---------- */
   const comandos = [
-   comandosTexto: [
     /* --- Puerta, cadenas y estructura --- */
     { verbos: ['abrir', 'abrirlo', 'abrirla', 'abrelo', 'abrela'], estancia: 'mazmorra', texto: 'Empujas la puerta de hierro. No cede.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['forzar', 'forzarlo', 'forzarla', 'forzalo', 'forzala'], estancia: 'mazmorra', texto: 'Cargas con el hombro contra la puerta. La madera cruje, los herrajes aguantan.', fuera: 'No estás en la mazmorra.' },
@@ -510,7 +509,7 @@
     { verbos: ['encasillar', 'encasillarlo', 'encasillarla', 'encasillalo', 'encasillala'], estancia: 'mazmorra', texto: 'Les pones etiquetas de roles y deben actuar así toda la sesión, llamándose por el rol y no por el nombre.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['nominar', 'nominarlo', 'nominarla', 'nominalo', 'nominala'], estancia: 'mazmorra', texto: 'Nominas a cada uno con un papel y ellos deben aceptarlo repitiéndolo en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['adorar', 'adorarlo', 'adorarla', 'adoralo', 'adorala'], estancia: 'mazmorra', texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'No estás en la mazmorra.' }
-  
+     },
   ];
   Datos.comandosTexto.push(...comandos);
 })();
