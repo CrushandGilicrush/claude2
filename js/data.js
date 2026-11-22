@@ -92,7 +92,7 @@ const Datos = {
   },
   imagenSala: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80",
   /* CORREGIDO: lifeNuevo y lifeLeido apuntaban a img/mi-foto-1.jpg y img/mi-foto-2.jpg, que no existen. */
-  imagenes: { movil: 'img/movil.svg', ordenador: 'img/ordenador.svg', life: 'img/mensaje.png', lifeNuevo: 'img/life-nuevo.svg', lifeLeido: 'img/life-leido.svg', telegramDesconocido: 'img/obedece.png', telegram: 'img/codigo.png' },
+  imagenes: { movil: 'img/movil.svg', ordenador: 'img/pc.png', life: 'img/mensaje.png', lifeNuevo: 'img/life-nuevo.svg', lifeLeido: 'img/life-leido.svg', telegramDesconocido: 'img/obedece.png', telegram: 'img/codigo.png' },
   intro: [
     ['narrativo', 'Despierta; está amaneciendo. Lo sé: cuesta mucho renunciar al calor de la manta, y te gusta remolonear. Habías planeado procrastinar todo el día, pero debes hacer cosas. Venga, levanta, prepara un café y, antes de hacer nada, echas un vistazo a fetlife, a ver qué se cuece por ahí. Si necesitas ayuda, solo tienes que pedirla escribiendo la palabra «ayuda». Puedes empezar escribiendo «levantarme», y luego, «ir a la cocina». ¡Vivir sola en casa puede ser toda una aventura!']
   ],
