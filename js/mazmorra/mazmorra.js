@@ -6,14 +6,20 @@
    - Alias (plurales, sinónimos) .... Datos.alias
    - Acceso desde la habitación ..... Datos.destinoAlias
    - Comandos de texto .............. Datos.comandosTexto
-   Para añadir una acción nueva, copia una línea de «comandos» y cambia verbos, objetos y texto.
    ============================================================================ */
 (() => {
+  /* ---------- Contenedores a prueba de orden de carga ---------- */
+  Datos.estancias = Datos.estancias || {};
+  Datos.objetos = Datos.objetos || {};
+  Datos.alias = Datos.alias || {};
+  Datos.destinoAlias = Datos.destinoAlias || {};
+  Datos.comandosTexto = Datos.comandosTexto || [];
+
   /* ---------- Estancia ---------- */
   Datos.estancias.mazmorra = {"nombre":"una mazmorra","imagen":"img/escalera.png","desc":"Bajas por la escalera de caracol hasta una sala de piedra, fría y poco iluminada. Hay una mesa de madera, unas cadenas colgadas de la pared y una puerta de hierro. A la izquierda, donde la luz apenas llega, dos figuras esperan de rodillas: un hombre y una mujer, desnudos los dos, con el collar ceñido al cuello y la cadena tensa hasta las argollas. No dicen nada. Ella levanta la vista y te sigue con los ojos; él mira al suelo y respira despacio, como quien ya ha aprendido a esperar. Cada vez que se atreven a moverse, resuena el tintineo de las cadenas en toda la estancia. Nadie te ha explicado ninguna regla, y aun así entiendes que no hay: la mesa está vacía y el tiempo es tuyo. Puedes quedarte mirándolos desde la penumbra, acercarte a uno, soltar una cadena o apretarla. Ellos aguantan. Tú decides. Para volver, escribe «salir»."};
 
   /* ---------- Acceso (el pasadizo solo se abre tras la pastilla; lo controla main.js) ---------- */
-  Object.assign(Datos.destinoAlias, { armario: 'mazmorra', pasadizo: 'mazmorra' });
+  Object.assign(Datos.destinoAlias, { armario: 'mazmorra', pasadizo: 'mazmorra', salir: 'habitacion', escalera: 'habitacion' });
 
   /* ---------- Objetos para «examinar» ---------- */
   Datos.objetos.mazmorra = {
@@ -60,7 +66,7 @@
     "hielo": "Un cubo lleno de hielo.",
     "cinta": "Una cinta métrica.",
     "puerta": "Una puerta de hierro. Está cerrada.",
-  });
+  };
 
   /* ---------- Alias: plurales y sinónimos → objeto ---------- */
   Object.assign(Datos.alias, {
@@ -93,7 +99,6 @@
     "cuencos": "cuenco",
     "comederos": "comedero",
     "espejos": "espejo",
-    "plumas": "plumas",
     "campanas": "campana",
     "ruletas": "ruleta",
     "plugs": "plug",
@@ -110,12 +115,12 @@
     "hielos": "hielo",
     "cubitos": "hielo",
     "cintas": "cinta",
-  };
+  });
 
   /* ---------- Comandos de texto ---------- */
   const comandos = [
     /* --- Puerta, cadenas y estructura --- */
-    { verbos: ['abrir', 'abrirlo', 'abrirla', 'abrelo', 'abrela'], estancia: 'mazmorra', texto: 'Empujas la puerta de hierro. No cede.', fuera: 'No estás en la mazmorra.' },
+   // { verbos: ['abrir', 'abrirlo', 'abrirla', 'abrelo', 'abrela'], estancia: 'mazmorra', texto: 'Empujas la puerta de hierro. No cede.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['forzar', 'forzarlo', 'forzarla', 'forzalo', 'forzala'], estancia: 'mazmorra', texto: 'Cargas con el hombro contra la puerta. La madera cruje, los herrajes aguantan.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['tirar', 'tirarlo', 'tirarla', 'tiralo', 'tirala'], estancia: 'mazmorra', texto: 'Tiras de las cadenas. Se oye un eco metálico que se pierde en la oscuridad.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['mover', 'moverlo', 'moverla', 'muevelo', 'muevela'], estancia: 'mazmorra', texto: 'Mueves las cadenas de sitio, eslabón a eslabón, hasta que quedan como quieres.', fuera: 'No estás en la mazmorra.' },
@@ -133,11 +138,11 @@
     { verbos: ['mostrar', 'mostrarlo', 'mostrarla', 'muestralo', 'muestrala'], estancia: 'mazmorra', texto: 'Subes a la esclava a la mesa y la haces girar despacio sobre sí misma mientras el esclavo, arrodillado, describe en voz alta cada parte de su cuerpo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['comer', 'comerlo', 'comerla', 'comelo', 'comela'], estancia: 'mazmorra', texto: 'Pones a la esclava a cuatro patas sobre la mesa y colocas el cuenco de su comida entre sus omóplatos; el esclavo come de ahí sin usar las manos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['alimentar', 'alimentarlo', 'alimentarla', 'alimentalo', 'alimentala'], estancia: 'mazmorra', texto: 'Alimentas al esclavo del cuenco colocado sobre la espalda de la esclava; si derrama algo, se lo limpia con la lengua.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['mecer', 'mecerlo', 'meceria', 'mecelo', 'mecela'], estancia: 'mazmorra', texto: 'Sientas a la esclava en el borde de la mesa, piernas abiertas, y ordenas al esclavo que la lama despacio mientras le cuentas los minutos en voz alta.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['mecer', 'mecerlo', 'mecerla', 'mecelo', 'mecela'], estancia: 'mazmorra', texto: 'Sientas a la esclava en el borde de la mesa, piernas abiertas, y ordenas al esclavo que la lama despacio mientras le cuentas los minutos en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['cabalgar', 'cabalgarlo', 'cabalgarla', 'cabalgalo', 'cabalgala'], estancia: 'mazmorra', texto: 'Haces cabalgar a la esclava sobre el esclavo tumbado en la mesa y marcas el ritmo con la palma sobre la madera.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['apilar', 'apilarlo', 'apilarla', 'apilalo', 'apilala'], estancia: 'mazmorra', texto: 'Tumbas a los dos sobre la mesa, uno encima del otro, y los dejas hechos un sándwich humano mientras das vueltas alrededor silbando.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['cubrir', 'cubrirlo', 'cubrirla', 'cubrelo', 'cubrela'], estancia: 'mazmorra', texto: 'Cubres de cera el pecho del esclavo hasta hacerle una armadura y la esclava la rompe con las uñas.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['vendar', 'vendarIo', 'venderla', 'viendalo', 'viendala'], estancia: 'mazmorra', texto: 'Vendas los ojos a la esclava, la atas de pie contra el borde de la mesa y haces que el esclavo le dé azotes que ella debe adivinar contando en alto.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['vendar', 'vendarlo', 'vendarla', 'viendalo', 'viendala'], estancia: 'mazmorra', texto: 'Vendas los ojos a la esclava, la atas de pie contra el borde de la mesa y haces que el esclavo le dé azotes que ella debe adivinar contando en alto.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['adivinar', 'adivinarlo', 'adivinarla', 'adivinalo', 'adivinala'], estancia: 'mazmorra', texto: 'Le vendas los ojos al esclavo y la esclava le toca partes del cuerpo que él debe adivinar con una sola palabra.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['subir', 'subirlo', 'subirla', 'subelo', 'subela'], estancia: 'mazmorra', texto: 'Subes a la esclava a la mesa y la obligas a quedarse de pie mientras el esclavo, desde el suelo, le cuenta cada defecto de la postura.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['exhibir', 'exhibirlo', 'exhibirla', 'exhibelo', 'exhibela'], estancia: 'mazmorra', texto: 'Exhibes a la esclava encima de la mesa, de cara a la pared, y haces que el esclavo la describa sin mirarla.', fuera: 'No estás en la mazmorra.' },
@@ -147,13 +152,13 @@
     { verbos: ['jugar', 'jugarlo', 'jugarla', 'juegalo', 'jugala'], estancia: 'mazmorra', texto: 'Juegas con la esclava atada a la mesa: cada tirón de cuerda que das, el esclavo le pasa el hielo un poco más abajo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['marcar', 'marcarlo', 'marcarla', 'marcalo', 'marcala'], estancia: 'mazmorra', texto: 'Tumbas al esclavo boca abajo sobre la mesa y le marcas la espalda con la vara contando en voz alta, mientras la esclava repite cada número como un eco.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['contar', 'contarlo', 'contarla', 'cuentalo', 'cuentala'], estancia: 'mazmorra', texto: 'Haces contar a la esclava cada golpe que el esclavo recibe sobre la mesa, sin saltarse ninguno.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['escribir', 'escribirlo', 'escribirla', 'escribelo', 'escribela'], estancia: 'mazmorra', texto: 'Sientas a la esclava en el suelo con la espalda recta contra la mesa y usas su vientre como escritorio para apuntar sus castigos pendientes.', fuera: 'No estás en la mazmorra.' },
+  //  { verbos: ['escribir', 'escribirlo', 'escribirla', 'escribelo', 'escribela'], estancia: 'mazmorra', texto: 'Sientas a la esclava en el suelo con la espalda recta contra la mesa y usas su vientre como escritorio para apuntar sus castigos pendientes.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['apuntar', 'apuntarlo', 'apuntarla', 'apuntalo', 'apuntala'], estancia: 'mazmorra', texto: 'Apuntas en el vientre de la esclava, con tinta, cada falta que comete el esclavo, y luego se las lees en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['colgar', 'colgarlo', 'colgarla', 'cuelgalo', 'cuelgala'], estancia: 'mazmorra', texto: 'Cuelgas al esclavo de la polea justo encima de la mesa, a un palmo de la madera, y haces que la esclava intente alcanzarle con la lengua.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['izar', 'izarlo', 'izarla', 'izalo', 'izala'], estancia: 'mazmorra', texto: 'Izas al esclavo de las muñecas hasta que solo los dedos de los pies le rozan la madera, y la esclava le lame las plantas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['derramar', 'derramarlo', 'derramarla', 'derramalo', 'derramala'], estancia: 'mazmorra', texto: 'Vuelcas la jarra sobre la mesa y pones a la esclava a lamer el charco con las manos atrás, mientras el esclavo espera su turno sin tocar nada.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['lamer', 'lamerlo', 'lamerla', 'lamelo', 'lamela'], estancia: 'mazmorra', texto: 'Obligas al esclavo a lamer cada zona de la esclava que tú vas señalando, sin usar las manos.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['mirar', 'mirarlo', 'mirarla', 'miralo', 'mirala'], estancia: 'mazmorra', texto: 'Pones a la esclava doblada sobre la mesa y follas al esclavo contra su espalda, de modo que cada empujón le machaque las costillas.', fuera: 'No estás en la mazmorra.' },
+   // { verbos: ['mirar', 'mirarlo', 'mirarla', 'miralo', 'mirala'], estancia: 'mazmorra', texto: 'Pones a la esclava doblada sobre la mesa y follas al esclavo contra su espalda, de modo que cada empujón le machaque las costillas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['presentar', 'presentarlo', 'presentarla', 'presentalo', 'presentala'], estancia: 'mazmorra', texto: 'Presentas a la esclava sobre la mesa como si fuera un objeto en subasta, y el esclavo debe pujar por ella en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['medir', 'medirlo', 'medirla', 'midelo', 'midela'], estancia: 'mazmorra', texto: 'Mides al esclavo con la cinta sobre la mesa, anotando en voz alta cada medida como si fuera ganado, y la esclava aplaude cada cifra.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['anotar', 'anotarlo', 'anotarla', 'anotalo', 'anotala'], estancia: 'mazmorra', texto: 'Anotas las medidas del esclavo en la espalda de la esclava, que debe repetirlas en voz alta sin equivocarse.', fuera: 'No estás en la mazmorra.' },
@@ -175,25 +180,25 @@
     { verbos: ['percutir', 'percutirlo', 'percutirla', 'percutelo', 'percutela'], estancia: 'mazmorra', texto: 'Percutes el cuerpo del esclavo con la yema de los dedos, en serie, y la esclava marca el compás.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['juntar', 'juntarlo', 'juntarla', 'juntalo', 'juntala'], estancia: 'mazmorra', texto: 'Doblas a los dos sobre la mesa, uno al lado del otro, y les obligas a lamerse mutuamente las manos mientras les pisas los tobillos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['obligar', 'obligarlo', 'obligarla', 'obligalo', 'obligala'], estancia: 'mazmorra', texto: 'Obligas al esclavo a mirar cómo trabajas a la esclava, con los ojos abiertos y sin poder apartar la cara.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['equilibrar', 'equilibrarlo', 'equilibrarla', 'equilibralo', 'equilibrála'], estancia: 'mazmorra', texto: 'Pones una vela encendida en equilibrio sobre la espalda del esclavo, tumbado en la mesa, y la esclava debe recoger la cera con la lengua sin apagarla.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['equilibrar', 'equilibrarlo', 'equilibrarla', 'equilibralo', 'equilibrala'], estancia: 'mazmorra', texto: 'Pones una vela encendida en equilibrio sobre la espalda del esclavo, tumbado en la mesa, y la esclava debe recoger la cera con la lengua sin apagarla.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['sostener', 'sostenerlo', 'sostenerla', 'sostenlo', 'sostenla'], estancia: 'mazmorra', texto: 'Haces que el esclavo sostenga la vela en equilibrio sobre su propio pecho mientras la esclava espera a que caiga.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['tumbar', 'tumbarlo', 'tumbarla', 'tumbalo', 'tumbala'], estancia: 'mazmorra', texto: 'Tumbas a la esclava sobre la mesa y al esclavo encima, y follas desde atrás de modo que los tres quedéis apilados y jadeando a la vez.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['acostar', 'acostarlo', 'acostarla', 'acuestalo', 'acuestala'], estancia: 'mazmorra', texto: 'Acuestas a los dos, uno sobre otro, y los dejas así hasta que la esclava se queja del peso.', fuera: 'No estás en la mazmorra.' },
 
     /* --- Cuerdas --- */
-    { verbos: ['suspender', 'suspenderIo', 'suspenderla', 'suspendeIo', 'suspéndela'], estancia: 'mazmorra', texto: 'Atas al esclavo de muñecas y tobillos y lo suspendes de la polea boca abajo, girando despacio, mientras la esclava lo empuja con la nariz.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['suspender', 'suspenderlo', 'suspenderla', 'suspéndelo', 'suspéndela'], estancia: 'mazmorra', texto: 'Atas al esclavo de muñecas y tobillos y lo suspendes de la polea boca abajo, girando despacio, mientras la esclava lo empuja con la nariz.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['girar', 'girarlo', 'girarla', 'giralo', 'girala'], estancia: 'mazmorra', texto: 'Giras al esclavo colgado de la polea y la esclava lo detiene con la nariz en cada vuelta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['trenzar', 'trenzarlo', 'trenzarla', 'trenzalo', 'trenzala'], estancia: 'mazmorra', texto: 'Trenzas las cuerdas alrededor del torso de la esclava hasta dejarle los pechos apretados y enmarcados, y la paseas así por la mazmorra.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['fajar', 'fajarlo', 'fajarla', 'fajalo', 'fajala'], estancia: 'mazmorra', texto: 'Fajas el torso de la esclava con vueltas prietas y el esclavo comprueba con el dedo cuánto cede.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['ovillar', 'ovillarlo', 'ovillarla', 'ovillalo', 'ovillala'], estancia: 'mazmorra', texto: 'Atas las muñecas de la esclava a los tobillos, hecha un ovillo, y haces que el esclavo la haga rodar por el suelo de un puntapié suave.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['rodar', 'rodarlo', 'rodarla', 'ruedalo', 'ruedala'], estancia: 'mazmorra', texto: 'Ruedas a la esclava por el suelo de un extremo a otro mientras el esclavo aplaude cada vuelta.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['crucificar', 'crucificarlo', 'crucificarla', 'crucificalo', 'crucifícala'], estancia: 'mazmorra', texto: 'La atas en cruz entre dos anillas, tirante como una vela, y le das con la vara en las zonas que el esclavo le va señalando.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['crucificar', 'crucificarlo', 'crucificarla', 'crucificalo', 'crucificala'], estancia: 'mazmorra', texto: 'La atas en cruz entre dos anillas, tirante como una vela, y le das con la vara en las zonas que el esclavo le va señalando.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['señalar', 'señalarlo', 'señalarla', 'señalalo', 'señalala'], estancia: 'mazmorra', texto: 'Señalas con el dedo la zona que quieres que el esclavo golpee, y él obedece sin hablar.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['guiar', 'guiarlo', 'guiarla', 'guialo', 'guiala'], estancia: 'mazmorra', texto: 'Le atas las manos a la espalda, le vendas los ojos y dejas que el esclavo la guíe por la mazmorra a base de empujones y susurros.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['empujar', 'empujarlo', 'empujarla', 'empujalo', 'empujala'], estancia: 'mazmorra', texto: 'Empujas a la esclava por la espalda sin avisar y el esclavo la recoge antes de que choque con el muro.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['pasear', 'pasearlo', 'pasearla', 'pasealo', 'paseala'], estancia: 'mazmorra', texto: 'Le atas una cuerda al cuello al esclavo y haces que la esclava tire de él a cuatro patas por toda la estancia, marcando el ritmo con palmadas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['jalar', 'jalarlo', 'jalarla', 'jalalo', 'jalala'], estancia: 'mazmorra', texto: 'Jalas de la cuerda y el esclavo avanza a trompicones, a cuatro patas, sin atreverse a pararse.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['apretar', 'apretarlo', 'apretarla', 'aprietalo', 'apriétala'], estancia: 'mazmorra', texto: 'Le atas las cuerdas alrededor de los muslos hasta que las piernas se le pongan rojas y le ordenas no quejarse mientras la esclava le sopla encima.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['apretar', 'apretarlo', 'apretarla', 'aprietalo', 'aprietala'], estancia: 'mazmorra', texto: 'Le atas las cuerdas alrededor de los muslos hasta que las piernas se le pongan rojas y le ordenas no quejarse mientras la esclava le sopla encima.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['soplar', 'soplarlo', 'soplarla', 'soplalo', 'soplala'], estancia: 'mazmorra', texto: 'Soplas sobre la piel marcada del esclavo hasta que se le eriza toda y él aprieta los dientes.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['columpiar', 'columpiarlo', 'columpiarla', 'columpialo', 'columpiala'], estancia: 'mazmorra', texto: 'Atas al esclavo de pies y manos a la polea del techo y dejas que la esclava lo balancee como un péndulo, apartándose justo antes de cada choque.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['esquivar', 'esquivarlo', 'esquivarla', 'esquivalo', 'esquivala'], estancia: 'mazmorra', texto: 'Esquivas los pies del esclavo colgado en el último instante, y la esclava te aplaude desde el otro lado.', fuera: 'No estás en la mazmorra.' },
@@ -201,7 +206,7 @@
     { verbos: ['arrastrar', 'arrastrarlo', 'arrastrarla', 'arrastralo', 'arrastrala'], estancia: 'mazmorra', texto: 'Arrastras al esclavo del brazo hasta el centro de la sala y la esclava tiene que seguirlo, atada a él.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['amordazar', 'amordazarlo', 'amordazarla', 'amordazalo', 'amordazala'], estancia: 'mazmorra', texto: 'Le atas firme, le pones la mordaza y haces que el esclavo le cuente al oído todo lo que le hará cuando la sueltes.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['susurrar', 'susurrarlo', 'susurrarla', 'susurralo', 'susurrala'], estancia: 'mazmorra', texto: 'Le susurras a la esclava al oído cada cosa que va a pasar, con calma, hasta que empieza a temblar.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['leer', 'leerlo', 'leerla', 'leelo', 'leela'], estancia: 'mazmorra', texto: 'Atas a la esclava boca arriba con la mordaza puesta y te sientas sobre su vientre a leerle sus faltas en voz alta.', fuera: 'No estás en la mazmorra.' },
+   // { verbos: ['leer', 'leerlo', 'leerla', 'leelo', 'leela'], estancia: 'mazmorra', texto: 'Atas a la esclava boca arriba con la mordaza puesta y te sientas sobre su vientre a leerle sus faltas en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['recostar', 'recostarlo', 'recostarla', 'recuestalo', 'recuestala'], estancia: 'mazmorra', texto: 'Recuestas al esclavo de lado, atado, y le lees sus errores al oído uno por uno.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['arrodillar', 'arrodillarlo', 'arrodillarla', 'arrodillalo', 'arrodillala'], estancia: 'mazmorra', texto: 'Atas a la esclava a un pilar con los brazos en alto y haces que el esclavo se arrodille a lamerle los pies hasta que le duelan las rodillas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['unir', 'unirlo', 'unirla', 'unelo', 'unela'], estancia: 'mazmorra', texto: 'Atas a los dos, espalda contra espalda, y les obligas a decir en voz alta qué le harían al otro si pudieran moverse.', fuera: 'No estás en la mazmorra.' },
@@ -213,7 +218,7 @@
     { verbos: ['ceñir', 'ceñirlo', 'ceñirla', 'cinelo', 'cinela'], estancia: 'mazmorra', texto: 'Le atas las cuerdas al pecho al esclavo y le pides que respire hondo mientras la esclava comprueba con la mano cuánto cede la cuerda.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['respirar', 'respirarlo', 'respirarla', 'respiralo', 'respirala'], estancia: 'mazmorra', texto: 'Le obligas a respirar hondo con las cuerdas puestas y la esclava cuenta cada respiración.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['atirantar', 'atirantarlo', 'atirantarla', 'atirantalo', 'atirantala'], estancia: 'mazmorra', texto: 'Atas a la esclava por la cintura y la llevas de la cuerda como un globo, obligando al esclavo a seguirla de rodillas.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['seguir', 'seguirlo', 'seguirla', 'sigueIo', 'síguela'], estancia: 'mazmorra', texto: 'Haces que el esclavo siga a la esclava por toda la sala sin levantarse del suelo.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['seguir', 'seguirlo', 'seguirla', 'siguielo', 'siguiela'], estancia: 'mazmorra', texto: 'Haces que el esclavo siga a la esclava por toda la sala sin levantarse del suelo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['anudar', 'anudarlo', 'anudarla', 'anudalo', 'anudala'], estancia: 'mazmorra', texto: 'Le atas las manos a la espalda, le vendas los ojos y la esclava debe adivinar con la lengua qué nudo le has hecho en el pecho.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['tantear', 'tantearlo', 'tantearla', 'tantealo', 'tanteala'], estancia: 'mazmorra', texto: 'Tanteas los nudos del esclavo con los dedos, comprobando uno a uno que ninguno corta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['flagelar', 'flagelarlo', 'flagelarla', 'flagelalo', 'flagelala'], estancia: 'mazmorra', texto: 'Le atas a la anilla del muro y alternas latigazos suaves con besos de la esclava en la misma zona.', fuera: 'No estás en la mazmorra.' },
@@ -237,7 +242,7 @@
     { verbos: ['recorrer', 'recorrerlo', 'recorrerla', 'recorrelo', 'recorrela'], estancia: 'mazmorra', texto: 'Le vendas los ojos al esclavo y la esclava le hace recorrer las cadenas del muro con los labios adivinando qué anilla es cada una.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['palpar', 'palparlo', 'palparla', 'palpalo', 'palpala'], estancia: 'mazmorra', texto: 'Palpas cada eslabón con los dedos, buscando el que está más frío, y se lo acercas al esclavo a la nuca.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['sentar', 'sentarlo', 'sentarla', 'sientalo', 'sientala'], estancia: 'mazmorra', texto: 'Encadenas a la esclava a cuatro patas y te sientas en su espalda mientras el esclavo te abanica con la mano.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['abanicar', 'abanicarlo', 'abanicarla', 'abanicalo', 'abanicala'], estancia: 'mazmorra', texto: 'Abnicas al esclavo con la mano abierta, de cerca, solo para que note el aire en la cara sudada.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['abanicar', 'abanicarlo', 'abanicarla', 'abanicalo', 'abanicala'], estancia: 'mazmorra', texto: 'Abanicas al esclavo con la mano abierta, de cerca, solo para que note el aire en la cara sudada.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['fornicar', 'fornicarlo', 'fornicarla', 'fornicalo', 'fornicala'], estancia: 'mazmorra', texto: 'Encadenas al esclavo boca arriba al suelo y montas sobre él mientras la esclava le sujeta las cadenas y le mira a los ojos.', fuera: 'No estás en la mazmorra.' },
 
     /* --- Látigo, fusta y vara --- */
@@ -245,7 +250,7 @@
     { verbos: ['turnar', 'turnarlo', 'turnarla', 'turnalo', 'turnala'], estancia: 'mazmorra', texto: 'Turnas los golpes entre los dos y el que se salta la cuenta recibe doble.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['zurrar', 'zurrarlo', 'zurrarla', 'zurralo', 'zurrala'], estancia: 'mazmorra', texto: 'Zurras al esclavo en las plantas de los pies y la esclava cuenta en voz alta mientras le sujeta los tobillos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['situar', 'situarlo', 'situarla', 'situalo', 'situala'], estancia: 'mazmorra', texto: 'Le vendas los ojos a la esclava y le das latigazos suaves que ella debe situar nombrando la zona del cuerpo.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['elegir', 'elegirlo', 'elegirla', 'eligeIo', 'eligela'], estancia: 'mazmorra', texto: 'Tiras los dados y el resultado son los latigazos que se lleva el esclavo; la esclava elige dónde recibirlos.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['elegir', 'elegirlo', 'elegirla', 'eligelo', 'eligela'], estancia: 'mazmorra', texto: 'Tiras los dados y el resultado son los latigazos que se lleva el esclavo; la esclava elige dónde recibirlos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['hostigar', 'hostigarlo', 'hostigarla', 'hostigalo', 'hostigala'], estancia: 'mazmorra', texto: 'Hostigas a la esclava con la fusta en la parte alta de los muslos mientras el esclavo le sujeta la cintura.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['corregir', 'corregirlo', 'corregirla', 'corrigelo', 'corrigela'], estancia: 'mazmorra', texto: 'Haces que el esclavo azote a la esclava y la esclava al esclavo, turnándose, mientras tú corriges la técnica de los dos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['chicotear', 'chicotearlo', 'chicotearla', 'chicotealo', 'chicoteala'], estancia: 'mazmorra', texto: 'Chicoteas al esclavo cada vez que baja los brazos; la esclava le grita que aguante como si fuera su entrenadora.', fuera: 'No estás en la mazmorra.' },
@@ -256,7 +261,7 @@
     { verbos: ['apartar', 'apartarlo', 'apartarla', 'apartalo', 'apartala'], estancia: 'mazmorra', texto: 'Le apartas el pelo de la cara a la esclava para que se le vea bien la expresión con cada golpe.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['chasquear', 'chasquearlo', 'chasquearla', 'chasquealo', 'chasqueala'], estancia: 'mazmorra', texto: 'Le pones la capucha al esclavo y le das latigazos al azar mientras la esclava le avisa solo con chasquidos de lengua.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['avisar', 'avisarlo', 'avisarla', 'avisalo', 'avisala'], estancia: 'mazmorra', texto: 'La esclava toca la campana cada vez que está a punto; entonces el esclavo para y cuenta hasta diez.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['cuadricular', 'cuadricularlo', 'cuadricularla', 'cuadriculaIo', 'cuadriculala'], estancia: 'mazmorra', texto: 'Marcas con latigazos una cuadrícula en la espalda del esclavo y la esclava bautiza cada casilla con un nombre ridículo.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['cuadricular', 'cuadricularlo', 'cuadricularla', 'cuadriculalo', 'cuadriculala'], estancia: 'mazmorra', texto: 'Marcas con latigazos una cuadrícula en la espalda del esclavo y la esclava bautiza cada casilla con un nombre ridículo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['bautizar', 'bautizarlo', 'bautizarla', 'bautizalo', 'bautizala'], estancia: 'mazmorra', texto: 'Bautizas cada marca de la espalda del esclavo con un nombre inventado y él debe repetirlo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['varear', 'varearlo', 'varearla', 'varealo', 'vareala'], estancia: 'mazmorra', texto: 'Tumbas al esclavo y le mides la espalda a varazos, marcando líneas paralelas que la esclava repasa con el dedo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['trazar', 'trazarlo', 'trazarla', 'trazalo', 'trazala'], estancia: 'mazmorra', texto: 'Trazas líneas con la vara en el aire, sin tocar, y el esclavo debe seguir cada una con la mirada.', fuera: 'No estás en la mazmorra.' },
@@ -266,7 +271,7 @@
 
     /* --- Vela, hielo y agua --- */
     { verbos: ['derretir', 'derretirlo', 'derretirla', 'derritelo', 'derritela'], estancia: 'mazmorra', texto: 'Derrites cera sobre la espalda del esclavo y ordenas a la esclava recogerla con la lengua antes de que se enfríe.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['gotear', 'gotearlo', 'gotearla', 'gotealo', 'goteala'], estancia: 'mazmorra', texto: 'Dejas gotear la cera sobre la esclava en puntos distintos y la obligas a no secarse hasta que la esclava lo autorice.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['gotear', 'gotearlo', 'gotearla', 'gotealo', 'goteala'], estancia: 'mazmorra', texto: 'Dejas gotear la cera sobre la esclava en puntos distintos y la obligas a no secarse hasta que el esclavo lo autorice.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['chorrear', 'chorrearlo', 'chorrearla', 'chorrealo', 'chorreala'], estancia: 'mazmorra', texto: 'Le atas a la esclava y dejas caer cera caliente en la cara interna de los muslos, contando cada gota en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['nombrar', 'nombrarlo', 'nombrarla', 'nombralo', 'nombrala'], estancia: 'mazmorra', texto: 'Le vendas los ojos al esclavo y la esclava deja caer cera en puntos distintos que él debe nombrar.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['licuar', 'licuarlo', 'licuarla', 'licualo', 'licualа'], estancia: 'mazmorra', texto: 'Doblas a la esclava y le dejas caer cera en la espalda mientras el esclavo la penetra despacio.', fuera: 'No estás en la mazmorra.' },
@@ -288,10 +293,10 @@
     { verbos: ['secar', 'secarlo', 'secarla', 'secalo', 'secala'], estancia: 'mazmorra', texto: 'Secas a lametones al esclavo empapado, de arriba abajo, mientras la esclava te sopla en la nuca.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['mojar', 'mojarlo', 'mojarla', 'mojalo', 'mojala'], estancia: 'mazmorra', texto: 'Moja la mano en el cubo y frótale el pecho al esclavo hasta que la piel se le eriza; la esclava sopla para enfriar.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['restregar', 'restregarlo', 'restregarla', 'restriégalo', 'restriégala'], estancia: 'mazmorra', texto: 'Restriegas el paño mojado por la espalda del esclavo y la esclava sigue el rastro con el dedo.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['escurrir', 'escurrirlo', 'escurrirlo', 'escurrelo', 'escurrela'], estancia: 'mazmorra', texto: 'Usas el pelo de la esclava de esponja para mojar el cuerpo del esclavo, y luego la obligas a escurrirlo sobre su cabeza.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['escurrir', 'escurrirlo', 'escurrirla', 'escurrelo', 'escurrela'], estancia: 'mazmorra', texto: 'Usas el pelo de la esclava de esponja para mojar el cuerpo del esclavo, y luego la obligas a escurrirlo sobre su cabeza.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['ensopar', 'ensoparlo', 'ensoparla', 'ensopalo', 'ensopala'], estancia: 'mazmorra', texto: 'Ensopas al esclavo de agua fría hasta que le castañetean los dientes y la esclava le tapa la boca para que no se queje.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['vaciar', 'vaciarlo', 'vaciarla', 'vacíaIo', 'vaciala'], estancia: 'mazmorra', texto: 'Llenas la jarra y la vacías despacio sobre la espalda de la esclava mientras el esclavo lame el reguero.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['regar', 'regarlo', 'regarla', 'riegalo', 'riegala'], estancia: 'mazmorra', texto: 'Riegas a la esclava a chorros cortos, como a una planta, y el esclavo recoge lo que cae en el suelo.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['vaciar', 'vaciarlo', 'vaciarla', 'vacialo', 'vaciala'], estancia: 'mazmorra', texto: 'Llenas la jarra y la vacías despacio sobre la espalda de la esclava mientras el esclavo lame el reguero.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['regar', 'riega', 'regarlo', 'regarla', 'riegalo', 'riegala'], estancia: 'mazmorra', texto: 'Riegas a la esclava a chorros cortos, como a una planta, y el esclavo recoge lo que cae en el suelo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['verter', 'verterlo', 'verterla', 'viertelo', 'viertela'], estancia: 'mazmorra', texto: 'Le atas a la esclava y viertes agua poco a poco por la espalda mientras el esclavo cuenta las gotas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['salpicar', 'salpicarlo', 'salpicarla', 'salpicalo', 'salpicala'], estancia: 'mazmorra', texto: 'Salpicas sin puntería, alcanzando también al esclavo, y los dos se miran empapados sin atreverse a quejarse.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['tragar', 'tragarlo', 'tragarla', 'tragalo', 'tragala'], estancia: 'mazmorra', texto: 'Obligas al esclavo a beber de la jarra mientras la esclava le cuenta los tragos en voz alta.', fuera: 'No estás en la mazmorra.' },
@@ -300,22 +305,21 @@
     { verbos: ['hocicar', 'hocicarlo', 'hocicarla', 'hocicalo', 'hocicala'], estancia: 'mazmorra', texto: 'Les obligas a hocicar en el cuenco como animales hasta que se manchan toda la cara.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['llenar', 'llenarlo', 'llenarla', 'llenalo', 'llenala'], estancia: 'mazmorra', texto: 'Llenas el cuenco y solo dejas beber al que aguante más tiempo con la boca cerrada; la esclava decide quién empieza.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['compartir', 'compartirlo', 'compartirla', 'compartelo', 'compartela'], estancia: 'mazmorra', texto: 'Les obligas a compartir el mismo cuenco, turnándose, y el que bebe de más recibe un capón.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['escupir', 'escupirlo', 'escupirla', 'escupeIo', 'escupela'], estancia: 'mazmorra', texto: 'Bebe la esclava del cuenco y escupe el agua en la boca del esclavo; luego se invierten los papeles.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['escupir', 'escupirlo', 'escupirla', 'escupelo', 'escupela'], estancia: 'mazmorra', texto: 'Bebe la esclava del cuenco y escupe el agua en la boca del esclavo; luego se invierten los papeles.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['invertir', 'invertirlo', 'invertirla', 'inviertelo', 'inviertela'], estancia: 'mazmorra', texto: 'Inviertes los papeles cada ronda: quien escupe pasa a recibir, sin avisar del cambio.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['racionar', 'racionarlo', 'racionarla', 'racionalo', 'racionala'], estancia: 'mazmorra', texto: 'Pones el comedero entre los dos y solo uno puede comer; tú eliges quién y el otro lame el borde.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['empapar', 'empaparlo', 'empaparla', 'empapalo', 'empapala'], estancia: 'mazmorra', texto: 'Moja la espalda del esclavo y le das con la fusta: cada golpe salpica y la esclava se lame los dedos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['helar', 'helarlo', 'helarla', 'hielalo', 'hielala'], estancia: 'mazmorra', texto: 'Viertes agua helada sobre la espalda de la esclava y el esclavo la seca a lametones temblando.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['derramar', 'derramarlo', 'derramarla', 'derramalo', 'derramala'], estancia: 'mazmorra', texto: 'Derramas el agua sobre la esclava y haces que el esclavo la recoja del suelo con la lengua.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['chispear', 'chispearlo', 'chispearla', 'chispealo', 'chispeala'], estancia: 'mazmorra', texto: 'Le meas encima despacio, de arriba abajo, y el esclavo lame después el reguero que baja por su vientre.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['pringar', 'pringarlo', 'pringarla', 'pringalo', 'pringala'], estancia: 'mazmorra', texto: 'La pringas entera y la dejas así, brillante y oliendo a ti, mientras el esclavo la huele de rodillas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['mear', 'mearlo', 'mearla', 'mealo', 'meala'], estancia: 'mazmorra', texto: 'Le haces abrir la boca, te colocas encima y le meas dentro. Traga sin apartar la vista y la esclava cuenta en voz alta los segundos que aguanta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['orinar', 'orinarlo', 'orinarla', 'orinalo', 'orinala'], estancia: 'mazmorra', texto: 'Orinas entre sus muslos abiertos, sin tocarla, y ella aguanta la postura sin cerrar las piernas hasta que terminas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['rociar', 'rociarlo', 'rociarla', 'rocialo', 'rociala'], estancia: 'mazmorra', texto: 'Rocías su cuerpo entero sin apuntar a ningún sitio, como quien riega una planta, y la esclava aplaude cada chorro.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['riega', 'regarlo', 'regarla', 'riegalo', 'riegala'], estancia: 'mazmorra', texto: 'Le meas encima despacio, de arriba abajo, y el esclavo lame después el reguero que baja por su vientre.', fuera: 'No estás en la mazmorra.' },
 
     /* --- Espejo, campana, dados y ruleta --- */
     { verbos: ['reflejar', 'reflejarlo', 'reflejarla', 'reflejalo', 'reflejala'], estancia: 'mazmorra', texto: 'Pones el espejo delante de la esclava y le obligas a mirarse mientras el esclavo la acaricia por detrás.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['acariciar', 'acariciarlo', 'acariciarla', 'acaricialo', 'acariciala'], estancia: 'mazmorra', texto: 'Acaricias al esclavo por la espalda con dos dedos, muy despacio, mientras él aguanta sin moverse.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['comparar', 'compararlo', 'compararla', 'comparaio', 'comparala'], estancia: 'mazmorra', texto: 'Pones el espejo entre los dos y les obligas a comparar sus cuerpos en voz alta, uno por uno.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['comparar', 'compararlo', 'compararla', 'comparalo', 'comparala'], estancia: 'mazmorra', texto: 'Pones el espejo entre los dos y les obligas a comparar sus cuerpos en voz alta, uno por uno.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['juzgar', 'juzgarlo', 'juzgarla', 'juzgalo', 'juzgala'], estancia: 'mazmorra', texto: 'Juzgas en voz alta cada parte del cuerpo de los dos y ellos deben estar de acuerdo contigo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['enderezar', 'enderezarlo', 'enderezarla', 'enderezalo', 'enderezala'], estancia: 'mazmorra', texto: 'Haces que la esclava se mire en el espejo y corrija ella misma la postura que tú consideres mala.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['plumear', 'plumearlo', 'plumearla', 'plumealo', 'plumeala'], estancia: 'mazmorra', texto: 'Le atas al esclavo y la esclava le hace cosquillas con plumas hasta que las lágrimas le ruedan.', fuera: 'No estás en la mazmorra.' },
@@ -329,10 +333,10 @@
     { verbos: ['detener', 'detenerlo', 'detenerla', 'detenlo', 'detenla'], estancia: 'mazmorra', texto: 'Detienes al esclavo en seco en mitad de una embestida y la esclava gime de puro sobresalto.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['lengüetear', 'lengüetearlo', 'lengüetearla', 'lenguetealo', 'lengueteala'], estancia: 'mazmorra', texto: 'Le pones la campana entre los omóplatos al esclavo y la esclava debe hacerla sonar con la lengua sin manos.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['codificar', 'codificarlo', 'codificarla', 'codificalo', 'codificala'], estancia: 'mazmorra', texto: 'Inventas un código de campanadas y el esclavo debe responder con la postura correcta a cada una.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['responder', 'responderlo', 'responderla', 'respondeIo', 'respondela'], estancia: 'mazmorra', texto: 'Respondes tú a las campanadas con una orden distinta cada vez, y los dos obedecen sin saber qué viene.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['responder', 'responderlo', 'responderla', 'respondelo', 'respondela'], estancia: 'mazmorra', texto: 'Respondes tú a las campanadas con una orden distinta cada vez, y los dos obedecen sin saber qué viene.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['aguantar', 'aguantarlo', 'aguantarla', 'aguantalo', 'aguantala'], estancia: 'mazmorra', texto: 'Tiras los dados y el resultado marca cuántos minutos debe aguantar el esclavo en la postura que la esclava elija.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['lanzar', 'lanzarlo', 'lanzarla', 'lanzalo', 'lanzala'], estancia: 'mazmorra', texto: 'Lanzas los dados por cada esclavo: el número más alto decide quién manda durante los próximos diez minutos.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['asignar', 'asignarlo', 'asignarla', 'asignalо', 'asignala'], estancia: 'mazmorra', texto: 'Asignas a cada número una tarea distinta y la esclava elige quién empieza.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['asignar', 'asignarlo', 'asignarla', 'asignalo', 'asignala'], estancia: 'mazmorra', texto: 'Asignas a cada número una tarea distinta y la esclava elige quién empieza.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['repartir', 'repartirlo', 'repartirla', 'repartelo', 'repartela'], estancia: 'mazmorra', texto: 'Tiras los dados y reparte tú los golpes de vara según el número, uno para cada uno, como tú quieras.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['arrojar', 'arrojarlo', 'arrojarla', 'arrojalo', 'arrojala'], estancia: 'mazmorra', texto: 'Arrojas los dados y el resultado son los minutos que debe aguantar la esclava sin correrse mientras el esclavo la lame.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['temporizar', 'temporizarlo', 'temporizarla', 'temporizalo', 'temporizala'], estancia: 'mazmorra', texto: 'Temporizas cada espera en voz alta y la esclava cuenta los segundos con los dedos.', fuera: 'No estás en la mazmorra.' },
@@ -380,7 +384,7 @@
     { verbos: ['aplicar', 'aplicarlo', 'aplicarla', 'aplicalo', 'aplicala'], estancia: 'mazmorra', texto: 'Untas limón en puntos del cuerpo del esclavo y la esclava debe adivinar cuáles lamiendo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['discernir', 'discernirlo', 'discernirla', 'disciernelo', 'disciernela'], estancia: 'mazmorra', texto: 'Le haces discernir con la lengua dónde hay limón y dónde no, y cada fallo se paga con un azote.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['masticar', 'masticarlo', 'masticarla', 'masticalo', 'masticala'], estancia: 'mazmorra', texto: 'Le das a chupar limón a la esclava y la obligas a contar hasta veinte sin hacer gestos.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['recontar', 'recontarlo', 'recontarla', 'recuento', 'recuentа'], estancia: 'mazmorra', texto: 'Recuentas en voz alta los veinte segundos mientras la esclava aguanta el ardor del limón.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['recontar', 'recontarlo', 'recontarla', 'recuentalo', 'recuentala'], estancia: 'mazmorra', texto: 'Recuentas en voz alta los veinte segundos mientras la esclava aguanta el ardor del limón.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['chupetear', 'chupetearlo', 'chupetearla', 'chupetealo', 'chupeteala'], estancia: 'mazmorra', texto: 'Le untas limón en los labios a la esclava y el esclavo debe chupetearlos hasta que se le pase el ardor.', fuera: 'No estás en la mazmorra.' },
 
     /* --- Aguja y tinta --- */
@@ -436,7 +440,7 @@
     { verbos: ['espolear', 'espolearlo', 'espolearla', 'espolealo', 'espoleala'], estancia: 'mazmorra', texto: 'Pones la correa a la esclava y la montas como a un caballo, usando la correa de riendas por la estancia.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['aullar', 'aullarlo', 'aullarla', 'aullalo', 'aullala'], estancia: 'mazmorra', texto: 'El esclavo debe ladrar tantas veces como toques de correa des; la esclava lleva la cuenta en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['jaular', 'jaularlo', 'jaularla', 'jaulalo', 'jaulala'], estancia: 'mazmorra', texto: 'La esclava lleva al esclavo de la correa hasta la jaula y lo encierra allí como a un perro en su caseta.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['abrevar', 'abrevarIo', 'abrevarla', 'abrevalo', 'abrevala'], estancia: 'mazmorra', texto: 'Llenas el comedero de agua y los dos deben beber a la vez, uno por cada lado, como animales.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['abrevar', 'abrevalo', 'abrevarla', 'abrevalo', 'abrevala'], estancia: 'mazmorra', texto: 'Llenas el comedero de agua y los dos deben beber a la vez, uno por cada lado, como animales.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['galopar', 'galoparlo', 'galoparla', 'galopalo', 'galopala'], estancia: 'mazmorra', texto: 'Montas al esclavo y la esclava hace de látigo de aire con la correa, chascando detrás para que corra.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['adiestrar', 'adiestrarlo', 'adiestrarla', 'adiestralo', 'adiestrala'], estancia: 'mazmorra', texto: 'Le pones la correa al esclavo y le enseñas órdenes nuevas: sentado, quieto, patita; la esclava aplaude cada acierto.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['aplaudir', 'aplaudirlo', 'aplaudirla', 'aplaudelo', 'aplaudela'], estancia: 'mazmorra', texto: 'Aplaudes cada acierto de la esclava y ella se crece hasta que falla por presumida.', fuera: 'No estás en la mazmorra.' },
@@ -454,7 +458,7 @@
     { verbos: ['ordeñar', 'ordeñarlo', 'ordeñarla', 'ordéñalo', 'ordéñala'], estancia: 'mazmorra', texto: 'Le atas a las anillas al esclavo y la esclava lo excita con la boca; tú decides cuándo puede correrse.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['prometer', 'prometerlo', 'prometerla', 'prometelo', 'prometela'], estancia: 'mazmorra', texto: 'Le atas al esclavo y le prometes el orgasmo por cada minuto que aguante; la esclava lleva el reloj en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['anunciar', 'anunciarlo', 'anunciarla', 'anuncialo', 'anunciala'], estancia: 'mazmorra', texto: 'Anuncias en voz alta cada minuto que queda y el esclavo aprieta los dientes al oírlo.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['privar', 'privarlo', 'privarla', 'prívalo', 'prívala'], estancia: 'mazmorra', texto: 'Le vendas los ojos a la esclava y el esclavo la excita sin que ella sepa con qué; luego paran sin avisar.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['privar', 'privarlo', 'privarla', 'privalo', 'privala'], estancia: 'mazmorra', texto: 'Le vendas los ojos a la esclava y el esclavo la excita sin que ella sepa con qué; luego paran sin avisar.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['pactar', 'pactarlo', 'pactarla', 'pactalo', 'pactala'], estancia: 'mazmorra', texto: 'Le atas al esclavo y la esclava lo excita; cada toque de campana son diez segundos más de espera.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['sonar', 'sonarlo', 'sonarla', 'suenalo', 'suenala'], estancia: 'mazmorra', texto: 'Haces sonar la campana y el esclavo aprieta las manos, sabiendo que cada toque alarga la espera.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['refrescar', 'refrescarlo', 'refrescarla', 'refrescalo', 'refrescala'], estancia: 'mazmorra', texto: 'Excitas a la esclava y de repente le pasas hielo por el vientre; el sobresalto le corta el orgasmo en seco.', fuera: 'No estás en la mazmorra.' },
@@ -470,16 +474,16 @@
     { verbos: ['fardar', 'fardarlo', 'fardarla', 'fardalo', 'fardala'], estancia: 'mazmorra', texto: 'Presumes del fardo que has hecho, lo paseas y lo dejas en mitad de la sala.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['ritualizar', 'ritualizarlo', 'ritualizarla', 'ritualizalo', 'ritualizala'], estancia: 'mazmorra', texto: 'Inventas un ritual absurdo: tres reverencias, un beso al suelo y una vuelta; el que se equivoque recibe cera.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['reverenciar', 'reverenciarlo', 'reverenciarla', 'reverencialo', 'reverenciala'], estancia: 'mazmorra', texto: 'Les obligas a reverenciarte a la de tres y el que llega tarde se lleva un azote.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['cartografiar', 'cartografiarlo', 'cartografiarla', 'cartografialo', 'cartografíala'], estancia: 'mazmorra', texto: 'Dibujas un mapa en la espalda del esclavo y la esclava debe encontrar el tesoro siguiendo tus indicaciones.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['cartografiar', 'cartografiarlo', 'cartografiarla', 'cartografialo', 'cartografiala'], estancia: 'mazmorra', texto: 'Dibujas un mapa en la espalda del esclavo y la esclava debe encontrar el tesoro siguiendo tus indicaciones.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['imitar', 'imitarlo', 'imitarla', 'imitalo', 'imitala'], estancia: 'mazmorra', texto: 'Pones a la esclava delante del espejo y el esclavo debe imitar exactamente cada gesto que ella haga.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['copiar', 'copiarlo', 'copiarla', 'cópialo', 'cópiala'], estancia: 'mazmorra', texto: 'Copias cada gesto de la esclava y el esclavo tiene que copiarte a ti, encadenados los tres.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['copiar', 'copiarlo', 'copiarla', 'copialo', 'cópiala'], estancia: 'mazmorra', texto: 'Copias cada gesto de la esclava y el esclavo tiene que copiarte a ti, encadenados los tres.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['yantar', 'yantarlo', 'yantarla', 'yantalo', 'yantala'], estancia: 'mazmorra', texto: 'Tumbas a los dos sobre la mesa y usas sus vientres de plato y de mantel a la vez; comen el uno del otro.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['probar', 'probarlo', 'probarla', 'pruebalo', 'pruebala'], estancia: 'mazmorra', texto: 'Pruebas cada bocado en el vientre de la esclava antes de dejárselo al esclavo.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['intercambiar', 'intercambiarlo', 'intercambiarla', 'intercambialo', 'intercambíala'], estancia: 'mazmorra', texto: 'Les cambias las etiquetas de nombre y durante el resto de la sesión deben responder al del otro.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['intercambiar', 'intercambiarlo', 'intercambiarla', 'intercambialo', 'intercambiala'], estancia: 'mazmorra', texto: 'Les cambias las etiquetas de nombre y durante el resto de la sesión deben responder al del otro.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['renombrar', 'renombrarlo', 'renombrarla', 'renombralo', 'renombrala'], estancia: 'mazmorra', texto: 'Renombras a los dos con nombres ridículos y no respondes si te llaman de otra forma.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['hamacar', 'hamacarlo', 'hamacarla', 'hamacalo', 'hamacala'], estancia: 'mazmorra', texto: 'Cuelgas a la esclava de la polea y el esclavo la hamaca mientras tú cuentas las vueltas en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['impulsar', 'impulsarlo', 'impulsarla', 'impulsalo', 'impulsala'], estancia: 'mazmorra', texto: 'Impulsas el cuerpo de la esclava y la dejas ir y volver hasta que se marea.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['circular', 'circulario', 'circulаrla', 'circulalo', 'circulala'], estancia: 'mazmorra', texto: 'Pones el cuenco en el centro y los obligas a caminar en círculo alrededor hasta que se marea el primero.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['circular', 'circularlo', 'circularla', 'circulalo', 'circulala'], estancia: 'mazmorra', texto: 'Pones el cuenco en el centro y los obligas a caminar en círculo alrededor hasta que se marea el primero.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['tambalear', 'tambalearlo', 'tambalearla', 'tambalealo', 'tambaleala'], estancia: 'mazmorra', texto: 'Tambaleas a la esclava del hombro y ella se deja caer de lado hasta el suelo.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['registrar', 'registrarlo', 'registrarla', 'registralo', 'registrala'], estancia: 'mazmorra', texto: 'La espalda de la esclava es el cuaderno: el esclavo escribe ahí sus faltas y tú las lees en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['mantener', 'mantenerlo', 'mantenerla', 'mantenlo', 'mantenla'], estancia: 'mazmorra', texto: 'Le vendas los ojos y le haces mantener una postura ridícula; el esclavo la corrige con toques de dedo.', fuera: 'No estás en la mazmorra.' },
@@ -494,13 +498,13 @@
     { verbos: ['puntuar', 'puntuarlo', 'puntuarla', 'puntualo', 'puntuala'], estancia: 'mazmorra', texto: 'Puntuas en voz alta cada ronda y el que va perdiendo recibe el doble en la siguiente.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['encender', 'encenderlo', 'encenderla', 'enciendelo', 'enciendela'], estancia: 'mazmorra', texto: 'Enciendes una vela por cada falta y las apagáis con la lengua de los dos, alternando.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['apagar', 'apagarlo', 'apagarla', 'apagalo', 'apagala'], estancia: 'mazmorra', texto: 'Apagas la vela de un soplido y dejas la sala casi a oscuras para que se guíen por el tacto.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['entronizar', 'entronizarlo', 'entronizarla', 'entronizalo', 'entronízala'], estancia: 'mazmorra', texto: 'Sientas a la esclava en el banco y el esclavo se arrodilla a sus pies; ella debe darle órdenes.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['entronizar', 'entronizarlo', 'entronizarla', 'entronizalo', 'entronizala'], estancia: 'mazmorra', texto: 'Sientas a la esclava en el banco y el esclavo se arrodilla a sus pies; ella debe darle órdenes.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['mandar', 'mandarlo', 'mandarla', 'mandalo', 'mandala'], estancia: 'mazmorra', texto: 'Mandas a la esclava dar las órdenes y corriges las que suenan demasiado blandas.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['titiritear', 'titiritearlo', 'titiritearla', 'titiritealo', 'titiriteala'], estancia: 'mazmorra', texto: 'Atas cuerdas a las muñecas y tobillos del esclavo y lo mueves como una marioneta; la esclava pone la voz.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['doblegar', 'doblegarlo', 'doblegarla', 'doblégalo', 'doblégalo'], estancia: 'mazmorra', texto: 'Doblegas al esclavo por las cuerdas hasta la postura que quieres y la esclava la bautiza.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['doblegar', 'doblegarlo', 'doblegarla', 'doblegalo', 'doblegalа'], estancia: 'mazmorra', texto: 'Doblegas al esclavo por las cuerdas hasta la postura que quieres y la esclava la bautiza.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['narrar', 'narrarlo', 'narrarla', 'narralo', 'narrala'], estancia: 'mazmorra', texto: 'Los obligas a caminar frente al espejo narrándose el uno al otro lo que ven, en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['rebotar', 'rebotarlo', 'rebotarla', 'rebotalo', 'rebotala'], estancia: 'mazmorra', texto: 'Tumbas al esclavo en la paja y la esclava salta encima suave para hacerlo rebotar.', fuera: 'No estás en la mazmorra.' },
-    { verbos: ['adherir', 'adherirlo', 'adherirla', 'adhiereIo', 'adhierela'], estancia: 'mazmorra', texto: 'Untas de miel la espalda de la esclava y la dejas hecha un tapiz pegajoso mientras el esclavo la admira.', fuera: 'No estás en la mazmorra.' },
+    { verbos: ['adherir', 'adherirlo', 'adherirla', 'adhierelo', 'adhierela'], estancia: 'mazmorra', texto: 'Untas de miel la espalda de la esclava y la dejas hecha un tapiz pegajoso mientras el esclavo la admira.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['pendular', 'pendularlo', 'pendularla', 'pendulalo', 'pendulala'], estancia: 'mazmorra', texto: 'Cuelgas al esclavo y lo balanceas; la esclava cuenta cada pasada por delante de ella.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['verificar', 'verificarlo', 'verificarla', 'verificalo', 'verificala'], estancia: 'mazmorra', texto: 'Verificas el número de pasadas con el esclavo y él confirma con la cabeza, mareado.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['ocultar', 'ocultarlo', 'ocultarla', 'ocultalo', 'ocultala'], estancia: 'mazmorra', texto: 'Pones al esclavo de pie delante de la esclava, tapándola, y te acercas por detrás sin que ella te vea.', fuera: 'No estás en la mazmorra.' },
@@ -509,7 +513,6 @@
     { verbos: ['encasillar', 'encasillarlo', 'encasillarla', 'encasillalo', 'encasillala'], estancia: 'mazmorra', texto: 'Les pones etiquetas de roles y deben actuar así toda la sesión, llamándose por el rol y no por el nombre.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['nominar', 'nominarlo', 'nominarla', 'nominalo', 'nominala'], estancia: 'mazmorra', texto: 'Nominas a cada uno con un papel y ellos deben aceptarlo repitiéndolo en voz alta.', fuera: 'No estás en la mazmorra.' },
     { verbos: ['adorar', 'adorarlo', 'adorarla', 'adoralo', 'adorala'], estancia: 'mazmorra', texto: 'Tumbas a la esclava sobre la mesa con una vela a cada lado y el esclavo se arrodilla a adorarla en voz alta.', fuera: 'No estás en la mazmorra.' }
-
   ];
   Datos.comandosTexto.push(...comandos);
 })();
