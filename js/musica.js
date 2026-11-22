@@ -122,9 +122,9 @@
 const Musica = (() => {
   /* ===== CONFIGURACIÓN ===== */
   const lista = [
-    { titulo: 'Memories of blue', archivo: 'audio/presentacion.mp3' },
-    { titulo: 'Locutor 1', archivo: 'audio/2.mp3' },
-    { titulo: 'El rey', archivo: 'audio/entrevista.mp3' },
+    { titulo: 'Sección 1', archivo: 'audio/presentacion.mp3' },
+    { titulo: 'Sección 2', archivo: 'audio/seccion2.mp3' },
+    { titulo: 'Sección 3', archivo: 'audio/entrevista.mp3' },
     { titulo: 'Locutor 2', archivo: 'audio/2.mp3' },
     { titulo: 'Tiempo', archivo: 'audio/lapso1.mp3' },
     { titulo: 'Locutor 3', archivo: 'audio/3.mp3' },
