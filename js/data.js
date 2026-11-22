@@ -21,7 +21,7 @@ const Datos = {
     sinMensaje: 'No tienes mensajes nuevos.',
     mensajeIntro: 'El mensaje es de un desconocido llamado 02E4E3E.  Encabeza el mensaje una foto borrosa. Curiosa, antes de leer nada, desactivas la censura para poder verla. De pronto sientes una punzada en el estómago y tus pulsaciones se aceleran: la foto es tuya, o, más bien, sales tú en una situación y en unas condiciones que jamás debieron ser registradas de modo alguno. Nerviosa decides leer el mensaje:',
     mensaje: '«Te confieso que es de mis fotos favoritas. Tengo otras tuyas, pero ninguna como esta. No es lo degradante de la escena, sino la expresión de tu cara. Intuyo que preferirías mantener estas fotos alejadas de tus amigos, familiares y compañeros de trabajo. Si es así, entra en Telegram y escríbeme a {contacto} de inmediato»',
-    telegramBloqueado: 'Telegram está protegido con un código de 3 cifras. Hace tiempo que no lo usas y no consigues recordarlo, pero sabes que aparece en el cuadro que hay en la pared.',
+    telegramBloqueado: 'Telegram está protegido con un código de 3 cifras. Hace tiempo que no lo usas y no consigues recordarlo. Seguro que lo tienes apuntado en lugar de tu despacho.',
     pideCodigo: 'Escribe el código de 3 cifras (o «cancelar»):',
     codigoMal: 'Código incorrecto. Inténtalo de nuevo o escribe «cancelar».',
     telegramAbre: 'Telegram se abre. Ya no te volverá a pedir el código.',
