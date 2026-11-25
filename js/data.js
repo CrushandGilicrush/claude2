@@ -178,7 +178,7 @@ const Datos = {
     { verbos: ['encender', 'enciende', 'poner', 'conectar', 'activar'], estancia: 'salon',
   objetos: ['television', 'tele', 'tv', 'televisor'],
   texto: 'Coges el mando y enciendes la televisión. La pantalla se ilumina.',
-  imagen: 'video/telenovela1.mp4', titulo: 'Televisión',
+  imagen: 'video/prueba.mp4', titulo: 'Televisión',
   pista: 'Escribe «apagar televisión» o «cerrar» para volver a ver la estancia.',
   fuera: 'No ves ninguna televisión por aquí.' },
 { verbos: ['apagar', 'apaga', 'desconectar'], estancia: 'salon',
