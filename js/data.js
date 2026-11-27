@@ -8,11 +8,11 @@ const Datos = {
   /* Textos de la secuencia de inicio. {contacto} y {dispositivo} se sustituyen solos. */
   textos: {
     sinCafe: 'Antes de ponerte a mirar nada, ve a prepararte un café.',
-    cafeLejos: 'La telequinesis no es tu fuerte. Si quieres un café, te sugiero ir a la cocina.',
-    cafeHecho: 'Preparas la cafetera y la cocina se llena de un olor a café recién hecho.',
-    cafeRepetido: 'Ya has preparado un café. No tomes más',
-    cafeNoHay: 'No tienes ningún café preparado.',
-    cafeBebido: 'Te bebes el café a sorbos y poco a poco te vas espabilando. Puede ser un buen momento para entrar en Fetlife.',
+    cafeLejos: 'La telequinesis no es tu fuerte. Si quieres un café, debes ir a la cocina.',
+    cafeHecho: 'Preparas la cafetera y la cocina se llena del olor a café recién hecho.',
+    cafeRepetido: 'Ya has preparado un café. Suficiente por ahora.',
+    cafeNoHay: 'No te has preparado ningún café todavía.',
+    cafeBebido: 'Te bebes el café a sorbos, poco a poco, saboreándolo. Acabado, puede ser un buen momento para entrar en Fetlife.',
     cafeYaBebido: 'Ya te has tomado el café.',
     enciende: 'Enciendes {dispositivo}. Ves dos accesos directos en la pantalla de inicio: «Fetlife» y «Telegram».',
     sinDispositivo: 'Primero tienes que encender el móvil o el ordenador.',
