@@ -31,7 +31,7 @@ const Datos = {
     escribirSinMensaje: 'No sabes a quién escribir.',
     escribirYa: 'No tienes nada más que decirle por ahora.',
     escribirOk: 'Escribes nerviosa, pensando con torpeza en las opciones que tienes y dudando si estás haciendo lo correcto o no. Te está escribiendo...',
-    respuesta: '«Mientras esperaba que me escribieras, estaba pensando qué estarías dispuesta a hacer para que esas fotos no las vea todo el mundo. Estoy seguro de que vas a ser buena y me vas a complacer»',
+    respuesta: '«Mientras esperaba que me escribieras, pensaba en lo qué estarías dispuesta a hacer para que esas fotos no las vea todo el mundo. Estoy seguro de que vas a ser buena y me vas a complacer»',
     /* Orden 1: caldera, radiador y foto */
     pedirCaldera: '«Para empezar, te quiero como en la foto: desnuda, así que ve quitándote la ropa. Ahora. Luego quiero que subas la temperatura de la caldera a 70 grados, te acerques a un radiador y apoyes el culo en él durante un minuto. Después, hazte una foto del culo y mándamela.»',
     calderaSubir: 'Tienes que escribir el ajuste con el formato de la nota.',
@@ -65,7 +65,7 @@ const Datos = {
     cajonContenido: 'Dentro del cajón hay un rotulador.',
     cajonVacio: 'El cajón está vacío.',
     sinRotulador: 'No tienes nada con lo que escribir.',
-    escribeBrazo: 'Destapas el rotulador y te escribes en el antebrazo, con letra temblorosa: «Hago lo que me pide».',
+    escribeBrazo: 'Destapas el rotulador y te escribes en el muslo, con letra temblorosa: «soy un depósito de fluidos. Calle...».',
     brazoYa: 'Ya te has escrito en el brazo.',
     fotoBrazoNormal: 'Haces una foto de tu brazo. No tiene nada escrito.',
     fotoBrazoEscrito: 'Haces una foto de tu brazo con la frase escrita.',
