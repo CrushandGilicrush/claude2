@@ -112,7 +112,7 @@ const Datos = {
     despacho: { ordenador: 'Un ordenador de sobremesa. Lo mismo que el móvil, pero con pantalla grande.', escritorio: 'Un escritorio muy bien ordenado.', 'juegos de mesa': 'Varias cajas de juegos de mesa, apiladas.', cuadro: 'Un panel lleno de rosas y espinas, con placas numeradas.' },
     cocina: { cocina: 'Una cocina limpia, sin nada al fuego.', cafetera: 'Una cafetera express, comprada en el último black friday', nevera: 'Una nevera que funciona bien y es poco ruidosa', congelador: 'Un congelador pequeño, con la puerta cubierta de escarcha.', caldera: 'Caldera con panel digital' },
     bano: { inodoro: 'te acercas a revisar el inodoro y detectas lo que parece una pequeña mancha. Al acercarte más compruebas que, escrito con rotulador, pone: Lapso meó aquí. Y te preguntas: ¿quién coño es Lapso? ¿Será algún ligue? poco impacto ha dejado si no me acuerdo de él. Tal vez lo tenga en telegram...', lavabo: 'Un lavabo con el grifo goteando.', espejo: 'un espejo limpio y reluciente', ducha: 'Una ducha con mampara.', mueble: 'Un pequeño mueble con toallas.', toallas: 'junto a las toallas tienes el satisfyer y las compresas.', satisfyer: 'con lo que ha trabajado y aún funciona.' },
-    terraza: { macetas: 'Macetas con plantas algo secas.', calle: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', huevo: 'Un huevo con forma de... huevo', balcon: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', tumbona: 'Una tumbona cómoda, al sol.' }
+    terraza: { macetas: 'Macetas con plantas.  Una abeja revolotea cerca de una flor.', calle: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Y si lo lanzas, ¿alterarás la fortuna de algún viandante? ', huevo: 'Un huevo con forma de... huevo', balcon: 'Se trata de una calle bastante transitada. La gente parece caminar sin preocupación alguna. Qué afortunados. Vas a la cocina y vuelves a la terraza con un huevo. Si lo lanzas, ¿alterarás la fortuna de algún viandante? ', tumbona: 'Una tumbona cómoda, al sol.' }
   },
    alias: { verduras: 'nevera', tele: 'television', tv: 'television', televisor: 'television', alimentos: 'nevera', comida: 'nevera', cajones: 'cajon', perversiones: 'libro', libreria: 'biblioteca', ajedrez: 'tablero', radiadores: 'radiador', juegos: 'juegos de mesa', maceta: 'macetas', pc: 'ordenador',
   },
@@ -407,7 +407,7 @@ Pero hay algo que tienes claro: no vas a negociar con alguien que te está amena
 
 Coges el teléfono y marcas el número de la policía.
 
-Explicas lo sucedido. Enseñas los mensajes, las amenazas y todo aquello que pueda servir para identificar a la persona que está detrás de ellos. Te indican cómo proceder y te recomiendan conservar las conversaciones, no borrar nada y no responder a nuevas exigencias.
+Explicas lo sucedido. Enseñas los mensajes, las amenazas y todo aquello que pueda servir para identificar a la persona que está detrás de ello. Te indican cómo proceder y te recomiendan conservar las conversaciones, no borrar nada y no responder a nuevas exigencias.
 
 Cuando cuelgas, el miedo no ha desaparecido. Tampoco sabes qué ocurrirá mañana. Pero has conseguido algo importante: has dejado de enfrentarte a la situación en solitario y has puesto los hechos en conocimiento de quienes pueden investigar lo sucedido.
 
@@ -415,7 +415,7 @@ La extorsión se alimenta del silencio, de la vergüenza y de la sensación de q
 
 No necesitas demostrar hasta dónde puede llegar alguien para tener derecho a denunciar lo que ya está haciendo.
 
-Apagas la pantalla. Por primera vez en toda la noche, el siguiente movimiento ya no depende de quien te amenaza. Has ganado la partida`,
+Apagas la pantalla. Por primera vez en toda la mañana, el siguiente movimiento ya no depende de quien te amenaza. Has ganado la partida`,
     `Miras la pantalla del ordenador. Has cumplido una de sus exigencias. Quizá pensabas que, si cedías una sola vez, todo terminaría. Que conseguirías ganar tiempo, que se daría por satisfecho o que entendería que no quieres problemas.
 
 Pero apenas unos minutos después llega otro mensaje.
