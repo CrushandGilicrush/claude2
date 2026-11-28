@@ -718,6 +718,7 @@ const Personajes = (() => {
         '«Preguntar qué había antes del Big Bang es complicado. Es posible que el propio concepto de antes pierda su significado al acercarnos al origen del tiempo.»'
       ]
     },
+     
     {
       palabras: [
         'gravedad', 'que es la gravedad', 'como funciona la gravedad',
@@ -766,6 +767,304 @@ const Personajes = (() => {
         '«La radiación de Hawking plantea una pregunta extraordinaria: ¿qué ocurre con la información de aquello que cae en un agujero negro?»'
       ]
     },
+
+  { "palabras": ["estrella", "estrellas"],
+    "respuestas": ["Toda estrella se pasa la vida ardiendo para que alguien la mire, y cuando se cansa, colapsa. Tú y yo sabemos algo de eso."] },
+
+  { "palabras": ["enana roja"],
+    "respuestas": ["Pequeña, fría, y aun así aguanta billones de años. La sumisa que no se rinde nunca, porque no tiene prisa."] },
+
+  { "palabras": ["enana blanca"],
+    "respuestas": ["Queda lo que queda cuando una estrella ya lo dio todo: un núcleo desnudo, del tamaño de la Tierra, sin un átomo de grasa. Aprieta y verás qué es densidad."] },
+
+  { "palabras": ["supergigante"],
+    "respuestas": ["Mil veces más grande que el Sol y con hambre proporcional. Arde hidrógeno a lo bruto hasta que revienta y arrasa el vecindario."] },
+
+  { "palabras": ["agujero negro"],
+    "respuestas": ["Entra, si te atreves. Atrae, estira en hilos y no deja volver a contar nada. Ni la luz se le escapa."] },
+
+  { "palabras": ["agujero de gusano"],
+    "respuestas": ["Mete la mano por aquí y la sacas a cuarenta años luz. Sexo a distancia sin pagar billete."] },
+
+  { "palabras": ["horizonte de sucesos"],
+    "respuestas": ["Aquí se acaba el mundo conocido. Cruzas y ya no hay vuelta: el safe word de la física, solo que gritarlo no sirve de nada."] },
+
+  { "palabras": ["singularidad"],
+    "respuestas": ["Densidad infinita en un punto sin volumen, todo apretado hasta que las leyes dejan de valer. Un orgasmo mal calibrado, vaya."] },
+
+  { "palabras": ["big bang"],
+    "respuestas": ["De un punto, todo. Y aquí seguimos, expandiéndonos. Hasta el polvo que respiras viene de ahí."] },
+
+  { "palabras": ["big crunch"],
+    "respuestas": ["Cuando la gravedad se canse de nosotros, tirará de todo hacia dentro. El afterglow invertido: colapso y a empezar de cero."] },
+
+  { "palabras": ["materia oscura"],
+    "respuestas": ["No la ves, pero te sostiene la estructura. Ochenta y cinco por ciento del universo y no se deja medir ni tocar. Puta y ama a la vez."] },
+
+  { "palabras": ["energía oscura"],
+    "respuestas": ["Empuja, separa, acelera. Setenta por ciento del cosmos y ni una caricia. Cuanto más lejos, más rápido se marcha."] },
+
+  { "palabras": ["antimateria"],
+    "respuestas": ["Misma cara, carga contraria. Se conocen, se tocan y se aniquilan en un fogonazo de rayos gamma. Polvo de estrellas, literalmente.",
+                   "Al tocarse, aniquilación y luz. Nada más que hablar."] },
+
+  { "palabras": ["partículas subatómicas"],
+    "respuestas": ["Van por debajo, sin que nadie las vea, pequeñas y excitadas. Y todas tienen su antipartícula esperando el choque."] },
+
+  { "palabras": ["protones"],
+    "respuestas": ["Positivos, encerrados en el núcleo, sin poder salir. Aguantan la tensión del encierro toda la vida."] },
+
+  { "palabras": ["neutrones"],
+    "respuestas": ["Ni sí ni no, sin carga. Los indecisos del átomo, y aun así imprescindibles para que el núcleo no se rompa."] },
+
+  { "palabras": ["electrones"],
+    "respuestas": ["Giran alrededor sin llegar a tocar nunca. Un fotón y saltan a la órbita de arriba, excitadísimos."] },
+
+  { "palabras": ["neutrinos"],
+    "respuestas": ["Sin carga, casi sin masa, atraviesan la materia sin inmutarse. Te penetran entero y ni te enteras."] },
+
+  { "palabras": ["quarks"],
+    "respuestas": ["No se les deja estar solos: pareja o trío, y confinados. Cuanto más los separas, más fuerte tiran para volver."] },
+
+  { "palabras": ["bosón de higgs"],
+    "respuestas": ["Es el que te pone peso encima. Sin su campo todo flotaría, y a ti te gusta que te claven al suelo."] },
+
+  { "palabras": ["antiprotones"],
+    "respuestas": ["El mismo protón, pero en negativo. Mismo cuerpo, signo contrario: la versión dominante del mismo ligue."] },
+
+  { "palabras": ["fotones"],
+    "respuestas": ["Sin masa, a trescientos mil por segundo, y se excitan con el mínimo roce. Nunca llegan tarde."] },
+
+  { "palabras": ["gravitones"],
+    "respuestas": ["Atraen a distancia y llevan un siglo esquivando la cámara. Nadie los ha pillado todavía: el top invisible."] },
+
+  { "palabras": ["espín", "spin"],
+    "respuestas": ["Giran sin girar. Dos valores, arriba o abajo, nunca a medias. Ya podrías aprender."] },
+
+  { "palabras": ["entrelazamiento cuántico"],
+    "respuestas": ["Se tocan una vez y quedan ligadas para siempre. Mides una aquí y la otra contesta a años luz. El vínculo más tóxico y más bonito del cosmos."] },
+
+  { "palabras": ["superposición cuántica"],
+    "respuestas": ["Sí y no a la vez, hasta que alguien mide. El sueño de todo poliamoroso, hasta que llega el observador."] },
+
+  { "palabras": ["efecto túnel"],
+    "respuestas": ["Atraviesa la barrera que no debería poder cruzar y aparece al otro lado con una sonrisa. Se cuela por donde no hay hueco."] },
+
+  { "palabras": ["dualidad onda-partícula"],
+    "respuestas": ["Según quién mire y cómo la mida, es onda o partícula. Cambia de rol y le sale bien."] },
+
+  { "palabras": ["principio de incertidumbre"],
+    "respuestas": ["No puedes saber posición y momento a la vez. Como el clítoris: cuanto más precisas dónde está, más se te escapa el ritmo."] },
+
+  { "palabras": ["mecánica cuántica"],
+    "respuestas": ["Probabilidad, colapso y estados mezclados. Sexo sin certezas: todo es posible hasta que ocurre."] },
+
+  { "palabras": ["física relativista"],
+    "respuestas": ["Todo depende de quién mire. Tiempo, espacio, longitud. El tamaño y la duración, ya sabes, son relativos."] },
+
+  { "palabras": ["relatividad general"],
+    "respuestas": ["La gravedad no es una fuerza, es geometría. La masa hunde la tela y todo cae al pozo. Doblar la cama sin tocarla."] },
+
+  { "palabras": ["relatividad especial"],
+    "respuestas": ["Cuanto más rápido vas, más corto y más lento el reloj. Follas a toda velocidad y acabas encogido y con retraso."] },
+
+  { "palabras": ["dilatación temporal"],
+    "respuestas": ["A más gravedad o velocidad, más lento tu reloj respecto al de fuera. Alargas la sesión mientras el de al lado envejece esperando."] },
+
+  { "palabras": ["paradoja de los gemelos"],
+    "respuestas": ["El que viaja vuelve más joven. La venganza de la sumisa que se va de viaje: regresa fresca y tú, arrugado."] },
+
+  { "palabras": ["paradoja de fermi"],
+    "respuestas": ["Si el universo está lleno, ¿dónde está todo el mundo? Cuatrocientos mil miembros en el grupo del cosmos y nadie escribe."] },
+
+  { "palabras": ["paradoja de schrödinger"],
+    "respuestas": ["El gato vivo y muerto hasta que abres la caja. No sabes si está dentro o fuera hasta que miras."] },
+
+  { "palabras": ["multiverso"],
+    "respuestas": ["Infinitas versiones de ti. En alguna le escribiste primero; en otra estás haciendo algo mucho mejor que leer esto."] },
+
+  { "palabras": ["dimensión"],
+    "respuestas": ["Un eje más. La cuarta es el tiempo y la quinta, donde te escondes cuando no contestas."] },
+
+  { "palabras": ["espaciotiempo"],
+    "respuestas": ["Espacio y tiempo en la misma tela. La sábana donde todo ocurre, se arruga y se estira."] },
+
+  { "palabras": ["curvatura espacio-temporal"],
+    "respuestas": ["Pon masa y la tela se hunde. Por eso la cama se combe en el centro y acabamos los dos ahí."] },
+
+  { "palabras": ["gravedad"],
+    "respuestas": ["La más débil de todas y la que más manda. Te tira al suelo y no se cansa nunca."] },
+
+  { "palabras": ["antigravedad"],
+    "respuestas": ["Empujar en vez de atraer. Te sube y no te deja bajar de la nube."] },
+
+  { "palabras": ["magnetismo"],
+    "respuestas": ["Polos opuestos que se buscan y luego no hay quien los separe. Se pegan solos, sin permiso."] },
+
+  { "palabras": ["electromagnetismo"],
+    "respuestas": ["Electricidad y magnetismo, la misma fuerza con dos caras. Te eriza el vello y te saca chispas con un roce."] },
+
+  { "palabras": ["radiación cósmica"],
+    "respuestas": ["Llega de fuera a toda hostia y atraviesa la atmósfera. Entra sin llamar y te deja marcado."] },
+
+  { "palabras": ["radiación de hawking"],
+    "respuestas": ["Hasta los agujeros negros emiten y se evaporan. Nadie es tan insaciable como para no rendirse al final."] },
+
+  { "palabras": ["radiación gamma"],
+    "respuestas": ["La más energética del espectro. Ioniza todo lo que toca: entra sin protección y tiembla."] },
+
+  { "palabras": ["rayos cósmicos"],
+    "respuestas": ["Protones a velocidades absurdas, con demasiada energía. Llegan de muy lejos y revientan al chocar."] },
+
+  { "palabras": ["plasma"],
+    "respuestas": ["Gas ionizado: los átomos pierden los electrones y se sueltan. El estado más caliente de la materia, y el noventa y nueve por ciento del universo visible está así, desatado."] },
+
+  { "palabras": ["nebulosa"],
+    "respuestas": ["Gas y polvo donde nacen estrellas. Se abre, se deja penetrar por la radiación y pare soles."] },
+
+  { "palabras": ["galaxia"],
+    "respuestas": ["Cientos de miles de millones de estrellas girando juntas. Una orgía a escala cósmica con un agujero negro supermasivo de director."] },
+
+  { "palabras": ["vía láctea"],
+    "respuestas": ["La nuestra, cien mil años luz de ancho. Te tiene dentro sin que lo notes y te va dando leche por el camino."] },
+
+  { "palabras": ["cuásar"],
+    "respuestas": ["El objeto más luminoso del universo, y eyecta chorros a años luz. Brilla tanto que tapa su propia galaxia."] },
+
+  { "palabras": ["púlsar"],
+    "respuestas": ["Gira cientos de veces por segundo y emite pulsos exactos. Nunca pierde el ritmo."] },
+
+  { "palabras": ["magnetar"],
+    "respuestas": ["El campo magnético más brutal conocido. Te desmagnetiza la tarjeta con solo acercarse."] },
+
+  { "palabras": ["supernova"],
+    "respuestas": ["Una estrella masiva muriéndose a gritos. Se lo lleva todo por delante y deja semillas para lo siguiente."] },
+
+  { "palabras": ["hipernova"],
+    "respuestas": ["Supernova al cuadrado: se come la estrella entera. No se conforma con un orgasmo, se lleva el sistema completo."] },
+
+  { "palabras": ["estrella de neutrones"],
+    "respuestas": ["Una masa solar en veinte kilómetros. Una cucharada pesa mil millones de toneladas: pequeña y con un peso que no te deja respirar."] },
+
+  { "palabras": ["enana marrón"],
+    "respuestas": ["Ni planeta ni estrella. No le llega la masa para encenderse: calentita y a medias."] },
+
+  { "palabras": ["exoplaneta"],
+    "respuestas": ["Orbita otra estrella, muy lejos. ¿Merece la pena el viaje? Depende de lo que haya allí."] },
+
+  { "palabras": ["planetesimal"],
+    "respuestas": ["Roca que se pega a otras rocas hasta hacer un planeta. Empieza pequeño y crece a base de roces."] },
+
+  { "palabras": ["asteroide"],
+    "respuestas": ["Va a su bola entre Marte y Júpiter, y choca cuando menos lo esperas. Deja cráter."] },
+
+  { "palabras": ["cometa"],
+    "respuestas": ["Hielo y polvo con cola que crece al acercarse al Sol. Se excita con el calor y deja rastro brillante."] },
+
+  { "palabras": ["meteoroide"],
+    "respuestas": ["Pequeño, promete poco, y al frotarse con la atmósfera arde entero."] },
+
+  { "palabras": ["cinturón de kuiper"],
+    "respuestas": ["Anillo de cuerpos helados más allá de Neptuno. Frío, lejos, y lleno de material interesante."] },
+
+  { "palabras": ["nube de oort"],
+    "respuestas": ["Envoltorio de cometas en el borde del sistema. La reserva: enorme, fría, esperando su momento."] },
+
+  { "palabras": ["cinturón de asteroides"],
+    "respuestas": ["Millones de rocas apretadas entre Marte y Júpiter. Nadie pasa sin rozar."] },
+
+  { "palabras": ["sistema solar"],
+    "respuestas": ["Una estrella y todo girando a su alrededor. Un harén gravitatorio, y el Sol en el centro."] },
+
+  { "palabras": ["constelación"],
+    "respuestas": ["Estrellas sin nada en común que dibujamos juntas. Preciosa desde fuera; por dentro, distancias abismales."] },
+
+  { "palabras": ["órbita"],
+    "respuestas": ["Siempre vuelve al mismo sitio por mucho que se aleje. La rutina de la gravedad."] },
+
+  { "palabras": ["perihelio"],
+    "respuestas": ["El punto más cerca del Sol. Máxima tensión: todo se acelera y se quema."] },
+
+  { "palabras": ["afelio"],
+    "respuestas": ["El punto más lejos. Frío, lento, con ganas de volver."] },
+
+  { "palabras": ["año luz"],
+    "respuestas": ["Nueve coma cuatro billones de kilómetros. Lo que tarda en llegarte un mensaje suyo, y aun así dices que os veis."] },
+
+  { "palabras": ["velocidad de la luz"],
+    "respuestas": ["Trescientos mil kilómetros por segundo, el límite. Siempre llega primero y nadie la adelanta."] },
+
+  { "palabras": ["parsec"],
+    "respuestas": ["Tres coma veintiséis años luz. Los astrónomos lo usan para no escribir ceros, y suena presumido."] },
+
+  { "palabras": ["unidad astronómica"],
+    "respuestas": ["Ciento cincuenta millones de kilómetros, Tierra-Sol. La regla de medir del sistema, y lo que se aleja la ex cuando se enfada."] },
+
+  { "palabras": ["gravedad cero"],
+    "respuestas": ["Caída libre, todo flota. Pelo suelto y sexo sin apoyo: nada pesa, todo se va."] },
+
+  { "palabras": ["velocidad de escape"],
+    "respuestas": ["Once coma dos kilómetros por segundo para largarte de aquí. La de irte sin mirar atrás."] },
+
+  { "palabras": ["fusión nuclear"],
+    "respuestas": ["Dos núcleos se juntan y sueltan energía. Dos que se vuelven uno y liberan todo lo que llevan dentro."] },
+
+  { "palabras": ["fisión nuclear"],
+    "respuestas": ["Un núcleo se parte en dos y suelta neutrones. Se rompe y en el proceso excita a los vecinos."] },
+
+  { "palabras": ["entropía"],
+    "respuestas": ["El desorden siempre gana. Por mucho que ordenes, todo acaba desparramado."] },
+
+  { "palabras": ["termodinámica"],
+    "respuestas": ["El calor va de lo caliente a lo frío y la energía se conserva. El roce acaba siempre en sudor."] },
+
+  { "palabras": ["efecto doppler"],
+    "respuestas": ["El tono sube al acercarse y baja al alejarse. La sirena, y también los gemidos."] },
+
+  { "palabras": ["corrimiento al rojo"],
+    "respuestas": ["La luz se estira hacia el rojo cuando algo se marcha. Cuanto más rojo, más lejos está."] },
+
+  { "palabras": ["lente gravitacional"],
+    "respuestas": ["La gravedad curva y amplía la luz de detrás. Te agranda lo del fondo sin que lo pidas."] },
+
+  { "palabras": ["ondas gravitacionales"],
+    "respuestas": ["Arrugas del espaciotiempo por masas aceleradas. En 2015 se detectaron y tembló la tela del universo."] },
+
+  { "palabras": ["agujero blanco"],
+    "respuestas": ["El reverso del negro: escupe y no recibe. Lo da todo y expulsa material a chorro."] },
+
+  { "palabras": ["vacío cuántico"],
+    "respuestas": ["La nada no está vacía: hierve de partículas que aparecen y se aniquilan. Hasta lo vacío está ocupado."] },
+
+  { "palabras": ["fluctuación cuántica"],
+    "respuestas": ["Aparece y desaparece sin avisar, sin que puedas predecirla."] },
+
+  { "palabras": ["constante de planck"],
+    "respuestas": ["Seis coma seis por diez a menos treinta y cuatro. El grano mínimo de acción, y el que marca el límite."] },
+
+  { "palabras": ["constante cosmológica"],
+    "respuestas": ["Einstein la metió para que el universo no se moviera y resultó ser la energía oscura. Se añade para corregir y acaba mandando."] },
+
+  { "palabras": ["campo magnético"],
+    "respuestas": ["Se activa con una corriente y desvía todo lo que pasa cerca."] },
+
+  { "palabras": ["plasma interestelar"],
+    "respuestas": ["Gas ionizado entre estrellas, con campos y turbulencias. El medio más caliente y menos agradecido del barrio."] },
+
+  { "palabras": ["materia degenerada"],
+    "respuestas": ["Electrones y neutrones apretados al máximo por el principio de exclusión. No se deja comprimir más, y tú lo intentarías."] },
+
+  { "palabras": ["teletransportación cuántica"],
+    "respuestas": ["Se copia el estado, no la partícula, y el original se destruye. El clon que sustituye."] },
+
+  { "palabras": ["túnel espacio-temporal"],
+    "respuestas": ["Un atajo entre dos puntos. Tu dormitorio y el de tu ex, a un paso."] },
+
+  { "palabras": ["inflación cósmica"],
+    "respuestas": ["Expansión brutal en una fracción de segundo tras el Big Bang. Estira todo de golpe y deja el universo plano y enorme."] },
+
+  { "palabras": ["paradoja temporal"],
+    "respuestas": ["Vas al pasado, cambias algo y ¿sigues existiendo? Ya no sabes si el de antes eras tú u otra línea temporal."] },
      
   { "palabras": ["hola", "buenas", "qué tal", "hey"],
     "respuestas": ["«Hola. Ahora mismo te atraviesan billones de neutrinos solares y ni lo notas.»"] },
